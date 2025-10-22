@@ -24,5 +24,10 @@ La saisie utilisateur (ville, dates, prix, catégorie/étoiles, nb personnes) re
 ### En ligne de commande
 ```bash
 # A la racine du projet
-mvn -DskipTests package
+./mvnw clean package -DskipTests
 java -jar target/Hotel-0.0.1-SNAPSHOT.jar
+./mvnw spring-boot:run
+
+# Si besoin
+./mvnw clean verify -DskipTests
+./mvnw clean install -DskipTests
