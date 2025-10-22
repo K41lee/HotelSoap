@@ -1,6 +1,5 @@
 package cli;
 
-import cli.*;
 import Impl.*; // Adresse, Categorie, Chambre, Client, DateSimple, Gestionnaire, Hotel, Reservation
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
