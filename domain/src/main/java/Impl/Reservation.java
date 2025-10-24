@@ -1,4 +1,4 @@
-package Impl;
+package org.examples.domain.Impl;
 
 import java.time.LocalDate;
 

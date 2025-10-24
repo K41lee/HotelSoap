@@ -1,6 +1,10 @@
-package Impl;
+package org.examples.domain.Impl;
 
 // Gestionnaire.java
+import Impl.Categorie;
+import Impl.Hotel;
+import Impl.Reservation;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package Impl;
+package org.examples.domain.Impl;
 
 public class Client {
     private String nom, prenom, carteCredit;

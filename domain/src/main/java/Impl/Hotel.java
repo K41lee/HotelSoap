@@ -1,4 +1,4 @@
-package Impl;
+package org.examples.domain.Impl;
 
 // Hotel.java
 import java.time.LocalDate;

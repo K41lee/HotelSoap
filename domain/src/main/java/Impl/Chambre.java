@@ -1,4 +1,8 @@
-package Impl;
+package org.examples.domain.Impl;
+
+import Impl.Client;
+import Impl.Hotel;
+import Impl.Reservation;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
