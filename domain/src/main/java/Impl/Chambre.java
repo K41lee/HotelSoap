@@ -1,4 +1,4 @@
-package org.examples.domain.Impl;
+package Impl;
 
 import Impl.Client;
 import Impl.Hotel;

@@ -19,15 +19,11 @@ La saisie utilisateur (ville, dates, prix, catégorie/étoiles, nb personnes) re
 ### Depuis IntelliJ
 1. Ouvrir le projet.
 2. Vérifier le **JDK 17** dans *Project Structure*.
-3. Lancer la classe `HotelCliApplication` (configuration *Application* ou `mvn spring-boot:run`).
+3. Lancer la classe `com.example.hotel.HotelApplication` (clic droit > Run).
+4. cd client-cli
+   mvn -DskipTests clean package -Dwsdl.url=http://localhost:8080/hotelservice?wsdl
+5. /usr/lib/jvm/java-8-openjdk-amd64/bin/java \
+   -Dwsdl.url=http://localhost:8080/hotelservice?wsdl \
+   -cp client-cli/target/client-cli-1.0.0.jar \
+   org.examples.client.ClientMain
 
-### En ligne de commande
-```bash
-# A la racine du projet
-./mvnw clean package -DskipTests
-java -jar target/Hotel-0.0.1-SNAPSHOT.jar
-./mvnw spring-boot:run
-
-# Si besoin
-./mvnw clean verify -DskipTests
-./mvnw clean install -DskipTests

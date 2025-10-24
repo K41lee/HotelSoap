@@ -1,14 +1,12 @@
-package org.examples.domain.Impl;
+package Impl;
 
 // Gestionnaire.java
-import Impl.Categorie;
-import Impl.Hotel;
-import Impl.Reservation;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class Gestionnaire {
     public static record Offre(Hotel hotel, Chambre chambre, int prixTotal) {}
@@ -41,6 +39,52 @@ public class Gestionnaire {
         offres.sort(Comparator.comparingInt(Offre::prixTotal));
         return offres;
     }
+
+    public int computePrixTotal(Chambre chambre, LocalDate debut, LocalDate fin, Optional<Agence> agenceOpt) {
+        int base = chambre.prixTotal(debut, fin);
+        if (agenceOpt.isPresent()) {
+            double reduc = agenceOpt.get().getReduction(); // 0..1
+            double after = base * (1.0 - reduc);
+            return (int)Math.round(after);
+        }
+        return base;
+    }
+
+    public List<Offre> findMatchReservation(
+            String ville, LocalDate dateArrivee, LocalDate dateDepart,
+            Integer prixMin, Integer prixMax,
+            Categorie categorie, Integer nbEtoiles,
+            int nbPersonnes,
+            String agenceName // <- NEW param
+    ) {
+
+        List<Offre> offres = new ArrayList<>();
+        for (Hotel h : hotels) {
+            if (!h.getAdresse().getVille().equalsIgnoreCase(ville)) continue;
+            if (categorie != null && h.getCategorie() != categorie) continue;
+            if (nbEtoiles != null && h.getNbEtoiles() != nbEtoiles) continue;
+
+            // si agence demandée, tenter de la trouver sur l'hôtel
+            Optional<Agence> agenceOpt = (agenceName == null || agenceName.isBlank())
+                    ? Optional.empty()
+                    : h.findAgenceByName(agenceName);
+
+            for (Chambre c : h.getChambres()) {
+                if (c.getNbLits() < nbPersonnes) continue;
+                if (!c.isDisponible(dateArrivee, dateDepart)) continue;
+
+                int prixApresReduc = computePrixTotal(c, dateArrivee, dateDepart, agenceOpt);
+
+                if (prixMin != null && prixApresReduc < prixMin) continue;
+                if (prixMax != null && prixApresReduc > prixMax) continue;
+
+                offres.add(new Offre(h, c, prixApresReduc));
+            }
+        }
+        offres.sort(Comparator.comparingInt(Offre::prixTotal));
+        return offres;
+    }
+
 
     public List<Chambre> findMatchReservationChambres(
             String ville, LocalDate dateArrivee, LocalDate dateDepart,

@@ -1,4 +1,10 @@
 package org.examples.server.dto;
 
-public class Adress {
+import jakarta.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Address {
+    public String pays, ville, rue, lieuDit;
+    public int numero;
+    public double lat, lon;
 }

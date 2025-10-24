@@ -1,4 +1,4 @@
-package org.examples.domain.Impl;
+package Impl;
 
 public class Adresse {
     private final String pays, ville, rue, lieuDit;

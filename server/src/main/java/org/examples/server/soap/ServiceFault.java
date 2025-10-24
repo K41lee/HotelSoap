@@ -1,4 +1,8 @@
 package org.examples.server.soap;
 
-public class ServiceFault {
+import jakarta.xml.ws.WebFault;
+
+@WebFault(name="ServiceFault")
+public class ServiceFault extends Exception {
+    public ServiceFault(String message){ super(message); }
 }

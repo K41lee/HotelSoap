@@ -1,4 +1,4 @@
-package org.examples.domain.Impl;
+package Impl;
 
 import java.time.LocalDate;
 
@@ -6,7 +6,7 @@ public class Reservation {
     private final Chambre chambre;
     private final Client client;
     private final LocalDate debut;  // inclus
-    private final LocalDate fin;    // exclus (conseillé pour raisonner proprement)
+    private final LocalDate fin;    // exclus
 
     public Reservation(Chambre chambre, Client client, LocalDate debut, LocalDate fin) {
         this.chambre = chambre; this.client = client; this.debut = debut; this.fin = fin;
