@@ -9,7 +9,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class Gestionnaire {
-    public static record Offre(Hotel hotel, Chambre chambre, int prixTotal) {}
+    // Remplacer le record (Java 14+) par une classe interne simple pour compatibilité
+    public static class Offre {
+        private final Hotel hotel;
+        private final Chambre chambre;
+        private final int prixTotal;
+        public Offre(Hotel hotel, Chambre chambre, int prixTotal) { this.hotel = hotel; this.chambre = chambre; this.prixTotal = prixTotal; }
+        public Hotel hotel() { return hotel; }
+        public Chambre chambre() { return chambre; }
+        public int prixTotal() { return prixTotal; }
+    }
 
     private final List<Hotel> hotels = new ArrayList<>();
 
@@ -65,7 +74,7 @@ public class Gestionnaire {
             if (nbEtoiles != null && h.getNbEtoiles() != nbEtoiles) continue;
 
             // si agence demandée, tenter de la trouver sur l'hôtel
-            Optional<Agence> agenceOpt = (agenceName == null || agenceName.isBlank())
+            Optional<Agence> agenceOpt = (agenceName == null || agenceName.trim().isEmpty())
                     ? Optional.empty()
                     : h.findAgenceByName(agenceName);
 

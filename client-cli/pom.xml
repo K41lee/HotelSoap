@@ -40,26 +40,7 @@
             </plugin>
 
             <!-- Génère les stubs JAX-WS depuis le WSDL -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>generate-stubs</id>
-                        <goals><goal>wsimport</goal></goals>
-                        <configuration>
-                            <wsdlUrls>
-                                <wsdlUrl>${wsdl.url}</wsdlUrl>
-                            </wsdlUrls>
-                            <packageName>org.examples.client.stub</packageName>
-                            <sourceDestDir>${generated.dir}</sourceDestDir>
-                            <xnocompile>true</xnocompile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
+            <!-- moved into profile 'generate-stubs' to avoid failing build when services aren't running -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -86,7 +67,73 @@
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
-            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>javax.activation</artifactId>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>generate-stubs</id>
+            <activation>
+                <property>
+                    <name>generate.stubs</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>jaxws-maven-plugin</artifactId>
+                        <version>2.6</version>
+                        <executions>
+                            <execution>
+                                <id>generate-stubs</id>
+                                <goals><goal>wsimport</goal></goals>
+                                <configuration>
+                                    <wsdlUrls>
+                                        <wsdlUrl>${wsdl.url}</wsdlUrl>
+                                    </wsdlUrls>
+                                    <packageName>org.examples.client.stub</packageName>
+                                    <sourceDestDir>${generated.dir}</sourceDestDir>
+                                    <xnocompile>true</xnocompile>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- add generated sources to compilation -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <executions>
+                            <execution>
+                                <id>add-source</id>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>add-source</goal>
+                                </goals>
+                                <configuration>
+                                    <sources>
+                                        <source>${generated.dir}</source>
+                                    </sources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>

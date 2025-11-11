@@ -1,0 +1,35 @@
+<project>
+    <parent>
+        <groupId>org.examples</groupId>
+        <artifactId>hotel-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hotel-server-soap-rivage</artifactId>
+    <name>hotel-server-soap-rivage</name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.examples</groupId>
+            <artifactId>server-base</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>org.examples.server.HotelServerApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

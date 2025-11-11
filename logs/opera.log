@@ -1,0 +1,166 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.examples:hotel-server-soap-opera >----------------
+[INFO] Building hotel-server-soap-opera 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:2.7.12:run (default-cli) > test-compile @ hotel-server-soap-opera >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hotel-server-soap-opera ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ hotel-server-soap-opera ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hotel-server-soap-opera ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hotel-server-soap-opera ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:2.7.12:run (default-cli) < test-compile @ hotel-server-soap-opera <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:2.7.12:run (default-cli) @ hotel-server-soap-opera ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.12)
+
+2025-11-11 13:09:11.997  INFO 96502 --- [           main] o.e.server.HotelServerApplication        : Starting HotelServerApplication using Java 11.0.28 on dptinfo-pret with PID 96502 (/home/etudiant/.m2/repository/org/examples/server-base/1.0.0/server-base-1.0.0.jar started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
+2025-11-11 13:09:11.998  INFO 96502 --- [           main] o.e.server.HotelServerApplication        : No active profile set, falling back to 1 default profile: "default"
+2025-11-11 13:09:12.163  INFO 96502 --- [           main] o.e.server.HotelServerApplication        : Started HotelServerApplication in 0.306 seconds (JVM running for 0.428)
+[BEAN-DUMPER] Listing beans in ApplicationContext...
+[BEAN-DUMPER] Total beans: 41
+[BEAN-DUMPER] bean[0] = applicationAvailability
+[BEAN-DUMPER] bean[1] = applicationTaskExecutor
+[BEAN-DUMPER] bean[2] = beanDumper
+[BEAN-DUMPER] bean[3] = forceAutoProxyCreatorToUseClassProxying
+[BEAN-DUMPER] bean[4] = hotelAgencyServiceImpl
+[BEAN-DUMPER] bean[5] = hotelServerApplication
+[BEAN-DUMPER] bean[6] = hotelServiceImpl
+[BEAN-DUMPER] bean[7] = lifecycleProcessor
+[BEAN-DUMPER] bean[8] = org.springframework.aop.config.internalAutoProxyCreator
+[BEAN-DUMPER] bean[9] = org.springframework.boot.autoconfigure.AutoConfigurationPackages
+[BEAN-DUMPER] bean[10] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration
+[BEAN-DUMPER] bean[11] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$ClassProxyingConfiguration
+[BEAN-DUMPER] bean[12] = org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
+[BEAN-DUMPER] bean[13] = org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
+[BEAN-DUMPER] bean[14] = org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
+[BEAN-DUMPER] bean[15] = org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
+[BEAN-DUMPER] bean[16] = org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
+[BEAN-DUMPER] bean[17] = org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
+[BEAN-DUMPER] bean[18] = org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration
+[BEAN-DUMPER] bean[19] = org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration
+[BEAN-DUMPER] bean[20] = org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration
+[BEAN-DUMPER] bean[21] = org.springframework.boot.context.internalConfigurationPropertiesBinder
+[BEAN-DUMPER] bean[22] = org.springframework.boot.context.internalConfigurationPropertiesBinderFactory
+[BEAN-DUMPER] bean[23] = org.springframework.boot.context.properties.BoundConfigurationProperties
+[BEAN-DUMPER] bean[24] = org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor
+[BEAN-DUMPER] bean[25] = org.springframework.boot.context.properties.EnableConfigurationPropertiesRegistrar.methodValidationExcludeFilter
+[BEAN-DUMPER] bean[26] = org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor
+[BEAN-DUMPER] bean[27] = org.springframework.context.annotation.internalAutowiredAnnotationProcessor
+[BEAN-DUMPER] bean[28] = org.springframework.context.annotation.internalCommonAnnotationProcessor
+[BEAN-DUMPER] bean[29] = org.springframework.context.annotation.internalConfigurationAnnotationProcessor
+[BEAN-DUMPER] bean[30] = org.springframework.context.event.internalEventListenerFactory
+[BEAN-DUMPER] bean[31] = org.springframework.context.event.internalEventListenerProcessor
+[BEAN-DUMPER] bean[32] = propertySourcesPlaceholderConfigurer
+[BEAN-DUMPER] bean[33] = publisher
+[BEAN-DUMPER] bean[34] = spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties
+[BEAN-DUMPER] bean[35] = spring.lifecycle-org.springframework.boot.autoconfigure.context.LifecycleProperties
+[BEAN-DUMPER] bean[36] = spring.sql.init-org.springframework.boot.autoconfigure.sql.init.SqlInitializationProperties
+[BEAN-DUMPER] bean[37] = spring.task.execution-org.springframework.boot.autoconfigure.task.TaskExecutionProperties
+[BEAN-DUMPER] bean[38] = spring.task.scheduling-org.springframework.boot.autoconfigure.task.TaskSchedulingProperties
+[BEAN-DUMPER] bean[39] = taskExecutorBuilder
+[BEAN-DUMPER] bean[40] = taskSchedulerBuilder
+[BEAN-DUMPER] HotelAgencyService beans:
+[BEAN-DUMPER]   hotelAgencyServiceImpl -> org.examples.server.impl.HotelAgencyServiceImpl
+[BEAN-DUMPER] HotelService beans:
+[BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
+[BEAN-DUMPER] End of bean dump.
+[SOAP] Publisher démarré — recherche des beans de service...
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.sun.xml.ws.model.Injector (file:/home/etudiant/.m2/repository/com/sun/xml/ws/jaxws-rt/2.3.3/jaxws-rt-2.3.3.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int)
+WARNING: Please consider reporting this to the maintainers of com.sun.xml.ws.model.Injector
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+2025-11-11 13:09:12.684  INFO 96502 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+[SOAP] HotelAgencyService bean 'hotelAgencyServiceImpl' publié sur http://0.0.0.0:8082/agency?wsdl
+2025-11-11 13:09:12.718  INFO 96502 --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-11-11 13:09:12.725 ERROR 96502 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Failed to execute CommandLineRunner
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:771) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.12.jar:2.7.12]
+	at org.examples.server.HotelServerApplication.main(HotelServerApplication.java:9) ~[server-base-1.0.0.jar:na]
+Caused by: com.sun.xml.ws.spi.db.DatabindingException: com.sun.xml.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions
+Deux classes portent le même nom de type XML "{http://service.hotel.examples.org/}searchOffersResponse". Utilisez @XmlType.name et XmlType.namespace pour leur affecter des noms différents.
+	this problem is related to the following location:
+		at org.examples.server.dto.SearchOffersResponse
+		at public org.examples.server.dto.SearchOffersResponse org.examples.server.soap.jaxws.SearchOffersResponse._return
+		at org.examples.server.soap.jaxws.SearchOffersResponse
+	this problem is related to the following location:
+		at org.examples.server.soap.jaxws.SearchOffersResponse
+
+	at com.sun.xml.ws.db.glassfish.JAXBRIContextFactory.newContext(JAXBRIContextFactory.java:75) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.spi.db.BindingContextFactory.getBindingContextFromSpi(BindingContextFactory.java:177) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.spi.db.BindingContextFactory.create(BindingContextFactory.java:146) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.model.AbstractSEIModelImpl$1.run(AbstractSEIModelImpl.java:192) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.model.AbstractSEIModelImpl$1.run(AbstractSEIModelImpl.java:165) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at java.base/java.security.AccessController.doPrivileged(Native Method) ~[na:na]
+	at com.sun.xml.ws.model.AbstractSEIModelImpl.createJAXBContext(AbstractSEIModelImpl.java:165) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.model.AbstractSEIModelImpl.postProcess(AbstractSEIModelImpl.java:80) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.model.RuntimeModeler.buildRuntimeModel(RuntimeModeler.java:294) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.db.DatabindingImpl.<init>(DatabindingImpl.java:70) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.db.DatabindingProviderImpl.create(DatabindingProviderImpl.java:44) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.db.DatabindingProviderImpl.create(DatabindingProviderImpl.java:28) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.db.DatabindingFactoryImpl.createRuntime(DatabindingFactoryImpl.java:90) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.server.EndpointFactory.createSEIModel(EndpointFactory.java:491) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.server.EndpointFactory.create(EndpointFactory.java:270) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.server.EndpointFactory.createEndpoint(EndpointFactory.java:134) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.api.server.WSEndpoint.create(WSEndpoint.java:548) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.api.server.WSEndpoint.create(WSEndpoint.java:530) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.createEndpoint(EndpointImpl.java:304) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:217) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at javax.xml.ws.Endpoint.publish(Endpoint.java:224) ~[jakarta.xml.ws-api-2.3.3.jar:2.3.3]
+	at org.examples.server.soap.Publisher.run(Publisher.java:61) ~[server-base-1.0.0.jar:na]
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768) ~[spring-boot-2.7.12.jar:2.7.12]
+	... 5 common frames omitted
+Caused by: com.sun.xml.bind.v2.runtime.IllegalAnnotationsException: 1 counts of IllegalAnnotationExceptions
+	at com.sun.xml.bind.v2.runtime.IllegalAnnotationsException$Builder.check(IllegalAnnotationsException.java:76) ~[jaxb-impl-2.3.3.jar:2.3.3]
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.getTypeInfoSet(JAXBContextImpl.java:450) ~[jaxb-impl-2.3.3.jar:2.3.3]
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.<init>(JAXBContextImpl.java:282) ~[jaxb-impl-2.3.3.jar:2.3.3]
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.<init>(JAXBContextImpl.java:109) ~[jaxb-impl-2.3.3.jar:2.3.3]
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl$JAXBContextBuilder.build(JAXBContextImpl.java:1142) ~[jaxb-impl-2.3.3.jar:2.3.3]
+	at com.sun.xml.bind.v2.ContextFactory.createContext(ContextFactory.java:141) ~[jaxb-impl-2.3.3.jar:2.3.3]
+	at com.sun.xml.bind.api.JAXBRIContext.newInstance(JAXBRIContext.java:137) ~[jaxb-impl-2.3.3.jar:2.3.3]
+	at com.sun.xml.bind.api.JAXBRIContext.newInstance(JAXBRIContext.java:81) ~[jaxb-impl-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.developer.JAXBContextFactory$1.createJAXBContext(JAXBContextFactory.java:83) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	at com.sun.xml.ws.db.glassfish.JAXBRIContextFactory.newContext(JAXBRIContextFactory.java:64) ~[jaxws-rt-2.3.3.jar:2.3.3]
+	... 28 common frames omitted
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.843 s
+[INFO] Finished at: 2025-11-11T13:09:12+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.7.12:run (default-cli) on project hotel-server-soap-opera: Application finished with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
