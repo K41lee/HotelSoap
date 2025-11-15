@@ -6,7 +6,9 @@ import javax.xml.bind.annotation.*;
 @XmlType(name="ReservationConfirmationDTO", namespace="http://service.hotel.examples.org/dto")
 @XmlRootElement(name="ReservationConfirmationDTO", namespace="http://service.hotel.examples.org/dto")
 public class ReservationConfirmation {
+    @XmlElement(required=true)
     public String id;
+    @XmlElement(required=true)
     public String message;
     public Offer offer;
 

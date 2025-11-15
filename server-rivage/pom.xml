@@ -2,7 +2,7 @@
     <parent>
         <groupId>org.examples</groupId>
         <artifactId>hotel-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>hotel-server-soap-rivage</artifactId>
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.examples</groupId>
             <artifactId>server-base</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -27,7 +27,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.examples.server.HotelServerApplication</mainClass>
+                    <mainClass>org.examples.serverrivage.ServerRivageApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

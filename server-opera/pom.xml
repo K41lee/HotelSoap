@@ -27,7 +27,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.examples.server.HotelServerApplication</mainClass>
+                    <mainClass>org.examples.serveropera.ServerOperaApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

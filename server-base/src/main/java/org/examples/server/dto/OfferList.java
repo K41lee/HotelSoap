@@ -9,7 +9,7 @@ import java.util.List;
 @XmlType(name="OfferListDTO", namespace="http://service.hotel.examples.org/dto")
 @XmlRootElement(name="OfferListDTO", namespace="http://service.hotel.examples.org/dto")
 public class OfferList {
-    private java.util.List<Offer> offers;
+    private java.util.List<Offer> offers = new java.util.ArrayList<>();
     public java.util.List<Offer> getOffers() { return offers; }
     public void setOffers(java.util.List<Offer> offers) { this.offers = offers; }
 }

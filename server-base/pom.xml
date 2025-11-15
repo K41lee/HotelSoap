@@ -6,12 +6,12 @@
     <parent>
         <groupId>org.examples</groupId>
         <artifactId>hotel-parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>org.examples</groupId>
     <artifactId>server-base</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>hotel-server-soap</name>
 
     <properties>
