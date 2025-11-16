@@ -1,0 +1,42 @@
+package org.examples.client;
+
+import java.io.*;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+
+public class AgencyTcpClient implements Closeable {
+  private final String host; private final int port; private Socket s; private BufferedReader in; private BufferedWriter out;
+  public AgencyTcpClient(String host, int port) throws IOException {
+    this.host = host; this.port = port; connect();
+  }
+  private void connect() throws IOException {
+    s = new Socket(host, port);
+    s.setSoTimeout(15000);
+    in = new BufferedReader(new InputStreamReader(s.getInputStream(), StandardCharsets.UTF_8));
+    out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream(), StandardCharsets.UTF_8));
+  }
+  private String call(String json) throws IOException {
+    out.write(json); out.write("\n"); out.flush();
+    return in.readLine();
+  }
+  public String getCatalog() throws IOException {
+    return call("{\"op\":\"catalog.get\"}");
+  }
+  public String search(String ville, String a, String d, int nb, String agencyId) throws IOException {
+    String payload = String.format(java.util.Locale.ROOT,
+        "{\"ville\":\"%s\",\"arrivee\":\"%s\",\"depart\":\"%s\",\"nbPersonnes\":%d,\"agencyId\":\"%s\"}",
+        escape(ville), a, d, nb, agencyId==null?"":escape(agencyId));
+    String req = "{\"op\":\"offers.search\",\"payload\":" + payload + "}";
+    return call(req);
+  }
+  public String reserve(String hotelCode, String offerId, String agencyId, String nom, String prenom, String carte) throws IOException {
+    String payload = String.format(java.util.Locale.ROOT,
+        "{\"hotelCode\":\"%s\",\"offerId\":\"%s\",\"agencyId\":\"%s\",\"nom\":\"%s\",\"prenom\":\"%s\",\"carte\":\"%s\"}",
+        escape(hotelCode), escape(offerId), escape(agencyId), escape(nom), escape(prenom), escape(carte));
+    String req = "{\"op\":\"reservation.make\",\"payload\":" + payload + "}";
+    return call(req);
+  }
+  private static String escape(String s){ return s==null?"":s.replace("\\","\\\\").replace("\"","\\\""); }
+  @Override public void close() throws IOException { try { s.close(); } catch (Exception ignore) {} }
+}

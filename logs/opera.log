@@ -1,8 +1,7 @@
-nohup: les entrées sont ignorées
 [INFO] Scanning for projects...
 [INFO] 
 [INFO] ----------------< org.examples:hotel-server-soap-opera >----------------
-[INFO] Building hotel-server-soap-opera 1.0.0
+[INFO] Building hotel-server-soap-opera 1.0.1-SNAPSHOT
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
@@ -34,13 +33,13 @@ nohup: les entrées sont ignorées
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-12 13:30:02.769  INFO 150521 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 150521 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
-2025-11-12 13:30:02.770  INFO 150521 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-12 13:30:02.959  INFO 150521 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-12 13:30:02.959  INFO 150521 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-12 13:30:02.959  INFO 150521 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-2025-11-12 13:30:02.959  INFO 150521 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='operaAgency' reduction=0.15
-2025-11-12 13:30:02.987  INFO 150521 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 0.353 seconds (JVM running for 0.499)
+2025-11-16 12:10:46.371  INFO 252344 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 252344 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
+2025-11-16 12:10:46.372  INFO 252344 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-11-16 12:10:46.574  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-16 12:10:46.575  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-16 12:10:46.575  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
+2025-11-16 12:10:46.575  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='operaAgency' reduction=0.05
+2025-11-16 12:10:46.604  INFO 252344 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 0.459 seconds (JVM running for 0.783)
 [BEAN-DUMPER] Listing beans in ApplicationContext...
 [BEAN-DUMPER] Total beans: 46
 [BEAN-DUMPER] bean[0] = applicationAvailability
@@ -48,7 +47,7 @@ nohup: les entrées sont ignorées
 [BEAN-DUMPER] bean[2] = beanDumper
 [BEAN-DUMPER] bean[3] = dataFactory
 [BEAN-DUMPER] bean[4] = forceAutoProxyCreatorToUseClassProxying
-[BEAN-DUMPER] bean[5] = gestionnaire
+[BEAN-DUMPER] bean[5] = gestionnaireInit
 [BEAN-DUMPER] bean[6] = hotelAgencyServiceImpl
 [BEAN-DUMPER] bean[7] = hotelServerApplication
 [BEAN-DUMPER] bean[8] = hotelServiceImpl
@@ -95,22 +94,21 @@ nohup: les entrées sont ignorées
 [BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
 [BEAN-DUMPER] End of bean dump.
 [SOAP] Publisher démarré — recherche des beans de service...
-2025-11-12 13:30:03.524  INFO 150521 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
-[SOAP] Échec publication HotelAgencyService bean 'hotelAgencyServiceImpl' sur http://0.0.0.0:8082/hotel-opera: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindExcept[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  37:17 min
-[INFO] Finished at: 2025-11-12T13:33:29+01:00
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.7.12:run (default-cli) on project hotel-server-soap-opera: Application finished with exit code: 137 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-rg.examples.serveropera.ServerOperaApplication.main(ServerOperaApplication.java:10)
+2025-11-16 12:10:47.166  INFO 252344 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+[SOAP] Échec publication HotelAgencyService bean 'hotelAgencyServiceImpl' sur http://0.0.0.0:8082/hotel-opera/agency: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
+	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
+	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
+	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
+	at org.examples.server.soap.Publisher.run(Publisher.java:63)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at org.examples.serveropera.ServerOperaApplication.main(ServerOperaApplication.java:10)
 Caused by: java.net.BindException: Adresse déjà utilisée
 	at sun.nio.ch.Net.bind0(Native Method)
 	at sun.nio.ch.Net.bind(Net.java:461)
@@ -125,19 +123,19 @@ Caused by: java.net.BindException: Adresse déjà utilisée
 	... 11 more
 [INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-12 13:30:03.588  INFO 150521 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-12 13:30:03.872  INFO 150521 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-12 13:30:03.872  INFO 150521 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-12 13:30:03.872  INFO 150521 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-2025-11-12 13:30:03.872  INFO 150521 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='operaAgency' reduction=0.15
-[SOAP] Échec publication HotelService bean 'hotelServiceImpl' sur http://0.0.0.0:8082/hotel-opera: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+2025-11-16 12:10:47.218  INFO 252344 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
+2025-11-16 12:10:47.223  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-16 12:10:47.223  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-16 12:10:47.223  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
+2025-11-16 12:10:47.223  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='operaAgency' reduction=0.05
+[SOAP] Échec publication HotelService bean 'hotelServiceImpl' sur http://0.0.0.0:8082/hotel-opera/hotel: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
 com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
 	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
 	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
 	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
 	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
 	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
-	at org.examples.server.soap.Publisher.run(Publisher.java:111)
+	at org.examples.server.soap.Publisher.run(Publisher.java:114)
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
 	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
@@ -159,6 +157,21 @@ Caused by: java.net.BindException: Adresse déjà utilisée
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.378 s
-[INFO] Finished at: 2025-11-12T13:30:03+01:00
+[INFO] Total time:  2.875 s
+[INFO] Finished at: 2025-11-16T12:10:47+01:00
 [INFO] ------------------------------------------------------------------------
+                                                                                                                                                                                                                                                                      2025-11-16 12:10:55.002  INFO 249525 --- [ool-1-thread-14] o.examples.server.soap.HotelServiceImpl  : [REQ] getCatalog received
+2025-11-16 12:10:55.003  INFO 249525 --- [ool-1-thread-14] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  25:55 min
+[INFO] Finished at: 2025-11-16T12:16:40+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.7.12:run (default-cli) on project hotel-server-soap-opera: Application finished with exit code: 137 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

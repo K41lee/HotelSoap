@@ -202,25 +202,33 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public ReservationConfirmation makeReservation(ReservationRequest request) throws ServiceFault {
-        logger.info("[REQ] makeReservation received: agence='{}' offerId='{}' nom='{}' prenom='{}'", request.agence, request.offerId, request.nom, request.prenom);
+        logger.info("[REQ] makeReservation received: agence='{}' offerId='{}' nom='{}' prenom='{}' carte='{}'", request.agence, request.offerId, request.nom, request.prenom, maskCard(request.carte));
         if (request.offerId == null || request.nom == null || request.prenom == null || request.carte == null) {
             ReservationConfirmation rc = new ReservationConfirmation();
             rc.setSuccess(false);
-            rc.setMessage("Donnes manquantes");
+            rc.setMessage("Données manquantes");
             rc.setReference(null);
             return rc;
         }
-        Impl.Client c = new Impl.Client(request.nom, request.prenom, request.carte);
-        String agencyId = (request.auth != null) ? request.auth.agencyId : request.agence;
-        String login = (request.auth != null) ? request.auth.login : null;
-        String password = (request.auth != null) ? request.auth.password : null;
-        Impl.ReservationResult res = factory.reserve(agencyId, login, password, request.offerId, c);
-        ReservationConfirmation rc = new ReservationConfirmation();
-        rc.setSuccess(res.isSuccess());
-        rc.setMessage(res.getMessage());
-        rc.setReference(res.getReference());
-        return rc;
+        try {
+            Impl.Client c = new Impl.Client(request.nom, request.prenom, request.carte);
+            String agencyId = (request.auth != null) ? request.auth.agencyId : request.agence;
+            String login = (request.auth != null) ? request.auth.login : null;
+            String password = (request.auth != null) ? request.auth.password : null;
+            Impl.ReservationResult res = factory.reserve(agencyId, login, password, request.offerId, c);
+            ReservationConfirmation rc = new ReservationConfirmation();
+            rc.setSuccess(res.isSuccess());
+            rc.setMessage(res.getMessage());
+            rc.setReference(res.getReference());
+            logger.info("[RESP] makeReservation success={} ref={} message={}", res.isSuccess(), res.getReference(), res.getMessage());
+            return rc;
+        } catch (Exception e) {
+            logger.warn("[ERR] makeReservation failed: {}", e.toString());
+            throw new ServiceFault("Reservation failed: " + e.getMessage());
+        }
     }
+
+    private static String maskCard(String c) { if (c==null) return null; String n=c.replaceAll("[^0-9]", ""); if (n.length()<4) return "****"; return "**** **** **** "+n.substring(n.length()-4); }
 
     @Override
     public Catalog getCatalog() {
