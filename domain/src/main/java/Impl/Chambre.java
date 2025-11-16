@@ -8,8 +8,11 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Chambre {
+    private static final Logger log = LoggerFactory.getLogger(Chambre.class);
     private final Hotel hotel;
     private int nbLits, prixParNuit, numero;
     private final List<Reservation> reservations = new ArrayList<>();
@@ -27,8 +30,14 @@ public class Chambre {
 
     public boolean isDisponible(LocalDate debut, LocalDate fin) {
         for (Reservation r : reservations) {
-            if (Reservation.chevauche(debut, fin, r.getDebut(), r.getFin())) return false;
+            if (Reservation.chevauche(debut, fin, r.getDebut(), r.getFin())) {
+                log.info("[ROOM] indisponible: room={} hotel='{}' demande=[{}..{}), existing=[{}..{}]", numero,
+                        hotel != null ? hotel.getNom() : "<no-hotel>", debut, fin, r.getDebut(), r.getFin());
+                return false;
+            }
         }
+        log.info("[ROOM] disponible: room={} hotel='{}' periode=[{}..{}), réservationsActives={}", numero,
+                hotel != null ? hotel.getNom() : "<no-hotel>", debut, fin, reservations.size());
         return true;
     }
 
@@ -42,6 +51,8 @@ public class Chambre {
         if (!isDisponible(debut, fin)) throw new IllegalStateException("Chambre déjà réservée sur la période");
         Reservation res = new Reservation(this, c, debut, fin);
         reservations.add(res);
+        log.info("[ROOM] réservation ajoutée: hotel='{}' room={} periode=[{}..{}), totalReservations={}",
+                hotel != null ? hotel.getNom() : "<no-hotel>", numero, debut, fin, reservations.size());
         return res;
     }
 }

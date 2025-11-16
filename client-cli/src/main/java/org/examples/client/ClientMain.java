@@ -50,242 +50,257 @@ public class ClientMain {
                     System.out.println("Agences partenaires: " + agenciesList);
                 }
 
-                System.out.println("=== CLIENT (via Agence) ===");
+                boolean again = true;
+                while (again) {
+                    System.out.println("=== CLIENT (via Agence) ===");
 
-                String ville;
-                while (true) {
-                    if (cityList != null && !cityList.isEmpty()) {
-                        System.out.print("Ville (numéro ou texte, '?' pour lister) : ");
-                        String s = in.nextLine().trim();
-                        if (s.equals("?")) {
-                            for (int i=0;i<cityList.size();i++) System.out.println("  " + (i+1) + ") " + cityList.get(i));
-                            continue;
-                        }
-                        // choix numérique
-                        try {
-                            int ix = Integer.parseInt(s) - 1;
-                            if (ix >= 0 && ix < cityList.size()) { ville = cityList.get(ix); break; }
-                        } catch (NumberFormatException ignore) {}
-                        // tentative de match texte normalisé
-                        if (!s.isEmpty()) {
-                            String ns = normalizeCity(s);
-                            String matched = null;
-                            for (String c : cityList) {
-                                if (normalizeCity(c).equals(ns)) { matched = c; break; }
+                    String ville;
+                    while (true) {
+                        if (cityList != null && !cityList.isEmpty()) {
+                            System.out.print("Ville (numéro ou texte, '?' pour lister) : ");
+                            String s = in.nextLine().trim();
+                            if (s.equals("?")) {
+                                for (int i=0;i<cityList.size();i++) System.out.println("  " + (i+1) + ") " + cityList.get(i));
+                                continue;
                             }
-                            if (matched == null) {
-                                for (String c : cityList) { // startsWith tolérant
-                                    if (normalizeCity(c).startsWith(ns)) { matched = c; break; }
-                                }
+                            // choix numérique
+                            try {
+                                int ix = Integer.parseInt(s) - 1;
+                                if (ix >= 0 && ix < cityList.size()) { ville = cityList.get(ix); break; }
+                            } catch (NumberFormatException ignore) {}
+                            // tentative de match texte normalisé
+                            if (!s.isEmpty()) {
+                                String ns = normalizeCity(s);
+                                String matched = null;
+                                for (String c : cityList) { if (normalizeCity(c).equals(ns)) { matched = c; break; } }
+                                if (matched == null) { for (String c : cityList) { if (normalizeCity(c).startsWith(ns)) { matched = c; break; } } }
+                                if (matched != null) { ville = matched; break; }
+                                System.out.println("Ville inconnue. Tapez '?' pour lister.");
+                                continue;
                             }
-                            if (matched != null) { ville = matched; break; }
-                            System.out.println("Ville inconnue. Tapez '?' pour lister.");
-                            continue;
+                            System.out.println("Requis.");
+                        } else {
+                            System.out.print("Ville (ex: Sète/Montpellier) : ");
+                            String s = in.nextLine().trim();
+                            if (!s.isEmpty()) { ville = s; break; }
+                            System.out.println("Requis.");
                         }
-                        System.out.println("Requis.");
-                    } else {
-                        System.out.print("Ville (ex: Sète/Montpellier) : ");
-                        String s = in.nextLine().trim();
-                        if (!s.isEmpty()) { ville = s; break; }
-                        System.out.println("Requis.");
                     }
-                }
 
-                LocalDate dArr;
-                while (true) {
-                    System.out.print("Arrivée (YYYY-MM-DD) : ");
-                    String s = in.nextLine().trim();
-                    try { dArr = LocalDate.parse(s); break; }
-                    catch (DateTimeParseException e) { System.out.println("Format attendu YYYY-MM-DD."); }
-                }
-                LocalDate dDep;
-                while (true) {
-                    System.out.print("Départ  (YYYY-MM-DD) : ");
-                    String s = in.nextLine().trim();
-                    try { dDep = LocalDate.parse(s); if (!dDep.isAfter(dArr)) { System.out.println("Départ doit être après l'arrivée."); continue; } break; }
-                    catch (DateTimeParseException e) { System.out.println("Format attendu YYYY-MM-DD."); }
-                }
-                int nbPers;
-                while (true) {
-                    System.out.print("Nb personnes : ");
-                    String s = in.nextLine().trim();
-                    try { nbPers = Integer.parseInt(s); if (nbPers < 1) { System.out.println(">=1"); continue; } break; }
-                    catch (NumberFormatException e) { System.out.println("Entier attendu."); }
-                }
-                // NE PLUS DEMANDER l'agence en mode agence; l’agence locale gère tout.
-                String srJson = agency.search(ville, dArr.toString(), dDep.toString(), nbPers, "");
-                if (srJson == null || srJson.isEmpty()) {
-                    System.out.println("(Agence) aucune réponse, nouvelle tentative...");
-                    srJson = agency.search(ville, dArr.toString(), dDep.toString(), nbPers, "");
+                    LocalDate dArr;
+                    while (true) {
+                        System.out.print("Arrivée (YYYY-MM-DD) : ");
+                        String s = in.nextLine().trim();
+                        try { dArr = LocalDate.parse(s); break; }
+                        catch (DateTimeParseException e) { System.out.println("Format attendu YYYY-MM-DD."); }
+                    }
+                    LocalDate dDep;
+                    while (true) {
+                        System.out.print("Départ  (YYYY-MM-DD) : ");
+                        String s = in.nextLine().trim();
+                        try { dDep = LocalDate.parse(s); if (!dDep.isAfter(dArr)) { System.out.println("Départ doit être après l'arrivée."); continue; } break; }
+                        catch (DateTimeParseException e) { System.out.println("Format attendu YYYY-MM-DD."); }
+                    }
+                    int nbPers;
+                    while (true) {
+                        System.out.print("Nb personnes : ");
+                        String s = in.nextLine().trim();
+                        try { nbPers = Integer.parseInt(s); if (nbPers < 1) { System.out.println(">=1"); continue; } break; }
+                        catch (NumberFormatException e) { System.out.println("Entier attendu."); }
+                    }
+                    // NE PLUS DEMANDER l'agence en mode agence; l’agence locale gère tout.
+                    String srJson = agency.search(ville, dArr.toString(), dDep.toString(), nbPers, "");
                     if (srJson == null || srJson.isEmpty()) {
-                        System.out.println("Agence indisponible pour la recherche. Réessayez plus tard.");
-                        return;
+                        System.out.println("(Agence) aucune réponse, nouvelle tentative...");
+                        srJson = agency.search(ville, dArr.toString(), dDep.toString(), nbPers, "");
+                        if (srJson == null || srJson.isEmpty()) {
+                            System.out.println("Agence indisponible pour la recherche. Réessayez plus tard.");
+                            again = askAgain(in);
+                            continue;
+                        }
                     }
-                }
-                List<String> lines = new ArrayList<>();
-                List<String> offerIds = new ArrayList<>();
-                List<String> hotelCodes = new ArrayList<>();
-                parseOffersForDisplay(srJson, lines, offerIds, hotelCodes);
-                if (lines.isEmpty()) {
-                    // Informer l’utilisateur de la réponse vide
-                    String arr = MiniJson.getArray(srJson, "offers");
-                    if (arr == null) System.out.println("Agence: réponse reçue mais sans champ 'offers'.");
-                    else System.out.println("Aucune offre renvoyée par l'agence.");
-                    return;
-                }
-                System.out.println("\nOffres :");
-                for (int i=0;i<lines.size();i++) System.out.println((i+1)+") "+lines.get(i));
-                int idx;
-                while (true) {
-                    System.out.print("\nChoisissez une offre [1-" + lines.size() + "] : ");
-                    String s = in.nextLine().trim();
-                    try { idx = Integer.parseInt(s) - 1; if (idx < 0 || idx >= lines.size()) { System.out.println("Indice invalide."); continue; } break; }
-                    catch (NumberFormatException e) { System.out.println("Entier attendu."); }
-                }
-                String chosenOfferId = offerIds.get(idx);
-                String chosenHotelCode = hotelCodes.get(idx);
+                    List<String> lines = new ArrayList<>();
+                    List<String> offerIds = new ArrayList<>();
+                    List<String> hotelCodes = new ArrayList<>();
+                    parseOffersForDisplay(srJson, lines, offerIds, hotelCodes);
+                    if (lines.isEmpty()) {
+                        // Informer l’utilisateur de la réponse vide
+                        String arr = MiniJson.getArray(srJson, "offers");
+                        if (arr == null) System.out.println("Agence: réponse reçue mais sans champ 'offers'.");
+                        else System.out.println("Aucune offre renvoyée par l'agence.");
+                        again = askAgain(in);
+                        continue;
+                    }
+                    System.out.println("\nOffres :");
+                    for (int i=0;i<lines.size();i++) System.out.println((i+1)+") "+lines.get(i));
+                    int idx;
+                    while (true) {
+                        System.out.print("\nChoisissez une offre [1-" + lines.size() + "] : ");
+                        String s = in.nextLine().trim();
+                        try { idx = Integer.parseInt(s) - 1; if (idx < 0 || idx >= lines.size()) { System.out.println("Indice invalide."); continue; } break; }
+                        catch (NumberFormatException e) { System.out.println("Entier attendu."); }
+                    }
+                    String chosenOfferId = offerIds.get(idx);
+                    String chosenHotelCode = hotelCodes.get(idx);
 
-                System.out.println("\n=== Réservation ===");
-                String nom;
-                while (true) { System.out.print("Nom : "); nom = in.nextLine().trim(); if (!nom.isEmpty()) break; System.out.println("Requis."); }
-                String prenom;
-                while (true) { System.out.print("Prénom : "); prenom = in.nextLine().trim(); if (!prenom.isEmpty()) break; System.out.println("Requis."); }
-                String carte;
-                while (true) { System.out.print("Carte (16 chiffres) : "); carte = in.nextLine().trim(); String n = carte.replaceAll("[ -]", ""); if (n.matches("\\d{16}")) break; System.out.println("Invalide."); }
+                    System.out.println("\n=== Réservation ===");
+                    String nom;
+                    while (true) { System.out.print("Nom : "); nom = in.nextLine().trim(); if (!nom.isEmpty()) break; System.out.println("Requis."); }
+                    String prenom;
+                    while (true) { System.out.print("Prénom : "); prenom = in.nextLine().trim(); if (!prenom.isEmpty()) break; System.out.println("Requis."); }
+                    String carte;
+                    while (true) { System.out.print("Carte (16 chiffres) : "); carte = in.nextLine().trim(); String n = carte.replaceAll("[ -]", ""); if (n.matches("\\d{16}")) break; System.out.println("Invalide."); }
 
-                // Passer agencyId vide côté agence
-                String rj = agency.reserve(chosenHotelCode, chosenOfferId, "", nom, prenom, carte);
-                System.out.println(rj);
+                    // Passer agencyId vide côté agence
+                    String rj = agency.reserve(chosenHotelCode, chosenOfferId, "", nom, prenom, carte);
+                    System.out.println(rj);
+                    again = askAgain(in);
+                }
                 return;
             }
         }
 
-        CatalogDTO cat = port.getCatalog();
-        System.out.println("=== CATALOGUE ===");
-        System.out.println("Nom hôtel: " + (cat.getName() != null ? cat.getName() : "(inconnu)"));
-        // Affichage simple des villes/agences si exposées par les stubs
-        try {
-            CitiesDTO cities = cat.getCities();
-            if (cities != null && cities.getCity() != null && !cities.getCity().isEmpty()) {
-                System.out.println("Villes: " + cities.getCity());
+        boolean again = true;
+        while (again) {
+            CatalogDTO cat = port.getCatalog();
+            System.out.println("=== CATALOGUE ===");
+            System.out.println("Nom hôtel: " + (cat.getName() != null ? cat.getName() : "(inconnu)"));
+            // Affichage simple des villes/agences si exposées par les stubs
+            try {
+                CitiesDTO cities = cat.getCities();
+                if (cities != null && cities.getCity() != null && !cities.getCity().isEmpty()) {
+                    System.out.println("Villes: " + cities.getCity());
+                }
+            } catch (Throwable ignore) {}
+            try {
+                AgenciesDTO agencies = cat.getAgencies();
+                if (agencies != null && agencies.getAgency() != null && !agencies.getAgency().isEmpty()) {
+                    System.out.println("Agences: " + agencies.getAgency());
+                }
+            } catch (Throwable ignore) {}
+
+            System.out.println("=== CLIENT SOAP ===");
+
+            String ville;
+            while (true) {
+                System.out.print("Ville (ex: Sète/Montpellier) : ");
+                ville = in.nextLine().trim();
+                if (!ville.isEmpty()) break;
+                System.out.println("Requis.");
             }
-        } catch (Throwable ignore) {}
-        try {
-            AgenciesDTO agencies = cat.getAgencies();
-            if (agencies != null && agencies.getAgency() != null && !agencies.getAgency().isEmpty()) {
-                System.out.println("Agences: " + agencies.getAgency());
+
+            LocalDate dArr;
+            while (true) {
+                System.out.print("Arrivée (YYYY-MM-DD) : ");
+                String s = in.nextLine().trim();
+                try { dArr = LocalDate.parse(s); break; }
+                catch (DateTimeParseException e) { System.out.println("Format attendu YYYY-MM-DD."); }
             }
-        } catch (Throwable ignore) {}
-
-        System.out.println("=== CLIENT SOAP ===");
-
-        String ville;
-        while (true) {
-            System.out.print("Ville (ex: Sète/Montpellier) : ");
-            ville = in.nextLine().trim();
-            if (!ville.isEmpty()) break;
-            System.out.println("Requis.");
-        }
-
-        LocalDate dArr;
-        while (true) {
-            System.out.print("Arrivée (YYYY-MM-DD) : ");
-            String s = in.nextLine().trim();
-            try { dArr = LocalDate.parse(s); break; }
-            catch (DateTimeParseException e) { System.out.println("Format attendu YYYY-MM-DD."); }
-        }
-        LocalDate dDep;
-        while (true) {
-            System.out.print("Départ  (YYYY-MM-DD) : ");
-            String s = in.nextLine().trim();
-            try { dDep = LocalDate.parse(s); if (!dDep.isAfter(dArr)) { System.out.println("Départ doit être après l'arrivée."); continue; } break; }
-            catch (DateTimeParseException e) { System.out.println("Format attendu YYYY-MM-DD."); }
-        }
-        int nbPers;
-        while (true) {
-            System.out.print("Nb personnes : ");
-            String s = in.nextLine().trim();
-            try { nbPers = Integer.parseInt(s); if (nbPers < 1) { System.out.println(">=1"); continue; } break; }
-            catch (NumberFormatException e) { System.out.println("Entier attendu."); }
-        }
-        System.out.print("Agence (vide=aucune) : ");
-        String agence = in.nextLine().trim();
-        if (agence.isEmpty()) agence = null;
-
-        SearchCriteriaDTO criteria = new SearchCriteriaDTO();
-        criteria.setVille(ville);
-        criteria.setArrivee(toXgc(dArr));
-        criteria.setDepart(toXgc(dDep));
-        criteria.setNbPersonnes(nbPers);
-        criteria.setAgence(agence);
-
-        SearchOffersResponseDTO sr = port.searchOffers(criteria);
-        OfferListDTO list = (sr != null) ? sr.getOffers() : null;
-        List<OfferDTO> offers = (list != null) ? list.getOffers() : Collections.emptyList();
-        if (offers.isEmpty()) {
-            System.out.println("Aucune offre.");
-            return;
-        }
-        System.out.println("\nOffres :");
-        for (int i = 0; i < offers.size(); i++) {
-            OfferDTO o = offers.get(i);
-            String name = (o.getHotelName()!=null)? o.getHotelName() : "(inconnu)";
-            String catStr = (o.getCategorie()!=null)? o.getCategorie() : "(n/c)";
-            int stars = o.getNbEtoiles();
-            int price = o.getPrixTotal();
-            AddressDTO a = o.getAddress();
-            String addr = (a!=null)? (String.format("%s %s, %s (%s)",
-                    a.getNumero(),
-                    a.getRue()!=null? a.getRue() : "",
-                    a.getVille()!=null? a.getVille() : "",
-                    a.getPays()!=null? a.getPays() : "")) : "(adresse n/c)";
-            System.out.printf("%d) %s | %d★ %s | %d € | %s%n", i+1, name, stars, catStr, price, addr);
-        }
-        int idx;
-        while (true) {
-            System.out.print("\nChoisissez une offre [1-" + offers.size() + "] : ");
-            String s = in.nextLine().trim();
-            try { idx = Integer.parseInt(s) - 1; if (idx < 0 || idx >= offers.size()) { System.out.println("Indice invalide."); continue; } break; }
-            catch (NumberFormatException e) { System.out.println("Entier attendu."); }
-        }
-        OfferDTO chosen = offers.get(idx);
-
-        System.out.println("\n=== Réservation ===");
-        String nom;
-        while (true) { System.out.print("Nom : "); nom = in.nextLine().trim(); if (!nom.isEmpty()) break; System.out.println("Requis."); }
-        String prenom;
-        while (true) { System.out.print("Prénom : "); prenom = in.nextLine().trim(); if (!prenom.isEmpty()) break; System.out.println("Requis."); }
-        String carte;
-        while (true) { System.out.print("Carte (16 chiffres) : "); carte = in.nextLine().trim(); String n = carte.replaceAll("[ -]", ""); if (n.matches("\\d{16}")) break; System.out.println("Invalide."); }
-
-        ReservationRequestDTO rq = new ReservationRequestDTO();
-        // transmettre l'identifiant d'offre si présent pour un WS2 robuste
-        if (chosen.getOfferId()!=null) rq.setOfferId(chosen.getOfferId());
-        rq.setHotelName(chosen.getHotelName());
-        rq.setRoomNumber((chosen.getRoom()!=null)? chosen.getRoom().getNumero() : 0);
-        rq.setArrivee(toXgc(dArr));
-        rq.setDepart(toXgc(dDep));
-        rq.setNom(nom);
-        rq.setPrenom(prenom);
-        rq.setCarte(carte);
-        if (agence != null) {
-            ObjectFactory of = new ObjectFactory();
-            JAXBElement<String> agenceEl = of.createReservationRequestDTOAgence(agence);
-            rq.setAgence(agenceEl);
-        }
-
-        try {
-            ReservationConfirmationDTO conf = port.makeReservation(rq);
-            System.out.println("\n" + (conf.getMessage()!=null? conf.getMessage() : "(sans message)") + " — id=" + conf.getId());
-            OfferDTO booked = conf.getOffer();
-            if (booked != null) {
-                String bname = booked.getHotelName()!=null? booked.getHotelName() : "(inconnu)";
-                int bnum = (booked.getRoom()!=null)? booked.getRoom().getNumero() : 0;
-                int bprice = booked.getPrixTotal();
-                System.out.printf("Réservé: %s, ch.%d, total=%d €%n", bname, bnum, bprice);
+            LocalDate dDep;
+            while (true) {
+                System.out.print("Départ  (YYYY-MM-DD) : ");
+                String s = in.nextLine().trim();
+                try { dDep = LocalDate.parse(s); if (!dDep.isAfter(dArr)) { System.out.println("Départ doit être après l'arrivée."); continue; } break; }
+                catch (DateTimeParseException e) { System.out.println("Format attendu YYYY-MM-DD."); }
             }
-        } catch (ServiceFault_Exception sf) {
-            System.out.println("Échec réservation : " + sf.getMessage());
+            int nbPers;
+            while (true) {
+                System.out.print("Nb personnes : ");
+                String s = in.nextLine().trim();
+                try { nbPers = Integer.parseInt(s); if (nbPers < 1) { System.out.println(">=1"); continue; } break; }
+                catch (NumberFormatException e) { System.out.println("Entier attendu."); }
+            }
+            System.out.print("Agence (vide=aucune) : ");
+            String agence = in.nextLine().trim();
+            if (agence.isEmpty()) agence = null;
+
+            SearchCriteriaDTO criteria = new SearchCriteriaDTO();
+            criteria.setVille(ville);
+            criteria.setArrivee(toXgc(dArr));
+            criteria.setDepart(toXgc(dDep));
+            criteria.setNbPersonnes(nbPers);
+            criteria.setAgence(agence);
+
+            SearchOffersResponseDTO sr = port.searchOffers(criteria);
+            OfferListDTO list = (sr != null) ? sr.getOffers() : null;
+            List<OfferDTO> offers = (list != null) ? list.getOffers() : Collections.emptyList();
+            if (offers.isEmpty()) {
+                System.out.println("Aucune offre.");
+                again = askAgain(in);
+                continue;
+            }
+            System.out.println("\nOffres :");
+            for (int i = 0; i < offers.size(); i++) {
+                OfferDTO o = offers.get(i);
+                String name = (o.getHotelName()!=null)? o.getHotelName() : "(inconnu)";
+                String catStr = (o.getCategorie()!=null)? o.getCategorie() : "(n/c)";
+                int stars = o.getNbEtoiles();
+                int price = o.getPrixTotal();
+                AddressDTO a = o.getAddress();
+                String addr = (a!=null)? (String.format("%s %s, %s (%s)",
+                        a.getNumero(),
+                        a.getRue()!=null? a.getRue() : "",
+                        a.getVille()!=null? a.getVille() : "",
+                        a.getPays()!=null? a.getPays() : "")) : "(adresse n/c)";
+                System.out.printf("%d) %s | %d★ %s | %d € | %s%n", i+1, name, stars, catStr, price, addr);
+            }
+            int idx;
+            while (true) {
+                System.out.print("\nChoisissez une offre [1-" + offers.size() + "] : ");
+                String s = in.nextLine().trim();
+                try { idx = Integer.parseInt(s) - 1; if (idx < 0 || idx >= offers.size()) { System.out.println("Indice invalide."); continue; } break; }
+                catch (NumberFormatException e) { System.out.println("Entier attendu."); }
+            }
+            OfferDTO chosen = offers.get(idx);
+
+            System.out.println("\n=== Réservation ===");
+            String nom;
+            while (true) { System.out.print("Nom : "); nom = in.nextLine().trim(); if (!nom.isEmpty()) break; System.out.println("Requis."); }
+            String prenom;
+            while (true) { System.out.print("Prénom : "); prenom = in.nextLine().trim(); if (!prenom.isEmpty()) break; System.out.println("Requis."); }
+            String carte;
+            while (true) { System.out.print("Carte (16 chiffres) : "); carte = in.nextLine().trim(); String n = carte.replaceAll("[ -]", ""); if (n.matches("\\d{16}")) break; System.out.println("Invalide."); }
+
+            ReservationRequestDTO rq = new ReservationRequestDTO();
+            // transmettre l'identifiant d'offre si présent pour un WS2 robuste
+            if (chosen.getOfferId()!=null) rq.setOfferId(chosen.getOfferId());
+            rq.setHotelName(chosen.getHotelName());
+            rq.setRoomNumber((chosen.getRoom()!=null)? chosen.getRoom().getNumero() : 0);
+            rq.setArrivee(toXgc(dArr));
+            rq.setDepart(toXgc(dDep));
+            rq.setNom(nom);
+            rq.setPrenom(prenom);
+            rq.setCarte(carte);
+            if (agence != null) {
+                ObjectFactory of = new ObjectFactory();
+                JAXBElement<String> agenceEl = of.createReservationRequestDTOAgence(agence);
+                rq.setAgence(agenceEl);
+            }
+
+            try {
+                ReservationConfirmationDTO conf = port.makeReservation(rq);
+                System.out.println("\n" + (conf.getMessage()!=null? conf.getMessage() : "(sans message)") + " — id=" + conf.getId());
+                OfferDTO booked = conf.getOffer();
+                if (booked != null) {
+                    String bname = booked.getHotelName()!=null? booked.getHotelName() : "(inconnu)";
+                    int bnum = (booked.getRoom()!=null)? booked.getRoom().getNumero() : 0;
+                    int bprice = booked.getPrixTotal();
+                    System.out.printf("Réservé: %s, ch.%d, total=%d €%n", bname, bnum, bprice);
+                }
+            } catch (ServiceFault_Exception sf) {
+                System.out.println("Échec réservation : " + sf.getMessage());
+            }
+            again = askAgain(in);
+        }
+    }
+
+    private static boolean askAgain(Scanner in) {
+        while (true) {
+            System.out.print("\nNouvelle recherche ? (o/n) : ");
+            String s = in.nextLine().trim().toLowerCase(Locale.ROOT);
+            if (s.equals("o") || s.equals("y")) return true;
+            if (s.equals("n") || s.equals("q") || s.equals("non")) return false;
+            System.out.println("Réponse attendue: o/n");
         }
     }
 

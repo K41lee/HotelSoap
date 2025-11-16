@@ -23,6 +23,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import java.text.Normalizer;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
+import java.util.ArrayList;
 
 @WebService(endpointInterface = "org.examples.server.soap.HotelService", serviceName = "HotelService")
 @Component
@@ -64,207 +67,228 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public String ping() { return "pong"; }
 
+    // Suivi local des réservations effectuées (par hôtel normalisé -> liste de périodes)
+    private final Map<String, java.util.List<ReservationPeriod>> reservationsByHotel = new ConcurrentHashMap<>();
+
+    private static class ReservationPeriod {
+        final int roomNumber; final LocalDate from; final LocalDate to;
+        ReservationPeriod(int roomNumber, LocalDate from, LocalDate to) { this.roomNumber = roomNumber; this.from = from; this.to = to; }
+        boolean overlaps(LocalDate f, LocalDate t) { return (from.isBefore(t) && f.isBefore(to)); }
+    }
+
+    private void registerReservation(String hotelName, int roomNumber, LocalDate from, LocalDate to) {
+        String key = normalize(hotelName);
+        reservationsByHotel.computeIfAbsent(key, k -> new ArrayList<>()).add(new ReservationPeriod(roomNumber, from, to));
+        logger.info("[TRACK] reservation stored hotel='{}' room={} from={} to={} totalStored={}"
+                , hotelName, roomNumber, from, to, reservationsByHotel.get(key).size());
+    }
+
+    private boolean isRoomAvailableLocal(String hotelName, int roomNumber, LocalDate from, LocalDate to) {
+        String key = normalize(hotelName);
+        java.util.List<ReservationPeriod> list = reservationsByHotel.get(key);
+        if (list == null) return true;
+        for (ReservationPeriod rp : list) {
+            if (rp.roomNumber == roomNumber && rp.overlaps(from, to)) {
+                logger.info("[FILTER] room {} of '{}' excluded (overlap {}-{} with existing {}-{})", roomNumber, hotelName, from, to, rp.from, rp.to);
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public SearchOffersResponse searchOffers(SearchCriteria criteria) {
-        logger.info("[MARKER] {} entering searchOffers", LOG_MARKER);
-        logger.info("[REQ] searchOffers received: agence='{}' from='{}' to='{}' persons={} ville='{}' prixMin={} prixMax={} cat='{}' stars={}", criteria.agence, criteria.arrivee, criteria.depart, criteria.nbPersonnes, criteria.ville, criteria.prixMin, criteria.prixMax, criteria.categorie, criteria.nbEtoiles);
+        logger.info("[REQ] searchOffers received agence='{}' ville='{}' arrivee='{}' depart='{}' persons={} prixMin={} prixMax={} cat='{}' stars={}",
+                criteria.agence, criteria.ville, criteria.arrivee, criteria.depart, criteria.nbPersonnes,
+                criteria.prixMin, criteria.prixMax, criteria.categorie, criteria.nbEtoiles);
+        LocalDate from = criteria.arrivee != null ? criteria.arrivee.toGregorianCalendar().toZonedDateTime().toLocalDate() : LocalDate.now();
+        LocalDate to = criteria.depart != null ? criteria.depart.toGregorianCalendar().toZonedDateTime().toLocalDate() : from.plusDays(1);
+        if (!from.isBefore(to)) {
+            logger.warn("[FILTER] date range invalid from >= to");
+            return emptyOffers();
+        }
+        if (gestionnaire == null) {
+            logger.warn("[WARN] gestionnaire null -> fallback DataFactory");
+            return legacySearchOffersFallback(criteria, from, to);
+        }
+        Impl.Categorie catEnum = null;
+        if (criteria.categorie != null && !criteria.categorie.trim().isEmpty()) {
+            try { catEnum = Impl.Categorie.valueOf(criteria.categorie.trim()); } catch(Exception e){ logger.info("[FILTER] unknown categorie '{}'", criteria.categorie); }
+        }
+        // NB: prixMin/prixMax peuvent être null — utiliser directement
+        List<Gestionnaire.Offre> matches = gestionnaire.findMatchReservation(
+                safeString(criteria.ville), from, to,
+                criteria.prixMin, criteria.prixMax,
+                catEnum, criteria.nbEtoiles != null ? criteria.nbEtoiles : null,
+                criteria.nbPersonnes,
+                criteria.agence
+        );
+        logger.info("[GEST] returned {} raw offers", matches.size());
+        OfferList list = new OfferList();
+        List<org.examples.server.dto.Offer> dto = new ArrayList<>();
+        for (Gestionnaire.Offre o : matches) {
+            Impl.Chambre c = o.chambre(); Impl.Hotel h = o.hotel();
+            // Filtre local (déjà réservée via cache)
+            if (!isRoomAvailableLocal(h.getNom(), c.getNumero(), from, to)) {
+                continue;
+            }
+            org.examples.server.dto.Offer of = new org.examples.server.dto.Offer();
+            of.offerId = buildOfferId(h, c, from, to, criteria.nbPersonnes);
+            of.hotelName = h.getNom();
+            of.nbLits = c.getNbLits();
+            of.nbEtoiles = h.getNbEtoiles();
+            of.categorie = String.valueOf(h.getCategorie());
+            of.roomNumber = c.getNumero();
+            org.examples.server.dto.Room rr = new org.examples.server.dto.Room(); rr.numero = c.getNumero(); rr.nbLits = c.getNbLits(); of.room = rr;
+            if (h.getAdresse()!=null) {
+                org.examples.server.dto.Address a = new org.examples.server.dto.Address();
+                a.ville = h.getAdresse().getVille(); a.pays = h.getAdresse().getPays(); a.rue = h.getAdresse().getRue(); a.numero = h.getAdresse().getNumero();
+                of.address = a;
+            }
+            try { of.start = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(from.toString()); of.end = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(to.toString()); } catch(Exception ignored) {}
+            of.prixTotal = o.prixTotal();
+            of.agenceApplied = criteria.agence;
+            dto.add(of);
+            logger.info("[MAP] offerId={} hotel='{}' room={} lits={} price={} city='{}'", of.offerId, of.hotelName, of.roomNumber, of.nbLits, of.prixTotal, of.address!=null? of.address.ville: "?");
+        }
+        list.setOffers(dto);
+        SearchOffersResponse resp = new SearchOffersResponse(); resp.setOffers(list);
+        logger.info("[RESP] searchOffers returning {} offers", dto.size());
+        return resp;
+    }
+
+    private SearchOffersResponse legacySearchOffersFallback(SearchCriteria criteria, LocalDate from, LocalDate to) {
         AgencyCredentials creds = new AgencyCredentials(criteria.agence, null, null);
-        java.time.LocalDate from = criteria.arrivee != null ? criteria.arrivee.toGregorianCalendar().toZonedDateTime().toLocalDate() : java.time.LocalDate.now();
-        java.time.LocalDate to = criteria.depart != null ? criteria.depart.toGregorianCalendar().toZonedDateTime().toLocalDate() : from.plusDays(1);
-        java.util.List<Impl.Offer> offers = factory.findOffers(creds, from, to, criteria.nbPersonnes);
-        logger.info("[REQ] factory.findOffers -> {} offres", (offers!=null? offers.size(): -1));
-        if (offers == null) offers = new java.util.ArrayList<>();
-
-        // 1) Filtrage par ville via Gestionnaire
-        java.util.List<Hotel> allHotels = (gestionnaire!=null)? gestionnaire.getHotels() : java.util.Collections.emptyList();
-        String villeReq = normalize(criteria.ville);
-        java.util.List<Hotel> eligibleHotels;
-        if (villeReq != null && !villeReq.isEmpty()) {
-            eligibleHotels = new java.util.ArrayList<>();
-            for (Hotel h : allHotels) {
-                String hv = (h.getAdresse()!=null && h.getAdresse().getVille()!=null)? normalize(h.getAdresse().getVille()) : null;
-                if (hv!=null && hv.equals(villeReq)) eligibleHotels.add(h);
-            }
-            logger.info("[FILTER] hotels matching city='{}': {}", criteria.ville, eligibleHotels.size());
-        } else {
-            eligibleHotels = new java.util.ArrayList<>(allHotels);
-        }
-        if ((villeReq!=null && !villeReq.isEmpty()) && eligibleHotels.isEmpty()) {
-            logger.info("[FILTER] No hotel matches city='{}' — returning 0 offers", criteria.ville);
-            return emptyOffers();
-        }
-
-        // 2) Filtrage des offres par prix si demandé (sur prix agencé retourné par factory)
-        java.util.List<Impl.Offer> filtered = new java.util.ArrayList<>();
-        for (Impl.Offer o : offers) {
-            int price = (int) Math.round(o.getPrice());
-            if (criteria.prixMin != null && price < criteria.prixMin) continue;
-            if (criteria.prixMax != null && price > criteria.prixMax) continue;
-            filtered.add(o);
-        }
-        logger.info("[FILTER] after price range -> {} offers", filtered.size());
-
-        // 3) Filtrage par nb étoiles / catégorie basé sur l'hôtel choisi pour le mapping
-        //    On ne peut pas lier Impl.Offer à un hôtel précis — on associe chaque offre à un hôtel eligible
-        //    en priorité le premier éligible.
-        Hotel hotelForMapping = !eligibleHotels.isEmpty()? eligibleHotels.get(0) : (!allHotels.isEmpty()? allHotels.get(0) : null);
-        if (hotelForMapping == null && (villeReq!=null && !villeReq.isEmpty())) {
-            return emptyOffers();
-        }
-        if (hotelForMapping != null) {
-            if (criteria.nbEtoiles != null && hotelForMapping.getNbEtoiles() != criteria.nbEtoiles.intValue()) {
-                logger.info("[FILTER] hotel stars={} != requested {} -> returning 0 offers", hotelForMapping.getNbEtoiles(), criteria.nbEtoiles);
-                return emptyOffers();
-            }
-            if (criteria.categorie != null && !criteria.categorie.trim().isEmpty()) {
-                String hc = String.valueOf(hotelForMapping.getCategorie());
-                if (!hc.equalsIgnoreCase(criteria.categorie.trim())) {
-                    logger.info("[FILTER] hotel category='{}' != requested '{}' -> returning 0 offers", hc, criteria.categorie);
-                    return emptyOffers();
-                }
-            }
-        }
-
-        // Si aucune offre mais ville non spécifiée, autoriser une offre synthétique pour diagnostic
-        if (filtered.isEmpty()) {
-            if (villeReq==null || villeReq.isEmpty()) {
-                int persons = (criteria.nbPersonnes > 0) ? criteria.nbPersonnes : 2;
-                filtered.add(new Impl.Offer(java.util.UUID.randomUUID().toString(), persons, from, to, 100.0));
-                logger.info("[REQ] ajout d'une offre synthétique pour diagnostic (ville non spécifiée)");
-            } else {
-                logger.info("[FILTER] No offer from factory after filters and city specified -> return 0 offers");
-                return emptyOffers();
-            }
-        }
-
+        List<Impl.Offer> offers = factory.findOffers(creds, from, to, criteria.nbPersonnes);
         OfferList dtoList = new OfferList();
-        java.util.List<org.examples.server.dto.Offer> mapped = new java.util.ArrayList<>();
-        for (Impl.Offer o : filtered) {
+        List<org.examples.server.dto.Offer> mapped = new java.util.ArrayList<>();
+        for (Impl.Offer o : offers) {
             org.examples.server.dto.Offer of = new org.examples.server.dto.Offer();
             of.offerId = o.getId();
+            of.hotelName = factory.getHotelName();
             of.nbLits = o.getBeds();
-            Hotel h = hotelForMapping;
-            if (h != null) {
-                of.hotelName = h.getNom();
-                of.categorie = String.valueOf(h.getCategorie());
-                of.nbEtoiles = h.getNbEtoiles();
-                Impl.Chambre chosen = h.getChambres().stream().filter(c -> c.getNbLits() == o.getBeds()).findFirst().orElse(null);
-                if (chosen == null && !h.getChambres().isEmpty()) chosen = h.getChambres().get(0);
-                if (chosen != null) {
-                    of.roomNumber = chosen.getNumero();
-                    org.examples.server.dto.Room r = new org.examples.server.dto.Room();
-                    r.numero = chosen.getNumero();
-                    r.nbLits = chosen.getNbLits();
-                    of.room = r;
-                }
-                if (h.getAdresse() != null) {
-                    org.examples.server.dto.Address addr = new org.examples.server.dto.Address();
-                    addr.ville = h.getAdresse().getVille();
-                    addr.pays = h.getAdresse().getPays();
-                    addr.rue = h.getAdresse().getRue();
-                    addr.numero = h.getAdresse().getNumero();
-                    of.address = addr;
-                }
-            } else {
-                // fallback ultra-dégradé
-                of.hotelName = factory != null ? factory.getHotelName() : "Hotel-Fallback";
-                of.categorie = "INCONNUE";
-                of.nbEtoiles = 0;
-            }
+            of.nbEtoiles = 0;
+            of.categorie = "INCONNUE";
             try {
                 of.start = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(o.getFrom().toString());
                 of.end = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(o.getTo().toString());
-            } catch (Exception e) { }
-            of.prixTotal = (int) Math.round(o.getPrice());
+            } catch (Exception ignored) {}
+            of.prixTotal = (int)Math.round(o.getPrice());
             of.agenceApplied = creds.getAgencyId();
             mapped.add(of);
-            logger.info("[MAP] offerId={} hotelName={} cat={} stars={} price={}", of.offerId, of.hotelName, of.categorie, of.nbEtoiles, of.prixTotal);
         }
         dtoList.setOffers(mapped);
         SearchOffersResponse resp = new SearchOffersResponse();
         resp.setOffers(dtoList);
-        logger.info("[RESP] searchOffers returning {} offers (firstHotelName={})", mapped.size(), mapped.isEmpty()?null:mapped.get(0).hotelName);
-        logger.info("[MARKER] {} leaving searchOffers", LOG_MARKER);
         return resp;
     }
 
-    private SearchOffersResponse emptyOffers() {
-        SearchOffersResponse resp = new SearchOffersResponse();
-        resp.setOffers(new OfferList());
-        return resp;
+    private static String buildOfferId(Impl.Hotel h, Impl.Chambre c, LocalDate from, LocalDate to, int persons) {
+        return "OF|" + normalize(h.getNom()) + "|" + c.getNumero() + "|" + from + "|" + to + "|" + persons;
     }
 
-    private static String normalize(String s) {
-        if (s == null) return null;
-        String n = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-        return n.trim().toLowerCase();
+    private static class ParsedOfferId {
+        String hotelKey; int roomNumber; LocalDate from; LocalDate to; int persons;
+    }
+    private ParsedOfferId parseOfferId(String offerId) {
+        if (offerId == null || !offerId.startsWith("OF|")) return null;
+        String[] parts = offerId.split("\\|");
+        if (parts.length != 6) return null;
+        try {
+            ParsedOfferId p = new ParsedOfferId();
+            p.hotelKey = parts[1];
+            p.roomNumber = Integer.parseInt(parts[2]);
+            p.from = LocalDate.parse(parts[3]);
+            p.to = LocalDate.parse(parts[4]);
+            p.persons = Integer.parseInt(parts[5]);
+            return p;
+        } catch (Exception e) { return null; }
     }
 
     @Override
     public ReservationConfirmation makeReservation(ReservationRequest request) throws ServiceFault {
-        logger.info("[REQ] makeReservation received: agence='{}' offerId='{}' nom='{}' prenom='{}' carte='{}'", request.agence, request.offerId, request.nom, request.prenom, maskCard(request.carte));
-        if (request.offerId == null || request.nom == null || request.prenom == null || request.carte == null) {
-            ReservationConfirmation rc = new ReservationConfirmation();
-            rc.setSuccess(false);
-            rc.setMessage("Données manquantes");
-            rc.setReference(null);
-            return rc;
+        logger.info("[REQ] makeReservation received agence='{}' offerId='{}' hotel='{}' room={} nom='{}' prenom='{}'", request.agence, request.offerId, request.hotelName, request.roomNumber, request.nom, request.prenom);
+        ReservationConfirmation rc = new ReservationConfirmation();
+        if (gestionnaire == null) {
+            logger.warn("[WARN] gestionnaire null -> legacy reservation");
+            return legacyReservation(request);
         }
+        // Priorité: offerId
+        ParsedOfferId parsed = request.offerId != null && !request.offerId.trim().isEmpty() ? parseOfferId(request.offerId) : null;
+        Impl.Hotel hotel = null; Impl.Chambre chambre = null; LocalDate from = null; LocalDate to = null;
+        if (parsed != null) {
+            hotel = gestionnaire.getHotels().stream().filter(h -> normalize(h.getNom()).equals(parsed.hotelKey)).findFirst().orElse(null);
+            if (hotel != null) chambre = hotel.getChambres().stream().filter(c -> c.getNumero() == parsed.roomNumber).findFirst().orElse(null);
+            from = parsed != null ? parsed.from : null; to = parsed != null ? parsed.to : null;
+        } else if (request.hotelName != null && request.roomNumber > 0 && request.arrivee != null && request.depart != null) {
+            try {
+                from = request.arrivee.toGregorianCalendar().toZonedDateTime().toLocalDate();
+                to = request.depart.toGregorianCalendar().toZonedDateTime().toLocalDate();
+                hotel = gestionnaire.getHotels().stream().filter(h -> normalize(h.getNom()).equals(normalize(request.hotelName))).findFirst().orElse(null);
+                if (hotel != null) chambre = hotel.getChambres().stream().filter(c -> c.getNumero() == request.roomNumber).findFirst().orElse(null);
+            } catch(Exception e){ logger.warn("[WARN] date parsing fail {}", e.toString()); }
+        }
+        if (hotel == null || chambre == null || from == null || to == null) {
+            rc.setSuccess(false); rc.setMessage("Paramètres invalides"); return rc;
+        }
+        if (!from.isBefore(to)) { rc.setSuccess(false); rc.setMessage("Période invalide"); return rc; }
+        if (!isRoomAvailableLocal(hotel.getNom(), chambre.getNumero(), from, to)) { rc.setSuccess(false); rc.setMessage("Déjà réservé (cache)"); return rc; }
+        if (!chambre.isDisponible(from, to)) { rc.setSuccess(false); rc.setMessage("Chambre non disponible"); return rc; }
+        Impl.Client client = new Impl.Client(request.nom, request.prenom, request.carte);
         try {
-            Impl.Client c = new Impl.Client(request.nom, request.prenom, request.carte);
-            String agencyId = (request.auth != null) ? request.auth.agencyId : request.agence;
-            String login = (request.auth != null) ? request.auth.login : null;
-            String password = (request.auth != null) ? request.auth.password : null;
-            Impl.ReservationResult res = factory.reserve(agencyId, login, password, request.offerId, c);
-            ReservationConfirmation rc = new ReservationConfirmation();
-            rc.setSuccess(res.isSuccess());
-            rc.setMessage(res.getMessage());
-            rc.setReference(res.getReference());
-            logger.info("[RESP] makeReservation success={} ref={} message={}", res.isSuccess(), res.getReference(), res.getMessage());
-            return rc;
-        } catch (Exception e) {
-            logger.warn("[ERR] makeReservation failed: {}", e.toString());
-            throw new ServiceFault("Reservation failed: " + e.getMessage());
-        }
+            gestionnaire.makeReservation(client, chambre, from, to);
+            registerReservation(hotel.getNom(), chambre.getNumero(), from, to);
+        } catch(Exception e){ rc.setSuccess(false); rc.setMessage("Erreur réservation: "+e.getMessage()); return rc; }
+        String ref = hotel.getNom().substring(0, Math.min(4, hotel.getNom().length())).toUpperCase() + "-" + java.util.UUID.randomUUID();
+        rc.setSuccess(true); rc.setMessage("Réservation confirmée"); rc.setReference(ref);
+        logger.info("[RESP] reservation ok ref={} hotel='{}' room={} from={} to={} stored={} ", ref, hotel.getNom(), chambre.getNumero(), from, to, reservationsByHotel.get(normalize(hotel.getNom())).size());
+        return rc;
     }
 
-    private static String maskCard(String c) { if (c==null) return null; String n=c.replaceAll("[^0-9]", ""); if (n.length()<4) return "****"; return "**** **** **** "+n.substring(n.length()-4); }
+    private ReservationConfirmation legacyReservation(ReservationRequest request) throws ServiceFault {
+        ReservationConfirmation rc = new ReservationConfirmation();
+        if (request.offerId == null) { rc.setSuccess(false); rc.setMessage("offerId manquant"); return rc; }
+        Impl.Client c = new Impl.Client(request.nom, request.prenom, request.carte);
+        Impl.ReservationResult r = factory.reserve(request.agence, null, null, request.offerId, c);
+        rc.setSuccess(r.isSuccess()); rc.setMessage(r.getMessage()); rc.setReference(r.getReference());
+        return rc;
+    }
+
+    private static String safeString(String s) { return s == null ? "" : s.trim(); }
+
+    private SearchOffersResponse emptyOffers() {
+        SearchOffersResponse resp = new SearchOffersResponse();
+        OfferList list = new OfferList();
+        list.setOffers(new java.util.ArrayList<org.examples.server.dto.Offer>());
+        resp.setOffers(list);
+        return resp;
+    }
+
+    private static String normalize(String s) {
+        if (s == null) return "";
+        String n = Normalizer.normalize(s, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+        n = n.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+        return n;
+    }
 
     @Override
     public Catalog getCatalog() {
-        logger.info("[REQ] getCatalog received");
-        Catalog cat = new Catalog();
-        if (gestionnaire != null) {
-            // Renseigner un nom d'hôtel/catalogue pour l'affichage client
-            if (!gestionnaire.getHotels().isEmpty()) {
-                Hotel h0 = gestionnaire.getHotels().get(0);
-                if (h0 != null && h0.getNom() != null) {
-                    cat.setName(h0.getNom());
-                }
-            }
-            java.util.Set<String> citySet = gestionnaire.getHotels().stream()
-                    .map(Hotel::getAdresse)
-                    .filter(a -> a != null && a.getVille() != null && !a.getVille().isEmpty())
-                    .map(a -> a.getVille())
-                    .collect(java.util.stream.Collectors.toSet());
-            java.util.Set<String> agencySet = gestionnaire.getHotels().stream()
-                    .flatMap(h -> h.getAgences().stream())
-                    .map(Agence::getNom)
-                    .filter(n -> n != null && !n.isEmpty())
-                    .collect(java.util.stream.Collectors.toSet());
-            Catalog.Cities cwrap = cat.getCities();
-            cwrap.getCity().addAll(new java.util.ArrayList<>(citySet));
-            Catalog.Agencies awrap = cat.getAgencies();
-            awrap.getAgency().addAll(new java.util.ArrayList<>(agencySet));
-            logger.info("[RESP] getCatalog cities={} agencies={} (from gestionnaire)", cwrap.getCity().size(), awrap.getAgency().size());
-            return cat;
+        Catalog c = new Catalog();
+        if (gestionnaire != null && !gestionnaire.getHotels().isEmpty()) {
+            Impl.Hotel h = gestionnaire.getHotels().get(0);
+            c.setName(h.getNom());
+            Catalog.Cities cities = new Catalog.Cities();
+            cities.getCity().add(h.getAdresse() != null ? h.getAdresse().getVille() : "");
+            c.setCities(cities);
+            Catalog.Agencies ags = new Catalog.Agencies();
+            for (Impl.Agence a : h.getAgences()) ags.getAgency().add(a.getNom());
+            c.setAgencies(ags);
+            logger.info("[RESP] getCatalog cities={} agencies={} (from gestionnaire)", cities.getCity().size(), ags.getAgency().size());
+        } else {
+            c.setName(factory.getHotelName());
+            logger.info("[RESP] getCatalog (fallback) name={}", c.getName());
         }
-        Catalog.Cities cwrap = cat.getCities();
-        cwrap.getCity().add("FallbackCity");
-        Catalog.Agencies awrap = cat.getAgencies();
-        awrap.getAgency().add("fallbackAgency");
-        cat.setName("Hotel-Catalog");
-        logger.info("[RESP] getCatalog fallback cities=1 agencies=1");
-        return cat;
+        return c;
     }
 }

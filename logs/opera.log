@@ -11,167 +11,31 @@
 [INFO] Copying 1 resource from src/main/resources to target/classes
 [INFO] 
 [INFO] --- compiler:3.13.0:compile (default-compile) @ hotel-server-soap-opera ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ hotel-server-soap-opera ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hotel-server-soap-opera ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:2.7.12:run (default-cli) < test-compile @ hotel-server-soap-opera <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:2.7.12:run (default-cli) @ hotel-server-soap-opera ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::               (v2.7.12)
-
-2025-11-16 12:10:46.371  INFO 252344 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 252344 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
-2025-11-16 12:10:46.372  INFO 252344 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-16 12:10:46.574  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-16 12:10:46.575  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-16 12:10:46.575  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-2025-11-16 12:10:46.575  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='operaAgency' reduction=0.05
-2025-11-16 12:10:46.604  INFO 252344 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 0.459 seconds (JVM running for 0.783)
-[BEAN-DUMPER] Listing beans in ApplicationContext...
-[BEAN-DUMPER] Total beans: 46
-[BEAN-DUMPER] bean[0] = applicationAvailability
-[BEAN-DUMPER] bean[1] = applicationTaskExecutor
-[BEAN-DUMPER] bean[2] = beanDumper
-[BEAN-DUMPER] bean[3] = dataFactory
-[BEAN-DUMPER] bean[4] = forceAutoProxyCreatorToUseClassProxying
-[BEAN-DUMPER] bean[5] = gestionnaireInit
-[BEAN-DUMPER] bean[6] = hotelAgencyServiceImpl
-[BEAN-DUMPER] bean[7] = hotelServerApplication
-[BEAN-DUMPER] bean[8] = hotelServiceImpl
-[BEAN-DUMPER] bean[9] = lifecycleProcessor
-[BEAN-DUMPER] bean[10] = operaConfig
-[BEAN-DUMPER] bean[11] = operaInitConfig
-[BEAN-DUMPER] bean[12] = org.springframework.aop.config.internalAutoProxyCreator
-[BEAN-DUMPER] bean[13] = org.springframework.boot.autoconfigure.AutoConfigurationPackages
-[BEAN-DUMPER] bean[14] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration
-[BEAN-DUMPER] bean[15] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$ClassProxyingConfiguration
-[BEAN-DUMPER] bean[16] = org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
-[BEAN-DUMPER] bean[17] = org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
-[BEAN-DUMPER] bean[18] = org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
-[BEAN-DUMPER] bean[19] = org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
-[BEAN-DUMPER] bean[20] = org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
-[BEAN-DUMPER] bean[21] = org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
-[BEAN-DUMPER] bean[22] = org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration
-[BEAN-DUMPER] bean[23] = org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration
-[BEAN-DUMPER] bean[24] = org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration
-[BEAN-DUMPER] bean[25] = org.springframework.boot.context.internalConfigurationPropertiesBinder
-[BEAN-DUMPER] bean[26] = org.springframework.boot.context.internalConfigurationPropertiesBinderFactory
-[BEAN-DUMPER] bean[27] = org.springframework.boot.context.properties.BoundConfigurationProperties
-[BEAN-DUMPER] bean[28] = org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor
-[BEAN-DUMPER] bean[29] = org.springframework.boot.context.properties.EnableConfigurationPropertiesRegistrar.methodValidationExcludeFilter
-[BEAN-DUMPER] bean[30] = org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor
-[BEAN-DUMPER] bean[31] = org.springframework.context.annotation.internalAutowiredAnnotationProcessor
-[BEAN-DUMPER] bean[32] = org.springframework.context.annotation.internalCommonAnnotationProcessor
-[BEAN-DUMPER] bean[33] = org.springframework.context.annotation.internalConfigurationAnnotationProcessor
-[BEAN-DUMPER] bean[34] = org.springframework.context.event.internalEventListenerFactory
-[BEAN-DUMPER] bean[35] = org.springframework.context.event.internalEventListenerProcessor
-[BEAN-DUMPER] bean[36] = propertySourcesPlaceholderConfigurer
-[BEAN-DUMPER] bean[37] = publisher
-[BEAN-DUMPER] bean[38] = serverOperaApplication
-[BEAN-DUMPER] bean[39] = spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties
-[BEAN-DUMPER] bean[40] = spring.lifecycle-org.springframework.boot.autoconfigure.context.LifecycleProperties
-[BEAN-DUMPER] bean[41] = spring.sql.init-org.springframework.boot.autoconfigure.sql.init.SqlInitializationProperties
-[BEAN-DUMPER] bean[42] = spring.task.execution-org.springframework.boot.autoconfigure.task.TaskExecutionProperties
-[BEAN-DUMPER] bean[43] = spring.task.scheduling-org.springframework.boot.autoconfigure.task.TaskSchedulingProperties
-[BEAN-DUMPER] bean[44] = taskExecutorBuilder
-[BEAN-DUMPER] bean[45] = taskSchedulerBuilder
-[BEAN-DUMPER] HotelAgencyService beans:
-[BEAN-DUMPER]   hotelAgencyServiceImpl -> org.examples.server.impl.HotelAgencyServiceImpl
-[BEAN-DUMPER] HotelService beans:
-[BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
-[BEAN-DUMPER] End of bean dump.
-[SOAP] Publisher démarré — recherche des beans de service...
-2025-11-16 12:10:47.166  INFO 252344 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
-[SOAP] Échec publication HotelAgencyService bean 'hotelAgencyServiceImpl' sur http://0.0.0.0:8082/hotel-opera/agency: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
-	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
-	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
-	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
-	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
-	at org.examples.server.soap.Publisher.run(Publisher.java:63)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at org.examples.serveropera.ServerOperaApplication.main(ServerOperaApplication.java:10)
-Caused by: java.net.BindException: Adresse déjà utilisée
-	at sun.nio.ch.Net.bind0(Native Method)
-	at sun.nio.ch.Net.bind(Net.java:461)
-	at sun.nio.ch.Net.bind(Net.java:453)
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222)
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85)
-	at sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:141)
-	at sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
-	at sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
-	at com.sun.net.httpserver.HttpServer.create(HttpServer.java:130)
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:85)
-	... 11 more
-[INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
-[INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-16 12:10:47.218  INFO 252344 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-16 12:10:47.223  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-16 12:10:47.223  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-16 12:10:47.223  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-2025-11-16 12:10:47.223  INFO 252344 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='operaAgency' reduction=0.05
-[SOAP] Échec publication HotelService bean 'hotelServiceImpl' sur http://0.0.0.0:8082/hotel-opera/hotel: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
-	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
-	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
-	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
-	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
-	at org.examples.server.soap.Publisher.run(Publisher.java:114)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at org.examples.serveropera.ServerOperaApplication.main(ServerOperaApplication.java:10)
-Caused by: java.net.BindException: Adresse déjà utilisée
-	at sun.nio.ch.Net.bind0(Native Method)
-	at sun.nio.ch.Net.bind(Net.java:461)
-	at sun.nio.ch.Net.bind(Net.java:453)
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222)
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85)
-	at sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:141)
-	at sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
-	at sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
-	at com.sun.net.httpserver.HttpServer.create(HttpServer.java:130)
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:85)
-	... 11 more
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.875 s
-[INFO] Finished at: 2025-11-16T12:10:47+01:00
-[INFO] ------------------------------------------------------------------------
-                                                                                                                                                                                                                                                                      2025-11-16 12:10:55.002  INFO 249525 --- [ool-1-thread-14] o.examples.server.soap.HotelServiceImpl  : [REQ] getCatalog received
-2025-11-16 12:10:55.003  INFO 249525 --- [ool-1-thread-14] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 3 source files with javac [debug release 8] to target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/src/main/java/org/examples/serveropera/OperaConfig.java:[11,27] cannot find symbol
+  symbol:   method opera()
+  location: class Impl.DataFactory
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  25:55 min
-[INFO] Finished at: 2025-11-16T12:16:40+01:00
+[INFO] Total time:  1.228 s
+[INFO] Finished at: 2025-11-16T14:17:31+01:00
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.7.12:run (default-cli) on project hotel-server-soap-opera: Application finished with exit code: 137 -> [Help 1]
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project hotel-server-soap-opera: Compilation failure
+[ERROR] /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/src/main/java/org/examples/serveropera/OperaConfig.java:[11,27] cannot find symbol
+[ERROR]   symbol:   method opera()
+[ERROR]   location: class Impl.DataFactory
+[ERROR] 
+[ERROR] -> [Help 1]
 [ERROR] 
 [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
 [ERROR] Re-run Maven using the -X switch to enable full debug logging.
 [ERROR] 
 [ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

@@ -1,51 +1,36 @@
-# HotelSoap — Exercice 2 / Question 1 (version non distribuée)
+# HotelSoap — Architecture distribuée (Hôtels SOAP + Agence TCP + Client CLI)
 
-Application **console** (Spring Boot) de réservation d’hôtels, conforme au sujet du TP — *version non distribuée, sans base de données*.  
-La saisie utilisateur (ville, dates, prix, catégorie/étoiles, nb personnes) renvoie une **liste d’offres** (nom de l’hôtel, adresse complète, prix total, étoiles, lits), puis permet de **sélectionner** une offre et de **créer** la réservation en mémoire.
+Application console (Client CLI) s’appuyant sur:
+- 2 serveurs d’hôtels exposant des services SOAP (Rivage sur 8081, Opéra sur 8082)
+- 1 serveur d’agence (TCP local sur 7070, pas de REST/SOAP), qui agrège les hôtels
+- 1 client CLI qui dialogue avec l’agence (et non directement avec les hôtels)
 
-> La version distribuée (SOAP) sera traitée ultérieurement en **Question 2**. Ici tout se fait **dans le même processus**, sans appel réseau.
+Les hôtels appliquent des tarifs/agences distincts. Les recherches passent par la méthode du Gestionnaire et les réservations impactent la disponibilité réelle des chambres.
 
 ---
 
 ## Prérequis
-- **Java 17**
-- **Maven 3.8+**
-- Environnement recommandé : **IntelliJ IDEA** (ou n’importe quel IDE Java)
+- Java 8 (OpenJDK 8)
+- Maven 3.8+
+- Linux/Bash (commandes ci-dessous)
 
 ---
 
-## Lancer l’application
-
-### Depuis IntelliJ
-1. Ouvrir le projet.
-2. Vérifier le **JDK 17** dans *Project Structure*.
-3. Lancer la classe `com.example.hotel.HotelApplication` (clic droit > Run).
-4. cd client-cli
-   mvn -DskipTests clean package -Dwsdl.url=http://localhost:8080/hotelservice?wsdl
-5. /usr/lib/jvm/java-8-openjdk-amd64/bin/java \
-   -Dwsdl.url=http://localhost:8080/hotelservice?wsdl \
-   -cp client-cli/target/client-cli-1.0.0.jar \
-   org.examples.client.ClientMain
-
----
-
-## Exécution rapide — Hôtels (SOAP) + Agence (TCP) + Client CLI
-
-Ces commandes fonctionnent sous Linux (bash). Elles compilent, arrêtent les éventuels processus existants, démarquent les deux serveurs d’hôtels et l’agence en arrière‑plan, vérifient les endpoints, puis lancent le client via l’agence.
+## Démarrage rapide — Build, Kill, Lancer les serveurs en arrière-plan, Vérifier, Lancer le client
 
 ### 1) Build
 ```bash
 ./mvnw -DskipTests=true clean package
 ```
 
-### 2) Arrêter les processus existants (ports 8081, 8082, 7070)
+### 2) Stopper d’anciens processus (libérer les ports)
 ```bash
 fuser -k 8081/tcp 2>/dev/null || true
 fuser -k 8082/tcp 2>/dev/null || true
 fuser -k 7070/tcp 2>/dev/null || true
 ```
 
-### 3) Démarrer les serveurs en arrière‑plan (logs dans ./logs)
+### 3) Démarrer les serveurs (logs dans ./logs)
 ```bash
 # Hôtel Rivage (SOAP sur 8081)
 ./mvnw -pl server-rivage -DskipTests=true spring-boot:run > logs/rivage.log 2>&1 & echo $! > /tmp/rivage.pid
@@ -53,7 +38,7 @@ fuser -k 7070/tcp 2>/dev/null || true
 # Hôtel Opéra (SOAP sur 8082)
 ./mvnw -pl server-opera  -DskipTests=true spring-boot:run > logs/opera.log  2>&1 & echo $! > /tmp/opera.pid
 
-# Agence (TCP sur 7070, agrège les deux hôtels)
+# Agence (TCP sur 7070, relai entre client et hôtels)
 ./mvnw -pl agency-server -DskipTests=true spring-boot:run > logs/agency.log 2>&1 & echo $! > /tmp/agency.pid
 ```
 
@@ -63,7 +48,7 @@ fuser -k 7070/tcp 2>/dev/null || true
 curl -sSf http://localhost:8081/hotel-rivage/hotel?wsdl | head -n1
 # WSDL Opéra
 curl -sSf http://localhost:8082/hotel-opera/hotel?wsdl | head -n1
-# Agence: récupérer le catalogue (villes, agences)
+# Agence: récupérer le catalogue (nom agence, villes, agences partenaires)
 echo '{"op":"catalog.get"}' | nc -w 2 localhost 7070
 ```
 
@@ -74,17 +59,18 @@ echo '{"op":"catalog.get"}' | nc -w 2 localhost 7070
   -Dagency.tcp.enabled=true
 ```
 
-Saisie conseillée pour un test rapide (doit renvoyer des offres):
-- Ville: 1 (Sète) ou 2 (Montpellier)
+Saisie de test (exemple):
+- Ville: 1 (Sète)
 - Arrivée: 2025-11-20
 - Départ:  2025-11-22
 - Nb personnes: 2
+- Choisir une offre, effectuer la réservation, relancer une recherche aux mêmes dates: le nombre d’offres doit diminuer si la chambre réservée n’est plus disponible.
 
 ### 6) Consulter les logs
 ```bash
-tail -n 80 logs/agency.log
-Tail -n 80 logs/rivage.log
-Tail -n 80 logs/opera.log
+tail -n 120 logs/agency.log
+tail -n 120 logs/rivage.log
+tail -n 120 logs/opera.log
 ```
 
 ### 7) Arrêt propre
@@ -100,6 +86,30 @@ fuser -k 8082/tcp 2>/dev/null || true
 fuser -k 7070/tcp 2>/dev/null || true
 ```
 
-Notes:
-- Les serveurs et le client compilent pour Java 8 via Maven toolchains; assurez‑vous d’avoir un JDK 8 installé si nécessaire.
-- Les logs détaillent les requêtes/réponses: côté hôtels ([REQ]/[FILTER]/[MAP]/[RESP]), côté agence ([AGENCY-REQ]/[AGENCY->HOTEL]/[HOTEL->AGENCY]).
+---
+
+## Raccourcis utiles
+- Redémarrer uniquement Rivage:
+```bash
+fuser -k 8081/tcp 2>/dev/null || true
+./mvnw -pl server-rivage -DskipTests=true spring-boot:run > logs/rivage.log 2>&1 & echo $! > /tmp/rivage.pid
+```
+- Vérifier l’agence:
+```bash
+echo '{"op":"catalog.get"}' | nc -w 2 localhost 7070
+```
+- Lancer à nouveau le client:
+```bash
+./mvnw -pl client-cli -DskipTests=true exec:java \
+  -Dexec.mainClass=org.examples.client.ClientMain \
+  -Dagency.tcp.enabled=true
+```
+
+---
+
+## Dépannage
+- Port déjà utilisé: stoppez les processus (cf. étape 2) et relancez.
+- WSDL inaccessible: vérifiez les logs `logs/rivage.log` / `logs/opera.log` (recherche des traces `[SOAP]` et `[INIT]`).
+- L’agence ne répond pas: `tail -n 200 logs/agency.log` (recherche des traces `[AGENCY-REQ]`, `[AGENCY->HOTEL]`, `[HOTEL->AGENCY]`).
+- Client via Agence: si vous voyez "Relais brisé (pipe)", relancez l’agence (arrêt + redémarrage) puis relancez le client.
+- Si les offres ne diminuent pas après réservation: relancez une recherche avec les mêmes dates; côté serveur hôtel, vérifiez `[REQ] makeReservation` puis `[RESP] reservation ok` et ensuite `[RESP] searchOffers returning N offers`.

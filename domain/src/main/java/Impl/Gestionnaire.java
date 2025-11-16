@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Gestionnaire {
+    private static final Logger log = LoggerFactory.getLogger(Gestionnaire.class);
     // Remplacer le record (Java 14+) par une classe interne simple pour compatibilité
     public static class Offre {
         private final Hotel hotel;
@@ -43,9 +46,11 @@ public class Gestionnaire {
                 if (prixMin != null && prix < prixMin) continue;
                 if (prixMax != null && prix > prixMax) continue;
                 offres.add(new Offre(h, c, prix));
+                log.info("[GEST] match hotel='{}' room={} prix={}", h.getNom(), c.getNumero(), prix);
             }
         }
         offres.sort(Comparator.comparingInt(Offre::prixTotal));
+        log.info("[GEST] total offres: {}", offres.size());
         return offres;
     }
 
@@ -73,7 +78,6 @@ public class Gestionnaire {
             if (categorie != null && h.getCategorie() != categorie) continue;
             if (nbEtoiles != null && h.getNbEtoiles() != nbEtoiles) continue;
 
-            // si agence demandée, tenter de la trouver sur l'hôtel
             Optional<Agence> agenceOpt = (agenceName == null || agenceName.trim().isEmpty())
                     ? Optional.empty()
                     : h.findAgenceByName(agenceName);
@@ -88,9 +92,12 @@ public class Gestionnaire {
                 if (prixMax != null && prixApresReduc > prixMax) continue;
 
                 offres.add(new Offre(h, c, prixApresReduc));
+                log.info("[GEST] match hotel='{}' room={} prix={} agence={}", h.getNom(), c.getNumero(), prixApresReduc,
+                        agenceOpt.isPresent() ? agenceOpt.get().getNom() : "<none>");
             }
         }
         offres.sort(Comparator.comparingInt(Offre::prixTotal));
+        log.info("[GEST] total offres (agence={}): {}", agenceName, offres.size());
         return offres;
     }
 
@@ -109,7 +116,13 @@ public class Gestionnaire {
 
     // Réaliser une réservation (simple)
     public Reservation makeReservation(Client client, Chambre chambre, LocalDate debut, LocalDate fin) {
-        return chambre.reserver(client, debut, fin);
+        Reservation r = chambre.reserver(client, debut, fin);
+        log.info("[GEST] reservation créée hotel='{}' room={} periode=[{}..{}] client='{} {}'",
+                chambre.getHotel() != null ? chambre.getHotel().getNom() : "<no-hotel>",
+                chambre.getNumero(), debut, fin,
+                client != null ? client.getNom() : "?",
+                client != null ? client.getPrenom() : "?");
+        return r;
     }
 
     public void annuleReservation(Reservation r) {

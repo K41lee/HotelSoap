@@ -34,15 +34,15 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-16 12:16:54.396  INFO 253154 --- [           main] o.e.s.ServerRivageApplication            : Starting ServerRivageApplication using Java 1.8.0_462 on dptinfo-pret with PID 253154 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage)
-2025-11-16 12:16:54.397  INFO 253154 --- [           main] o.e.s.ServerRivageApplication            : No active profile set, falling back to 1 default profile: "default"
-2025-11-16 12:16:54.581  INFO 253154 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-16 12:16:54.581  INFO 253154 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-16 12:16:54.582  INFO 253154 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
-2025-11-16 12:16:54.582  INFO 253154 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='rivageAgency' reduction=0.1
-2025-11-16 12:16:54.607  INFO 253154 --- [           main] o.e.s.ServerRivageApplication            : Started ServerRivageApplication in 0.343 seconds (JVM running for 0.476)
+2025-11-16 19:36:21.510  INFO 278965 --- [           main] o.e.s.ServerRivageApplication            : Starting ServerRivageApplication using Java 1.8.0_462 on dptinfo-pret with PID 278965 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage)
+2025-11-16 19:36:21.511  INFO 278965 --- [           main] o.e.s.ServerRivageApplication            : No active profile set, falling back to 1 default profile: "default"
+2025-11-16 19:36:21.665  INFO 278965 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-16 19:36:21.665  INFO 278965 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-16 19:36:21.665  INFO 278965 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
+2025-11-16 19:36:21.665  INFO 278965 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='rivageAgency' reduction=0.1
+2025-11-16 19:36:21.687  INFO 278965 --- [           main] o.e.s.ServerRivageApplication            : Started ServerRivageApplication in 0.284 seconds (JVM running for 0.399)
 [BEAN-DUMPER] Listing beans in ApplicationContext...
-[BEAN-DUMPER] Total beans: 44
+[BEAN-DUMPER] Total beans: 45
 [BEAN-DUMPER] bean[0] = applicationAvailability
 [BEAN-DUMPER] bean[1] = applicationTaskExecutor
 [BEAN-DUMPER] bean[2] = beanDumper
@@ -50,68 +50,79 @@
 [BEAN-DUMPER] bean[4] = gestionnaireInit
 [BEAN-DUMPER] bean[5] = hotelAgencyServiceImpl
 [BEAN-DUMPER] bean[6] = hotelServerApplication
-[BEAN-DUMPER] bean[7] = hotelServiceImpl
-[BEAN-DUMPER] bean[8] = lifecycleProcessor
-[BEAN-DUMPER] bean[9] = org.springframework.aop.config.internalAutoProxyCreator
-[BEAN-DUMPER] bean[10] = org.springframework.boot.autoconfigure.AutoConfigurationPackages
-[BEAN-DUMPER] bean[11] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration
-[BEAN-DUMPER] bean[12] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$ClassProxyingConfiguration
-[BEAN-DUMPER] bean[13] = org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
-[BEAN-DUMPER] bean[14] = org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
-[BEAN-DUMPER] bean[15] = org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
-[BEAN-DUMPER] bean[16] = org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
-[BEAN-DUMPER] bean[17] = org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
-[BEAN-DUMPER] bean[18] = org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
-[BEAN-DUMPER] bean[19] = org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration
-[BEAN-DUMPER] bean[20] = org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration
-[BEAN-DUMPER] bean[21] = org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration
-[BEAN-DUMPER] bean[22] = org.springframework.boot.context.internalConfigurationPropertiesBinder
-[BEAN-DUMPER] bean[23] = org.springframework.boot.context.internalConfigurationPropertiesBinderFactory
-[BEAN-DUMPER] bean[24] = org.springframework.boot.context.properties.BoundConfigurationProperties
-[BEAN-DUMPER] bean[25] = org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor
-[BEAN-DUMPER] bean[26] = org.springframework.boot.context.properties.EnableConfigurationPropertiesRegistrar.methodValidationExcludeFilter
-[BEAN-DUMPER] bean[27] = org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor
-[BEAN-DUMPER] bean[28] = org.springframework.context.annotation.internalAutowiredAnnotationProcessor
-[BEAN-DUMPER] bean[29] = org.springframework.context.annotation.internalCommonAnnotationProcessor
-[BEAN-DUMPER] bean[30] = org.springframework.context.annotation.internalConfigurationAnnotationProcessor
-[BEAN-DUMPER] bean[31] = org.springframework.context.event.internalEventListenerFactory
-[BEAN-DUMPER] bean[32] = org.springframework.context.event.internalEventListenerProcessor
-[BEAN-DUMPER] bean[33] = propertySourcesPlaceholderConfigurer
-[BEAN-DUMPER] bean[34] = publisher
-[BEAN-DUMPER] bean[35] = rivageInitConfig
-[BEAN-DUMPER] bean[36] = serverRivageApplication
-[BEAN-DUMPER] bean[37] = spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties
-[BEAN-DUMPER] bean[38] = spring.lifecycle-org.springframework.boot.autoconfigure.context.LifecycleProperties
-[BEAN-DUMPER] bean[39] = spring.sql.init-org.springframework.boot.autoconfigure.sql.init.SqlInitializationProperties
-[BEAN-DUMPER] bean[40] = spring.task.execution-org.springframework.boot.autoconfigure.task.TaskExecutionProperties
-[BEAN-DUMPER] bean[41] = spring.task.scheduling-org.springframework.boot.autoconfigure.task.TaskSchedulingProperties
-[BEAN-DUMPER] bean[42] = taskExecutorBuilder
-[BEAN-DUMPER] bean[43] = taskSchedulerBuilder
+[BEAN-DUMPER] bean[7] = hotelServiceDebugImpl
+[BEAN-DUMPER] bean[8] = hotelServiceImpl
+[BEAN-DUMPER] bean[9] = lifecycleProcessor
+[BEAN-DUMPER] bean[10] = org.springframework.aop.config.internalAutoProxyCreator
+[BEAN-DUMPER] bean[11] = org.springframework.boot.autoconfigure.AutoConfigurationPackages
+[BEAN-DUMPER] bean[12] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration
+[BEAN-DUMPER] bean[13] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$ClassProxyingConfiguration
+[BEAN-DUMPER] bean[14] = org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
+[BEAN-DUMPER] bean[15] = org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
+[BEAN-DUMPER] bean[16] = org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
+[BEAN-DUMPER] bean[17] = org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
+[BEAN-DUMPER] bean[18] = org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
+[BEAN-DUMPER] bean[19] = org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
+[BEAN-DUMPER] bean[20] = org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration
+[BEAN-DUMPER] bean[21] = org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration
+[BEAN-DUMPER] bean[22] = org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration
+[BEAN-DUMPER] bean[23] = org.springframework.boot.context.internalConfigurationPropertiesBinder
+[BEAN-DUMPER] bean[24] = org.springframework.boot.context.internalConfigurationPropertiesBinderFactory
+[BEAN-DUMPER] bean[25] = org.springframework.boot.context.properties.BoundConfigurationProperties
+[BEAN-DUMPER] bean[26] = org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor
+[BEAN-DUMPER] bean[27] = org.springframework.boot.context.properties.EnableConfigurationPropertiesRegistrar.methodValidationExcludeFilter
+[BEAN-DUMPER] bean[28] = org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor
+[BEAN-DUMPER] bean[29] = org.springframework.context.annotation.internalAutowiredAnnotationProcessor
+[BEAN-DUMPER] bean[30] = org.springframework.context.annotation.internalCommonAnnotationProcessor
+[BEAN-DUMPER] bean[31] = org.springframework.context.annotation.internalConfigurationAnnotationProcessor
+[BEAN-DUMPER] bean[32] = org.springframework.context.event.internalEventListenerFactory
+[BEAN-DUMPER] bean[33] = org.springframework.context.event.internalEventListenerProcessor
+[BEAN-DUMPER] bean[34] = propertySourcesPlaceholderConfigurer
+[BEAN-DUMPER] bean[35] = publisher
+[BEAN-DUMPER] bean[36] = rivageInitConfig
+[BEAN-DUMPER] bean[37] = serverRivageApplication
+[BEAN-DUMPER] bean[38] = spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties
+[BEAN-DUMPER] bean[39] = spring.lifecycle-org.springframework.boot.autoconfigure.context.LifecycleProperties
+[BEAN-DUMPER] bean[40] = spring.sql.init-org.springframework.boot.autoconfigure.sql.init.SqlInitializationProperties
+[BEAN-DUMPER] bean[41] = spring.task.execution-org.springframework.boot.autoconfigure.task.TaskExecutionProperties
+[BEAN-DUMPER] bean[42] = spring.task.scheduling-org.springframework.boot.autoconfigure.task.TaskSchedulingProperties
+[BEAN-DUMPER] bean[43] = taskExecutorBuilder
+[BEAN-DUMPER] bean[44] = taskSchedulerBuilder
 [BEAN-DUMPER] HotelAgencyService beans:
 [BEAN-DUMPER]   hotelAgencyServiceImpl -> org.examples.server.impl.HotelAgencyServiceImpl
 [BEAN-DUMPER] HotelService beans:
+[BEAN-DUMPER]   hotelServiceDebugImpl -> org.examples.server.soap.HotelServiceDebugImpl
 [BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
 [BEAN-DUMPER] End of bean dump.
 [SOAP] Publisher démarré — recherche des beans de service...
-2025-11-16 12:16:55.158  INFO 253154 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+2025-11-16 19:36:22.133  INFO 278965 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
 [SOAP] HotelAgencyService bean 'hotelAgencyServiceImpl' publié sur http://0.0.0.0:8081/hotel-rivage/agency?wsdl
+[DIAG] HotelService beans détectés: [hotelServiceDebugImpl, hotelServiceImpl]
 [INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
+[INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceDebugImpl' via setGestionnaire(Impl.Gestionnaire)
+2025-11-16 19:36:22.534  INFO 278965 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
+[SOAP] HotelService bean 'hotelServiceDebugImpl' publié sur http://0.0.0.0:8081/hotel-debug?wsdl
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-16 12:16:55.238  INFO 253154 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-16 12:16:55.244  INFO 253154 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-16 12:16:55.244  INFO 253154 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-16 12:16:55.244  INFO 253154 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
-2025-11-16 12:16:55.244  INFO 253154 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='rivageAgency' reduction=0.1
+2025-11-16 19:36:22.559  INFO 278965 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
+2025-11-16 19:36:22.564  INFO 278965 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-16 19:36:22.564  INFO 278965 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-16 19:36:22.564  INFO 278965 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
+2025-11-16 19:36:22.564  INFO 278965 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='rivageAgency' reduction=0.1
 [SOAP] HotelService bean 'hotelServiceImpl' publié sur http://0.0.0.0:8081/hotel-rivage/hotel?wsdl
-2025-11-16 12:17:41.924  INFO 253154 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] getCatalog received
-2025-11-16 12:17:41.925  INFO 253154 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
-2025-11-16 12:17:54.055  INFO 253154 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] getCatalog received
-2025-11-16 12:17:54.055  INFO 253154 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
-2025-11-16 12:18:08.067  INFO 253154 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received: agence='rivageAgency' from='2025-10-10' to='2025-10-12' persons=2
-2025-11-16 12:18:08.080  INFO 253154 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=044775ee-7e3e-4247-bce2-f655afbf3c1e hotelName=Hôtel Rivage cat=HAUT_DE_GAMME stars=4 price=100
-2025-11-16 12:18:08.080  INFO 253154 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=2ccd348c-96e9-430f-b08d-4a5d3384e67f hotelName=Hôtel Rivage cat=HAUT_DE_GAMME stars=4 price=100
-2025-11-16 12:18:08.080  INFO 253154 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] offer[0]: hotel='Hôtel Rivage' cat='HAUT_DE_GAMME' stars=4 price=100 city='Sète' roomNo=101 beds=2
-2025-11-16 12:18:08.080  INFO 253154 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] offer[1]: hotel='Hôtel Rivage' cat='HAUT_DE_GAMME' stars=4 price=100 city='Sète' roomNo=101 beds=2
-2025-11-16 12:18:08.080  INFO 253154 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 2 offers (firstHotelName=Hôtel Rivage)
-2025-11-16 12:18:30.729  INFO 253154 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] getCatalog received
-2025-11-16 12:18:30.729  INFO 253154 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
+2025-11-16 19:36:37.182  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
+2025-11-16 19:36:43.889  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
+2025-11-16 19:36:53.457  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers using Gestionnaire: agence='rivageAgency' ville='Sète' from='2025-10-10' to='2025-10-12' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-16 19:36:53.463  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MATCH] Gestionnaire returned 2 raw offers
+2025-11-16 19:36:53.468  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|101|2025-10-10|2025-10-12|2 hotel='Hôtel Rivage' room=101 lits=2 price=216
+2025-11-16 19:36:53.469  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-10-10|2025-10-12|2 hotel='Hôtel Rivage' room=102 lits=3 price=270
+2025-11-16 19:36:53.469  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 2 offers
+2025-11-16 19:37:01.071  INFO 278965 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] makeReservation received: agence='' offerId='OF|hotelrivage|101|2025-10-10|2025-10-12|2' hotel='null' room=0 nom='a' prenom='a'
+2025-11-16 19:37:01.078  INFO 278965 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] (offerPath) reservation ok ref=HÔTE-12a62759-1c01-478a-bef8-287d7da4a747 hotel='Hôtel Rivage' room=101 from=2025-10-10 to=2025-10-12 nbReservationsAvant=0 nbReservationsApres=1 dispoApres=false
+2025-11-16 19:37:17.021  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers using Gestionnaire: agence='rivageAgency' ville='Sète' from='2025-10-10' to='2025-10-12' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-16 19:37:17.022  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MATCH] Gestionnaire returned 1 raw offers
+2025-11-16 19:37:17.022  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-10-10|2025-10-12|2 hotel='Hôtel Rivage' room=102 lits=3 price=270
+2025-11-16 19:37:17.022  INFO 278965 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 1 offers
+2025-11-16 19:38:00.238  INFO 278965 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers using Gestionnaire: agence='rivageAgency' ville='Sète' from='2025-10-10' to='2025-10-12' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-16 19:38:00.239  INFO 278965 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MATCH] Gestionnaire returned 1 raw offers
+2025-11-16 19:38:00.239  INFO 278965 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-10-10|2025-10-12|2 hotel='Hôtel Rivage' room=102 lits=3 price=270
+2025-11-16 19:38:00.239  INFO 278965 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 1 offers

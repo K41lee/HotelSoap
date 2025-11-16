@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 public class OperaConfig {
     @Bean
     public DataFactory dataFactory() {
-        return DataFactory.rivage(); // placeholder - ideally DataFactory.opera()
+        return DataFactory.opera();
     }
 }
