@@ -128,6 +128,7 @@ public class HotelServiceImpl implements HotelService {
         List<org.examples.server.dto.Offer> dto = new ArrayList<>();
         for (Gestionnaire.Offre o : matches) {
             Impl.Chambre c = o.chambre(); Impl.Hotel h = o.hotel();
+            if (c == null || h == null) continue;
             // Filtre local (déjà réservée via cache)
             if (!isRoomAvailableLocal(h.getNom(), c.getNumero(), from, to)) {
                 continue;
@@ -146,10 +147,13 @@ public class HotelServiceImpl implements HotelService {
                 of.address = a;
             }
             try { of.start = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(from.toString()); of.end = javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(to.toString()); } catch(Exception ignored) {}
-            of.prixTotal = o.prixTotal();
+            // Recalcule du prix si le gestionnaire ne le fournit pas correctement
+            int nights = (int) java.time.temporal.ChronoUnit.DAYS.between(from, to);
+            int base = o.prixTotal() > 0 ? o.prixTotal() : (int) Math.round(c.getPrixParNuit() * nights);
+            of.prixTotal = base;
             of.agenceApplied = criteria.agence;
             dto.add(of);
-            logger.info("[MAP] offerId={} hotel='{}' room={} lits={} price={} city='{}'", of.offerId, of.hotelName, of.roomNumber, of.nbLits, of.prixTotal, of.address!=null? of.address.ville: "?");
+            logger.info("[MAP] offerId={} hotel='{}' room={} lits={} price={} nights={} city='{}'", of.offerId, of.hotelName, of.roomNumber, of.nbLits, of.prixTotal, nights, of.address!=null? of.address.ville: "?");
         }
         list.setOffers(dto);
         SearchOffersResponse resp = new SearchOffersResponse(); resp.setOffers(list);

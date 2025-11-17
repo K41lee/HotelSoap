@@ -53,8 +53,12 @@ public class AgencyService {
     Set<String> agencies = new LinkedHashSet<>();
     for (Partner p : partners) {
       try {
+        log.info("[AGENCY->HOTEL:{}] getCatalog", p.code);
         HotelService port = port(p);
         Catalog cat = port.getCatalog();
+        int cCities = (cat!=null && cat.getCities()!=null)? cat.getCities().getCity().size() : 0;
+        int cAgencies = (cat!=null && cat.getAgencies()!=null)? cat.getAgencies().getAgency().size() : 0;
+        log.info("[HOTEL:{}->AGENCY] catalog cities={} agencies={}", p.code, cCities, cAgencies);
         if (cat!=null) {
           if (cat.getCities()!=null) cities.addAll(cat.getCities().getCity());
           if (cat.getAgencies()!=null) agencies.addAll(cat.getAgencies().getAgency());
@@ -101,7 +105,6 @@ public class AgencyService {
         if (resp!=null && resp.getOffers()!=null && resp.getOffers().getOffers()!=null) {
           for (Offer o : resp.getOffers().getOffers()) {
             Map<String,Object> m = new LinkedHashMap<>();
-            m.put("hotelCode", p.code);
             m.put("hotelName", o.hotelName);
             m.put("categorie", o.categorie);
             m.put("nbEtoiles", o.nbEtoiles);
@@ -113,7 +116,6 @@ public class AgencyService {
               a.put("numero", o.address.numero);
               m.put("address", a);
               m.put("city", o.address.ville);
-              // aplatir pour le client existant
               m.put("pays", o.address.pays);
               m.put("ville", o.address.ville);
               m.put("rue", o.address.rue);
@@ -130,6 +132,7 @@ public class AgencyService {
             m.put("prixTotal", o.prixTotal);
             m.put("agenceApplied", o.agenceApplied);
             m.put("offerId", o.offerId);
+            m.put("hotelCode", p.code);
             offers.add(m);
           }
         }
@@ -153,15 +156,20 @@ public class AgencyService {
     log.info("[AGENCY] makeReservation hotelCode='{}' offerId='{}' agencyId='{}' nom='{}' prenom='{}' carte='{}'",
              hotelCode, offerId, agencyId, nom, prenom, maskCard(carte));
 
-    Partner target = partners.stream().filter(p -> p.code.equals(hotelCode)).findFirst().orElse(null);
+    Partner target = partners.stream().filter(p -> p.code.equals(hotelCode)). findFirst().orElse(null);
     if (target == null) throw new IllegalArgumentException("unknown hotelCode");
+
+    // valeur par défaut d'agence si manquante, en cohérence avec searchOffers
+    String effectiveAgency = (agencyId==null || agencyId.trim().isEmpty())
+        ? ("rivage".equals(target.code) ? "rivageAgency" : ("opera".equals(target.code) ? "operaAgency" : null))
+        : agencyId;
 
     HotelService port = port(target);
     ReservationRequest rq = new ReservationRequest();
     rq.offerId = offerId;
-    rq.agence = agencyId;
+    rq.agence = effectiveAgency;
     rq.nom = nom; rq.prenom = prenom; rq.carte = carte;
-    log.info("[AGENCY->HOTEL:{}] reserve offerId='{}' agencyId='{}' nom='{}' prenom='{}'", target.code, offerId, agencyId, nom, prenom);
+    log.info("[AGENCY->HOTEL:{}] reserve offerId='{}' agencyId='{}' nom='{}' prenom='{}'", target.code, offerId, effectiveAgency, nom, prenom);
     ReservationConfirmation conf = port.makeReservation(rq);
     log.info("[HOTEL:{}->AGENCY] reserve success={} ref={} message={} ", target.code, conf.isSuccess(), conf.getReference(), conf.getMessage());
 
