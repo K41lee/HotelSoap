@@ -24,7 +24,7 @@ public class AgencyService {
   }
   private final List<Partner> partners = Arrays.asList(
       new Partner("rivage", "http://localhost:8081/hotel-rivage/hotel?wsdl", "http://soap.server.examples.org/", "http://soap.server.examples.org/", "HotelService", "HotelServiceImplPort"),
-      new Partner("opera",  "http://localhost:8082/hotel-opera/hotel?wsdl",   "http://soap.server.examples.org/", "http://soap.server.examples.org/", "HotelService", "HotelServiceImplPort")
+      new Partner("opera",  "http://localhost:8083/hotel-opera/hotel?wsdl",   "http://soap.server.examples.org/", "http://soap.server.examples.org/", "HotelService", "HotelServiceImplPort")
   );
 
   public String handleRequest(String jsonLine) {

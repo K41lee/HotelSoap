@@ -20,7 +20,10 @@ public class Publisher implements CommandLineRunner, DisposableBean {
     private final Environment env;
 
     @Value("${server.port:8080}")
-    private int port;
+    private int webPort;
+
+    @Value("${soap.port:${server.port:8080}}")
+    private int soapPort;
 
     @Value("${soap.path.defaultAgency:/agency}")
     private String defaultAgencyPath;
@@ -58,7 +61,7 @@ public class Publisher implements CommandLineRunner, DisposableBean {
             String perBeanPath = env.getProperty("soap.path." + beanName);
             if (perBeanPath == null) perBeanPath = (modulePath != null ? joinPath(modulePath, "/agency") : defaultAgencyPath);
             if (!perBeanPath.startsWith("/")) perBeanPath = "/" + perBeanPath;
-            String address = "http://0.0.0.0:" + port + perBeanPath;
+            String address = "http://0.0.0.0:" + soapPort + perBeanPath;
             try {
                 Endpoint ep = Endpoint.publish(address, service);
                 published.add(ep);
@@ -93,7 +96,7 @@ public class Publisher implements CommandLineRunner, DisposableBean {
             String perBeanPath = env.getProperty("soap.path." + beanName);
             if (perBeanPath == null) perBeanPath = (modulePath != null ? joinPath(modulePath, "/hotel") : defaultHotelPath);
             if (!perBeanPath.startsWith("/")) perBeanPath = "/" + perBeanPath;
-            String address = "http://0.0.0.0:" + port + perBeanPath;
+            String address = "http://0.0.0.0:" + soapPort + perBeanPath;
             try {
                 if (!foundGestionnaires.isEmpty()) {
                     Object toInject = foundGestionnaires.get(0);

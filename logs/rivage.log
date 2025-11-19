@@ -1,31 +1,30 @@
-nohup: les entrées sont ignorées
-[[1;34mINFO[m] Scanning for projects...
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m---------------< [0;36morg.examples:hotel-server-soap-rivage[0;1m >----------------[m
-[[1;34mINFO[m] [1mBuilding hotel-server-soap-rivage 1.0.1-SNAPSHOT[m
-[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m>>> [0;32mspring-boot-maven-plugin:2.7.12:run[m [1m(default-cli)[0;1m > [0;1mtest-compile[m @ [36mhotel-server-soap-rivage[0;1m >>>[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mhotel-server-soap-rivage[0;1m ---[m
-[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
-[[1;34mINFO[m] Copying 2 resources
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mhotel-server-soap-rivage[0;1m ---[m
-[[1;34mINFO[m] Recompiling the module because of [1mchanged source code[m.
-[[1;34mINFO[m] Compiling 5 source files with javac [debug release 8] to target/classes
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mhotel-server-soap-rivage[0;1m ---[m
-[[1;34mINFO[m] Not copying test resources
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mhotel-server-soap-rivage[0;1m ---[m
-[[1;34mINFO[m] Not compiling test sources
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:2.7.12:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mhotel-server-soap-rivage[0;1m <<<[m
-[[1;34mINFO[m] 
-[[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:2.7.12:run[m [1m(default-cli)[m @ [36mhotel-server-soap-rivage[0;1m ---[m
-[[1;34mINFO[m] Attaching agents: []
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< org.examples:hotel-server-soap-rivage >----------------
+[INFO] Building hotel-server-soap-rivage 1.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:2.7.12:run (default-cli) > test-compile @ hotel-server-soap-rivage >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hotel-server-soap-rivage ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ hotel-server-soap-rivage ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 5 source files with javac [debug release 8] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hotel-server-soap-rivage ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hotel-server-soap-rivage ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:2.7.12:run (default-cli) < test-compile @ hotel-server-soap-rivage <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:2.7.12:run (default-cli) @ hotel-server-soap-rivage ---
+[INFO] Attaching agents: []
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -35,34 +34,34 @@ nohup: les entrées sont ignorées
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-19 19:32:08.917  INFO 421270 --- [           main] o.e.s.ServerRivageApplication            : Starting ServerRivageApplication using Java 1.8.0_462 on dptinfo-pret with PID 421270 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage)
-2025-11-19 19:32:08.919  INFO 421270 --- [           main] o.e.s.ServerRivageApplication            : No active profile set, falling back to 1 default profile: "default"
-2025-11-19 19:32:09.181  INFO 421270 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-19 19:32:09.209  INFO 421270 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 4 JPA repository interfaces.
-2025-11-19 19:32:09.421  INFO 421270 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
-2025-11-19 19:32:09.425  INFO 421270 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-19 19:32:09.425  INFO 421270 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
-2025-11-19 19:32:09.453  INFO 421270 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-19 19:32:09.454  INFO 421270 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 510 ms
-2025-11-19 19:32:09.466  INFO 421270 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-19 19:32:09.531  INFO 421270 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-19 19:32:09.537  INFO 421270 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/hotel-rivage-db'
-2025-11-19 19:32:09.593  INFO 421270 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-19 19:32:09.611  INFO 421270 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2025-11-19 19:32:09.668  INFO 421270 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2025-11-19 19:32:09.768  INFO 421270 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2025-11-19 19:32:10.016  INFO 421270 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2025-11-19 19:32:10.020  INFO 421270 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-19 19:32:10.245  INFO 421270 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Starting synchronization from domain to database...
+2025-11-19 21:00:57.557  INFO 442150 --- [           main] o.e.s.ServerRivageApplication            : Starting ServerRivageApplication using Java 1.8.0_462 on dptinfo-pret with PID 442150 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage)
+2025-11-19 21:00:57.559  INFO 442150 --- [           main] o.e.s.ServerRivageApplication            : No active profile set, falling back to 1 default profile: "default"
+2025-11-19 21:00:57.903  INFO 442150 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 21:00:57.930  INFO 442150 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 4 JPA repository interfaces.
+2025-11-19 21:00:58.169  INFO 442150 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2025-11-19 21:00:58.173  INFO 442150 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-19 21:00:58.173  INFO 442150 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-11-19 21:00:58.204  INFO 442150 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-19 21:00:58.204  INFO 442150 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 602 ms
+2025-11-19 21:00:58.217  INFO 442150 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-19 21:00:58.287  INFO 442150 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-19 21:00:58.293  INFO 442150 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/hotel-rivage-db'
+2025-11-19 21:00:58.352  INFO 442150 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 21:00:58.370  INFO 442150 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-11-19 21:00:58.445  INFO 442150 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-11-19 21:00:58.517  INFO 442150 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2025-11-19 21:00:58.810  INFO 442150 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-11-19 21:00:58.815  INFO 442150 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 21:00:59.068  INFO 442150 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Starting synchronization from domain to database...
 Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2_2_, hotelentit0_.nb_etoiles as nb_etoil3_2_, hotelentit0_.nom as nom4_2_, hotelentit0_.numero as numero5_2_, hotelentit0_.pays as pays6_2_, hotelentit0_.rue as rue7_2_, hotelentit0_.ville as ville8_2_ from hotels hotelentit0_ where hotelentit0_.nom=?
-2025-11-19 19:32:10.283  INFO 421270 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Hotel 'Hôtel Rivage' already exists in DB
-2025-11-19 19:32:10.283  INFO 421270 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Synchronization completed
-2025-11-19 19:32:10.287  INFO 421270 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 19:32:10.287  INFO 421270 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 19:32:10.287  INFO 421270 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
-2025-11-19 19:32:10.301  WARN 421270 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-19 19:32:10.422  INFO 421270 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
-2025-11-19 19:32:10.427  INFO 421270 --- [           main] o.e.s.ServerRivageApplication            : Started ServerRivageApplication in 1.649 seconds (JVM running for 1.799)
+2025-11-19 21:00:59.108  INFO 442150 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Hotel 'Hôtel Rivage' already exists in DB
+2025-11-19 21:00:59.108  INFO 442150 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Synchronization completed
+2025-11-19 21:00:59.113  INFO 442150 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-19 21:00:59.113  INFO 442150 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-19 21:00:59.113  INFO 442150 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
+2025-11-19 21:00:59.128  WARN 442150 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 21:00:59.257  INFO 442150 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2025-11-19 21:00:59.264  INFO 442150 --- [           main] o.e.s.ServerRivageApplication            : Started ServerRivageApplication in 1.878 seconds (JVM running for 2.101)
 [BEAN-DUMPER] Listing beans in ApplicationContext...
 [BEAN-DUMPER] Total beans: 213
 [BEAN-DUMPER] bean[0] = agenceRepository
@@ -272,91 +271,51 @@ Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2
 [BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
 [BEAN-DUMPER] End of bean dump.
 [SOAP] Publisher démarré — recherche des beans de service...
-2025-11-19 19:32:11.144  INFO 421270 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
-[SOAP] Échec publication HotelAgencyService bean 'hotelAgencyServiceImpl' sur http://0.0.0.0:8081/hotel-rivage/agency: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
-	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
-	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
-	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
-	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
-	at org.examples.server.soap.Publisher.run(Publisher.java:63)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at org.examples.serverrivage.ServerRivageApplication.main(ServerRivageApplication.java:10)
-Caused by: java.net.BindException: Adresse déjà utilisée
-	at sun.nio.ch.Net.bind0(Native Method)
-	at sun.nio.ch.Net.bind(Net.java:461)
-	at sun.nio.ch.Net.bind(Net.java:453)
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222)
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85)
-	at sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:141)
-	at sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
-	at sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
-	at com.sun.net.httpserver.HttpServer.create(HttpServer.java:130)
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:85)
-	... 11 more
+2025-11-19 21:01:00.105  INFO 442150 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+[SOAP] HotelAgencyService bean 'hotelAgencyServiceImpl' publié sur http://0.0.0.0:8081/hotel-rivage/agency?wsdl
 [DIAG] HotelService beans détectés: [hotelServiceDebugImpl, hotelServiceImpl]
 [INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceDebugImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 19:32:11.207  INFO 421270 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
-[SOAP] Échec publication HotelService bean 'hotelServiceDebugImpl' sur http://0.0.0.0:8081/hotel-debug: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
-	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
-	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
-	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
-	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
-	at org.examples.server.soap.Publisher.run(Publisher.java:115)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at org.examples.serverrivage.ServerRivageApplication.main(ServerRivageApplication.java:10)
-Caused by: java.net.BindException: Adresse déjà utilisée
-	at sun.nio.ch.Net.bind0(Native Method)
-	at sun.nio.ch.Net.bind(Net.java:461)
-	at sun.nio.ch.Net.bind(Net.java:453)
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222)
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85)
-	at sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:141)
-	at sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
-	at sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
-	at com.sun.net.httpserver.HttpServer.create(HttpServer.java:130)
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:85)
-	... 11 more
+2025-11-19 21:01:00.175  INFO 442150 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
+[SOAP] HotelService bean 'hotelServiceDebugImpl' publié sur http://0.0.0.0:8081/hotel-debug?wsdl
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 19:32:11.227  INFO 421270 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-19 19:32:11.232  INFO 421270 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 19:32:11.233  INFO 421270 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 19:32:11.233  INFO 421270 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
-[SOAP] Échec publication HotelService bean 'hotelServiceImpl' sur http://0.0.0.0:8081/hotel-rivage/hotel: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
-	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
-	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
-	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
-	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
-	at org.examples.server.soap.Publisher.run(Publisher.java:115)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at org.examples.serverrivage.ServerRivageApplication.main(ServerRivageApplication.java:10)
-Caused by: java.net.BindException: Adresse déjà utilisée
-	at sun.nio.ch.Net.bind0(Native Method)
-	at sun.nio.ch.Net.bind(Net.java:461)
-	at sun.nio.ch.Net.bind(Net.java:453)
-	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222)
-	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85)
-	at sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:141)
-	at sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
-	at sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
-	at com.sun.net.httpserver.HttpServer.create(HttpServer.java:130)
-	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:85)
-	... 11 more
+2025-11-19 21:01:00.211  INFO 442150 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
+2025-11-19 21:01:00.222  INFO 442150 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-19 21:01:00.222  INFO 442150 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-19 21:01:00.222  INFO 442150 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
+[SOAP] HotelService bean 'hotelServiceImpl' publié sur http://0.0.0.0:8081/hotel-rivage/hotel?wsdl
+2025-11-19 21:01:02.048  INFO 442150 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=0 (from gestionnaire)
+2025-11-19 21:01:19.050  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='rivageAgency' ville='Sète' arrivee='2025-10-10' depart='2025-10-11' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-19 21:01:19.053  INFO 442150 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 21:01:19.054  INFO 442150 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=101 prix=120 agence=<none>
+2025-11-19 21:01:19.054  INFO 442150 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=102 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 21:01:19.054  INFO 442150 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=102 prix=150 agence=<none>
+2025-11-19 21:01:19.055  INFO 442150 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=rivageAgency): 2
+2025-11-19 21:01:19.055  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 2 raw offers
+2025-11-19 21:01:19.157  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|101|2025-10-10|2025-10-11|2 hotel='Hôtel Rivage' room=101 lits=2 price=120 nights=1 city='Sète' imageUrl='2194 bytes dataUrl'
+2025-11-19 21:01:19.166  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-10-10|2025-10-11|2 hotel='Hôtel Rivage' room=102 lits=3 price=150 nights=1 city='Sète' imageUrl='2218 bytes dataUrl'
+2025-11-19 21:01:19.166  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 2 offers
+2025-11-19 21:01:52.338  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] makeReservation received agence='rivageAgency' offerId='OF|hotelrivage|101|2025-10-10|2025-10-11|2' hotel='null' room=0 nom='a' prenom='a'
+2025-11-19 21:01:52.340  INFO 442150 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 21:01:52.340  INFO 442150 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 21:01:52.340  INFO 442150 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] réservation ajoutée: hotel='Hôtel Rivage' room=101 periode=[2025-10-10..2025-10-11), totalReservations=1
+2025-11-19 21:01:52.340  INFO 442150 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] reservation créée hotel='Hôtel Rivage' room=101 periode=[2025-10-10..2025-10-11] client='a a'
+2025-11-19 21:01:52.341  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [TRACK] reservation stored hotel='Hôtel Rivage' room=101 from=2025-10-10 to=2025-10-11 totalStored=1
+Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2_2_, hotelentit0_.nb_etoiles as nb_etoil3_2_, hotelentit0_.nom as nom4_2_, hotelentit0_.numero as numero5_2_, hotelentit0_.pays as pays6_2_, hotelentit0_.rue as rue7_2_, hotelentit0_.ville as ville8_2_ from hotels hotelentit0_ where hotelentit0_.nom=?
+Hibernate: select chambreent0_.id as id1_1_, chambreent0_.hotel_id as hotel_id5_1_, chambreent0_.nb_lits as nb_lits2_1_, chambreent0_.numero as numero3_1_, chambreent0_.prix_par_nuit as prix_par4_1_ from chambres chambreent0_ left outer join hotels hotelentit1_ on chambreent0_.hotel_id=hotelentit1_.id where hotelentit1_.id=?
+Hibernate: select reservatio0_.id as id1_3_, reservatio0_.agence as agence2_3_, reservatio0_.chambre_id as chambre_9_3_, reservatio0_.client_carte as client_c3_3_, reservatio0_.client_nom as client_n4_3_, reservatio0_.client_prenom as client_p5_3_, reservatio0_.debut as debut6_3_, reservatio0_.fin as fin7_3_, reservatio0_.reference as referenc8_3_ from reservations reservatio0_ where reservatio0_.chambre_id=? and reservatio0_.debut<? and reservatio0_.fin>?
+2025-11-19 21:01:52.441  INFO 442150 --- [pool-1-thread-2] o.e.server.service.HotelDatabaseService  : [DB] Creating reservation ref: 66564A58 for chambre: 101 from 2025-10-10 to 2025-10-11
+Hibernate: insert into reservations (id, agence, chambre_id, client_carte, client_nom, client_prenom, debut, fin, reference) values (default, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-11-19 21:01:52.477  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [DB] Reservation persisted in database with ref=66564A58
+2025-11-19 21:01:52.477  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] reservation ok ref=66564A58 hotel='Hôtel Rivage' room=101 from=2025-10-10 to=2025-10-11 stored=1 
+2025-11-19 21:02:07.986  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='rivageAgency' ville='Sète' arrivee='2025-10-10' depart='2025-10-11' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-19 21:02:07.986  INFO 442150 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] indisponible: room=101 hotel='Hôtel Rivage' demande=[2025-10-10..2025-10-11), existing=[2025-10-10..2025-10-11]
+2025-11-19 21:02:07.986  INFO 442150 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=102 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 21:02:07.986  INFO 442150 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=102 prix=150 agence=<none>
+2025-11-19 21:02:07.986  INFO 442150 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=rivageAgency): 1
+2025-11-19 21:02:07.986  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 1 raw offers
+2025-11-19 21:02:07.999  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-10-10|2025-10-11|2 hotel='Hôtel Rivage' room=102 lits=3 price=150 nights=1 city='Sète' imageUrl='2218 bytes dataUrl'
+2025-11-19 21:02:07.999  INFO 442150 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 1 offers
+2025-11-19 21:02:41.636  INFO 442150 --- [nio-8082-exec-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-19 21:02:41.636  INFO 442150 --- [nio-8082-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-11-19 21:02:41.638  INFO 442150 --- [nio-8082-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms

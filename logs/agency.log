@@ -33,39 +33,56 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-19 19:25:22.114  INFO 419305 --- [           main] org.examples.agency.AgencyApplication    : Starting AgencyApplication using Java 1.8.0_462 on dptinfo-pret with PID 419305 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server)
-2025-11-19 19:25:22.116  INFO 419305 --- [           main] org.examples.agency.AgencyApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-11-19 19:25:22.373  INFO 419305 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-19 19:25:22.384  INFO 419305 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
-2025-11-19 19:25:22.599  INFO 419305 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-19 19:25:22.690  INFO 419305 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-19 19:25:22.709  INFO 419305 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-19 19:25:22.726  INFO 419305 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2025-11-19 19:25:22.778  INFO 419305 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2025-11-19 19:25:22.818  INFO 419305 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2025-11-19 19:25:22.886  INFO 419305 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2025-11-19 19:25:22.891  INFO 419305 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-19 19:25:22.900  INFO 419305 --- [           main] org.examples.agency.TcpServer            : [AGENCY-INIT] TCP server listening on port 7070
-2025-11-19 19:25:22.948  INFO 419305 --- [           main] org.examples.agency.AgencyApplication    : Started AgencyApplication in 1.021 seconds (JVM running for 1.286)
-2025-11-19 19:25:26.478  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"catalog.get"}
-2025-11-19 19:25:26.478  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=catalog.get
-2025-11-19 19:25:26.478  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] getCatalog
-2025-11-19 19:25:26.759  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] catalog cities=1 agencies=0
-2025-11-19 19:25:26.759  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] getCatalog
-2025-11-19 19:25:26.828  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] catalog cities=1 agencies=0
-2025-11-19 19:25:38.871  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"offers.search","payload":{"ville":"Sète","arrivee":"2025-10-10","depart":"2025-10-11","nbPersonnes":2,"agencyId":""}}
-2025-11-19 19:25:38.871  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=offers.search payload={ville=Sète, arrivee=2025-10-10, depart=2025-10-11, nbPersonnes=2, agencyId=}
-2025-11-19 19:25:38.872  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] searchOffers ville='Sète' arrivee='2025-10-10' depart='2025-10-11' nbPersonnes=2 agencyId=''
-2025-11-19 19:25:38.915  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] searchOffers agence='rivageAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
-2025-11-19 19:25:39.046  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] offers count=2
-2025-11-19 19:25:39.047  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|101|2025-10-10|2025-10-11|2 : 120.0 -> 108.0
-2025-11-19 19:25:39.047  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|102|2025-10-10|2025-10-11|2 : 150.0 -> 135.0
-2025-11-19 19:25:39.047  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers rivage -> 2 items
-2025-11-19 19:25:39.077  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] searchOffers agence='operaAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
-2025-11-19 19:25:39.129  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] offers count=0
-2025-11-19 19:25:39.130  INFO 419305 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers opera -> 2 items
-2025-11-19 19:30:52.668  INFO 419305 --- [ionShutdownHook] org.examples.agency.TcpServer            : [AGENCY-INIT] TCP server stopped
-2025-11-19 19:30:52.669  INFO 419305 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-19 19:30:52.669  INFO 419305 --- [ionShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
-2025-11-19 19:30:52.674  INFO 419305 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-19 19:30:52.676  INFO 419305 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-11-19 21:00:57.422  INFO 442116 --- [           main] org.examples.agency.AgencyApplication    : Starting AgencyApplication using Java 1.8.0_462 on dptinfo-pret with PID 442116 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server)
+2025-11-19 21:00:57.424  INFO 442116 --- [           main] org.examples.agency.AgencyApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-11-19 21:00:57.730  INFO 442116 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 21:00:57.736  INFO 442116 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-11-19 21:00:58.048  INFO 442116 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-11-19 21:00:58.054  INFO 442116 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-19 21:00:58.054  INFO 442116 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-11-19 21:00:58.089  INFO 442116 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-19 21:00:58.089  INFO 442116 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 641 ms
+2025-11-19 21:00:58.157  INFO 442116 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-19 21:00:58.223  INFO 442116 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-19 21:00:58.250  INFO 442116 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 21:00:58.270  INFO 442116 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-11-19 21:00:58.342  INFO 442116 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-11-19 21:00:58.392  INFO 442116 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2025-11-19 21:00:58.519  INFO 442116 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-11-19 21:00:58.524  INFO 442116 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 21:00:58.532  INFO 442116 --- [           main] org.examples.agency.TcpServer            : [AGENCY-INIT] TCP server listening on port 7070
+2025-11-19 21:00:58.547  WARN 442116 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 21:00:58.680  INFO 442116 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-11-19 21:00:58.686  INFO 442116 --- [           main] org.examples.agency.AgencyApplication    : Started AgencyApplication in 1.477 seconds (JVM running for 1.741)
+2025-11-19 21:01:01.845  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"catalog.get"}
+2025-11-19 21:01:01.845  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=catalog.get
+2025-11-19 21:01:01.845  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] getCatalog
+2025-11-19 21:01:02.053  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] catalog cities=1 agencies=0
+2025-11-19 21:01:02.053  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] getCatalog
+2025-11-19 21:01:02.115  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] catalog cities=1 agencies=0
+2025-11-19 21:01:19.007  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"offers.search","payload":{"ville":"Sète","arrivee":"2025-10-10","depart":"2025-10-11","nbPersonnes":2,"agencyId":""}}
+2025-11-19 21:01:19.007  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=offers.search payload={ville=Sète, arrivee=2025-10-10, depart=2025-10-11, nbPersonnes=2, agencyId=}
+2025-11-19 21:01:19.007  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] searchOffers ville='Sète' arrivee='2025-10-10' depart='2025-10-11' nbPersonnes=2 agencyId=''
+2025-11-19 21:01:19.043  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] searchOffers agence='rivageAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
+2025-11-19 21:01:19.209  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] offers count=2
+2025-11-19 21:01:19.210  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|101|2025-10-10|2025-10-11|2 : 120.0 -> 108.0
+2025-11-19 21:01:19.210  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|102|2025-10-10|2025-10-11|2 : 150.0 -> 135.0
+2025-11-19 21:01:19.210  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers rivage -> 2 items
+2025-11-19 21:01:19.227  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] searchOffers agence='operaAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
+2025-11-19 21:01:19.277  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] offers count=0
+2025-11-19 21:01:19.278  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers opera -> 2 items
+2025-11-19 21:01:52.281  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"reservation.make","payload":{"hotelCode":"rivage","offerId":"OF|hotelrivage|101|2025-10-10|2025-10-11|2","agencyId":"","nom":"a","prenom":"a","carte":"1234567812345678"}}
+2025-11-19 21:01:52.282  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=reservation.make payload={{hotelCode=rivage, offerId=OF|hotelrivage|101|2025-10-10|2025-10-11|2, agencyId=, nom=a, prenom=a, carte=**** **** **** 5678}}
+2025-11-19 21:01:52.282  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] makeReservation hotelCode='rivage' offerId='OF|hotelrivage|101|2025-10-10|2025-10-11|2' agencyId='' nom='a' prenom='a' carte='**** **** **** 5678'
+2025-11-19 21:01:52.336  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] reserve offerId='OF|hotelrivage|101|2025-10-10|2025-10-11|2' agencyId='rivageAgency' nom='a' prenom='a'
+2025-11-19 21:01:52.520  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] reserve success=true ref=66564A58 message=Réservation confirmée 
+2025-11-19 21:02:07.953  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"offers.search","payload":{"ville":"Sète","arrivee":"2025-10-10","depart":"2025-10-11","nbPersonnes":2,"agencyId":""}}
+2025-11-19 21:02:07.953  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=offers.search payload={ville=Sète, arrivee=2025-10-10, depart=2025-10-11, nbPersonnes=2, agencyId=}
+2025-11-19 21:02:07.953  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] searchOffers ville='Sète' arrivee='2025-10-10' depart='2025-10-11' nbPersonnes=2 agencyId=''
+2025-11-19 21:02:07.984  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] searchOffers agence='rivageAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
+2025-11-19 21:02:08.042  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] offers count=1
+2025-11-19 21:02:08.042  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|102|2025-10-10|2025-10-11|2 : 150.0 -> 135.0
+2025-11-19 21:02:08.043  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers rivage -> 1 items
+2025-11-19 21:02:08.077  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] searchOffers agence='operaAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
+2025-11-19 21:02:08.122  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] offers count=0
+2025-11-19 21:02:08.123  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers opera -> 1 items

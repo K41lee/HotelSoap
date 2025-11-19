@@ -1,13 +1,10 @@
 # HotelSoap — Architecture distribuée (Hôtels SOAP + Agence TCP + Client CLI)
 
 Application console (Client CLI) s'appuyant sur:
-- 2 serveurs d'hôtels exposant des services SOAP (Rivage sur 8081, Opéra sur 8082)
-- 1 serveur d'agence (TCP local sur 7070, pas de REST/SOAP), qui agrège les hôtels
-- 1 client CLI qui dialogue avec l'agence (et non directement avec les hôtels)
-- **Bases de données H2** pour persister les données de chaque hôtel
-
-Les hôtels appliquent des tarifs/agences distincts. Les recherches passent par la méthode du Gestionnaire et les réservations impactent la disponibilité réelle des chambres.
-
+- 2 serveurs d'hôtels exposant des services SOAP
+  - **Rivage** : SOAP sur port 8081, Web sur port 8082
+  - **Opera** : SOAP sur port 8083, Web sur port 8084
+- 1 serveur d'agence (relai TCP sur port 7070)
 ---
 
 ## Prérequis
@@ -28,15 +25,17 @@ Les hôtels appliquent des tarifs/agences distincts. Les recherches passent par 
 ```bash
 fuser -k 8081/tcp 2>/dev/null || true
 fuser -k 8082/tcp 2>/dev/null || true
+fuser -k 8083/tcp 2>/dev/null || true
+fuser -k 8084/tcp 2>/dev/null || true
 fuser -k 7070/tcp 2>/dev/null || true
 ```
 
 ### 3) Démarrer les serveurs (logs dans ./logs)
 ```bash
-# Hôtel Rivage (SOAP sur 8081)
+# Hôtel Rivage (SOAP:8081, Web:8082)
 ./mvnw -pl server-rivage -DskipTests=true spring-boot:run > logs/rivage.log 2>&1 & echo $! > /tmp/rivage.pid
 
-# Hôtel Opéra (SOAP sur 8082)
+# Hôtel Opera (SOAP:8083, Web:8084)
 ./mvnw -pl server-opera  -DskipTests=true spring-boot:run > logs/opera.log  2>&1 & echo $! > /tmp/opera.pid
 
 # Agence (TCP sur 7070, relai entre client et hôtels)
@@ -45,11 +44,11 @@ fuser -k 7070/tcp 2>/dev/null || true
 
 ### 4) Vérifications rapides (WSDL + Agence TCP)
 ```bash
-# WSDL Rivage
+# WSDL Rivage (SOAP sur 8081)
 curl -sSf http://localhost:8081/hotel-rivage/hotel?wsdl | head -n1
 
-# WSDL Opéra
-curl -sSf http://localhost:8082/hotel-opera/hotel?wsdl | head -n1
+# WSDL Opera (SOAP sur 8083)
+curl -sSf http://localhost:8083/hotel-opera/hotel?wsdl | head -n1
 
 # Agence: récupérer le catalogue
 echo '{"op":"catalog.get"}' | nc -w 2 localhost 7070
@@ -72,9 +71,10 @@ kill $(cat /tmp/agency.pid 2>/dev/null) 2>/dev/null || true
 # Ou via ports (force)
 fuser -k 8081/tcp 2>/dev/null || true
 fuser -k 8082/tcp 2>/dev/null || true
+fuser -k 8083/tcp 2>/dev/null || true
+fuser -k 8084/tcp 2>/dev/null || true
 fuser -k 7070/tcp 2>/dev/null || true
 ```
-
 ---
 
 ## 📊 Bases de données H2
@@ -84,17 +84,21 @@ Chaque hôtel dispose de sa propre base de données H2 pour persister les réser
 ### Configuration
 
 #### Hotel Opera
-- **Port serveur**: 8082
+- **Port SOAP**: 8083
+- **Port Web (Console H2)**: 8084
 - **Base de données**: `server-opera/data/hotel-opera-db.mv.db`
-- **Console H2**: http://localhost:8082/h2-console
+- **WSDL**: http://localhost:8083/hotel-opera/hotel?wsdl
+- **Console H2**: http://localhost:8084/h2-console
 - **JDBC URL**: `jdbc:h2:file:./data/hotel-opera-db`
 - **User**: `opera`
 - **Password**: `opera`
 
 #### Hotel Rivage
-- **Port serveur**: 8081
+- **Port SOAP**: 8081
+- **Port Web (Console H2)**: 8082
 - **Base de données**: `server-rivage/data/hotel-rivage-db.mv.db`
-- **Console H2**: http://localhost:8081/h2-console
+- **WSDL**: http://localhost:8081/hotel-rivage/hotel?wsdl
+- **Console H2**: http://localhost:8082/h2-console
 - **JDBC URL**: `jdbc:h2:file:./data/hotel-rivage-db`
 - **User**: `rivage`
 - **Password**: `rivage`
@@ -110,9 +114,9 @@ Chaque hôtel dispose de sa propre base de données H2 pour persister les réser
 
 #### Méthode 1: Console Web H2 (Serveurs lancés)
 
-1. Ouvrir le navigateur sur http://localhost:8082/h2-console (Opera) ou http://localhost:8081/h2-console (Rivage)
+1. Ouvrir le navigateur sur http://localhost:8084/h2-console (Opera) ou http://localhost:8082/h2-console (Rivage)
 2. **Configuration de connexion** :
-   - **JDBC URL**: `jdbc:h2:file:./data/hotel-opera-db` (pour Opera)
+   - **JDBC URL**: `jdbc:h2:file:./data/hotel-opera-db` (pour Opera) ou `jdbc:h2:file:./data/hotel-rivage-db` (pour Rivage)
    - **User Name**: `opera` (ou `rivage`)
    - **Password**: `opera` (ou `rivage`)
 3. Cliquer sur **"Connect"**
@@ -290,6 +294,8 @@ tail -f logs/agency.log
 # Libérer les ports
 fuser -k 8081/tcp 2>/dev/null || true
 fuser -k 8082/tcp 2>/dev/null || true
+fuser -k 8083/tcp 2>/dev/null || true
+fuser -k 8084/tcp 2>/dev/null || true
 fuser -k 7070/tcp 2>/dev/null || true
 ```
 
@@ -302,17 +308,17 @@ ps aux | grep spring-boot:run
 ### Vérifier les ports en écoute
 
 ```bash
-ss -tuln | grep -E ":8081|:8082|:7070"
+ss -tuln | grep -E ":8081|:8082|:8083|:8084|:7070"
 ```
 
 ---
 
-## 📚 Documentation supplémentaire
+## 🌐 WSDL et Endpoints SOAP
 
 ### WSDL des services
 
 - **Rivage** : http://localhost:8081/hotel-rivage/hotel?wsdl
-- **Opera** : http://localhost:8082/hotel-opera/hotel?wsdl
+- **Opera** : http://localhost:8083/hotel-opera/hotel?wsdl
 
 ### Endpoints SOAP
 
@@ -339,10 +345,10 @@ Les serveurs exposent les opérations suivantes :
 
 Pour vérifier que tout fonctionne :
 
-1. **Serveurs démarrés** :
+1. **WSDL accessibles** :
    ```bash
    curl http://localhost:8081/hotel-rivage/hotel?wsdl
-   curl http://localhost:8082/hotel-opera/hotel?wsdl
+   curl http://localhost:8083/hotel-opera/hotel?wsdl
    echo '{"op":"catalog.get"}' | nc -w 2 localhost 7070
    ```
 
@@ -352,9 +358,9 @@ Pour vérifier que tout fonctionne :
    ls -lh server-rivage/data/hotel-rivage-db.mv.db
    ```
 
-3. **Console H2 accessible** :
-   - http://localhost:8082/h2-console
-   - http://localhost:8081/h2-console
+3. **Consoles H2 accessibles** :
+   - http://localhost:8084/h2-console (Opera)
+   - http://localhost:8082/h2-console (Rivage)
 
 4. **Données synchronisées** :
    ```sql
@@ -377,9 +383,9 @@ HotelSoap/
 │       ├── entity/         # Entités JPA
 │       ├── repository/     # Repositories Spring Data
 │       └── service/        # Services (Database, Sync)
-├── server-opera/           # Serveur hotel Opera (8082)
+├── server-opera/           # Serveur hotel Opera (SOAP:8083, Web:8084)
 │   └── data/               # Base de données H2 Opera
-├── server-rivage/          # Serveur hotel Rivage (8081)
+├── server-rivage/          # Serveur hotel Rivage (SOAP:8081, Web:8082)
 │   └── data/               # Base de données H2 Rivage
 ├── logs/                   # Logs des serveurs
 ├── scripts/                # Scripts utilitaires

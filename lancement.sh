@@ -29,9 +29,11 @@ info "Compilation et packaging (maven)..."
 ./mvnw -DskipTests=true clean package
 
 # 2) Stopper d'anciens processus (libérer les ports)
-info "Libération des ports 8081,8082,7070 si nécessaires..."
+info "Libération des ports 8081,8082,8083,8084,7070 si nécessaires..."
 fuser -k 8081/tcp 2>/dev/null || true
 fuser -k 8082/tcp 2>/dev/null || true
+fuser -k 8083/tcp 2>/dev/null || true
+fuser -k 8084/tcp 2>/dev/null || true
 fuser -k 7070/tcp 2>/dev/null || true
 
 # utilities pour arrêter les serveurs
@@ -101,7 +103,7 @@ wait_wsdl(){
 
 # vérifier les WSDL
 wait_wsdl "http://localhost:8081/hotel-rivage/hotel?wsdl" 90 || true
-wait_wsdl "http://localhost:8082/hotel-opera/hotel?wsdl" 90 || true
+wait_wsdl "http://localhost:8083/hotel-opera/hotel?wsdl" 90 || true
 
 info "Les serveurs devraient être démarrés (consultez les logs dans $LOG_DIR)."
 
