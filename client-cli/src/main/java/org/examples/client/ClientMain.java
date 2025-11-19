@@ -122,7 +122,8 @@ public class ClientMain {
                     List<String> lines = new ArrayList<>();
                     List<String> offerIds = new ArrayList<>();
                     List<String> hotelCodes = new ArrayList<>();
-                    parseOffersForDisplay(srJson, lines, offerIds, hotelCodes);
+                    List<String> imageUrls = new ArrayList<>();
+                    parseOffersForDisplay(srJson, lines, offerIds, hotelCodes, imageUrls);
                     if (lines.isEmpty()) {
                         // Informer l’utilisateur de la réponse vide
                         String arr = MiniJson.getArray(srJson, "offers");
@@ -133,12 +134,14 @@ public class ClientMain {
                     }
                     System.out.println("\nOffres :");
                     for (int i=0;i<lines.size();i++) System.out.println((i+1)+") "+lines.get(i));
+                    System.out.println("(Tapez '?' pour voir les images des chambres)");
                     int idx;
                     while (true) {
-                        System.out.print("\nChoisissez une offre [1-" + lines.size() + "] : ");
+                        System.out.print("\nChoisissez une offre [1-" + lines.size() + "] ou '?' pour images : ");
                         String s = in.nextLine().trim();
+                        if (s.equals("?")) { interactiveImageViewer(in, lines, imageUrls); continue; }
                         try { idx = Integer.parseInt(s) - 1; if (idx < 0 || idx >= lines.size()) { System.out.println("Indice invalide."); continue; } break; }
-                        catch (NumberFormatException e) { System.out.println("Entier attendu."); }
+                        catch (NumberFormatException e) { System.out.println("Entier attendu ou '?' pour mode images."); }
                     }
                     String chosenOfferId = offerIds.get(idx);
                     String chosenHotelCode = hotelCodes.get(idx);
@@ -242,14 +245,17 @@ public class ClientMain {
                         a.getRue()!=null? a.getRue() : "",
                         a.getVille()!=null? a.getVille() : "",
                         a.getPays()!=null? a.getPays() : "")) : "(adresse n/c)";
-                System.out.printf("%d) %s | %d★ %s | %d € | %s%n", i+1, name, stars, catStr, price, addr);
+                System.out.printf("%d) %s | %d★ %s | %d € | %s%s%n", i+1, name, stars, catStr, price, addr,
+                        offerHasImage(o)? " [img disponible]" : "");
             }
+            System.out.println("(Tapez '?' pour voir les images des chambres)");
             int idx;
             while (true) {
-                System.out.print("\nChoisissez une offre [1-" + offers.size() + "] : ");
+                System.out.print("\nChoisissez une offre [1-" + offers.size() + "] ou '?' pour images : ");
                 String s = in.nextLine().trim();
+                if (s.equals("?")) { interactiveImageViewerSOAP(in, offers); continue; }
                 try { idx = Integer.parseInt(s) - 1; if (idx < 0 || idx >= offers.size()) { System.out.println("Indice invalide."); continue; } break; }
-                catch (NumberFormatException e) { System.out.println("Entier attendu."); }
+                catch (NumberFormatException e) { System.out.println("Entier attendu ou '?' pour mode images."); }
             }
             OfferDTO chosen = offers.get(idx);
 
@@ -334,7 +340,7 @@ public class ClientMain {
         return n.toLowerCase(Locale.ROOT).trim();
     }
 
-    static void parseOffersForDisplay(String json, List<String> lines, List<String> offerIds, List<String> hotelCodes) {
+    static void parseOffersForDisplay(String json, List<String> lines, List<String> offerIds, List<String> hotelCodes, List<String> imageUrls) {
         if (json == null || json.isEmpty()) return;
         int idx = 0;
         while (true) {
@@ -348,9 +354,100 @@ public class ClientMain {
             Integer num = MiniJson.getInt(json.substring(hj), "numero"); if (num==null) num=0;
             String offerId = MiniJson.getString(json.substring(hj), "offerId");
             String hotelCode = MiniJson.getString(json.substring(hj), "hotelCode");
-            String line = String.format("%s | %d★ %s | %d € | %s %s, %s (%s)", name, stars, cat, price, num, rue, city, pays);
-            lines.add(line); offerIds.add(offerId!=null?offerId:""); hotelCodes.add(hotelCode!=null?hotelCode:"");
+            String imageUrl = MiniJson.getString(json.substring(hj), "imageUrl");
+            String line = String.format("%s | %d★ %s | %d € | %s %s, %s (%s)%s",
+                    name, stars, cat, price, num, rue, city, pays,
+                    (imageUrl!=null && !imageUrl.isEmpty()? " [img disponible]" : ""));
+            lines.add(line); offerIds.add(offerId!=null?offerId:"" ); hotelCodes.add(hotelCode!=null?hotelCode:"" ); imageUrls.add(imageUrl!=null?imageUrl:"");
             idx = hj + 1;
         }
     }
+
+    private static void interactiveImageViewer(Scanner in, List<String> lines, List<String> imageUrls) {
+        System.out.println("\n=== MODE IMAGES ===");
+        System.out.println("Tapez le numéro d'une offre pour afficher son image, '?' pour revenir, 'q' pour quitter le mode images.");
+        while (true) {
+            for (int i=0;i<lines.size();i++) {
+                String hasImg = (imageUrls.get(i)!=null && !imageUrls.get(i).isEmpty())? "(img)" : "(pas d'image)";
+                System.out.println((i+1)+") "+lines.get(i)+" "+hasImg);
+            }
+            System.out.print("Choix image ('?', 'q', numéro) : ");
+            String s = in.nextLine().trim();
+            if (s.equals("?")) {
+                System.out.println("Retour à la sélection des offres.");
+                return;
+            }
+            if (s.equalsIgnoreCase("q")) {
+                System.out.println("Fin du mode images.");
+                return;
+            }
+            try {
+                int ix = Integer.parseInt(s) - 1;
+                if (ix < 0 || ix >= imageUrls.size()) { System.out.println("Indice invalide."); continue; }
+                String url = imageUrls.get(ix);
+                if (url == null || url.isEmpty()) { System.out.println("Pas d'image pour cette offre."); continue; }
+                showImage(url, ix+1);
+            } catch (NumberFormatException e) {
+                System.out.println("Entrée non reconnue.");
+            }
+        }
+    }
+
+    private static void showImage(String dataUrl, int index) {
+        if (!dataUrl.startsWith("data:image")) {
+            System.out.println("URL image non supportée: " + dataUrl);
+            return;
+        }
+        int comma = dataUrl.indexOf(",");
+        if (comma < 0) { System.out.println("Format data URL invalide."); return; }
+        String meta = dataUrl.substring(5, comma); // image/png;base64
+        boolean b64 = meta.contains("base64");
+        String b64data = dataUrl.substring(comma+1);
+        try {
+            byte[] bytes = b64? Base64.getDecoder().decode(b64data) : b64data.getBytes();
+            java.nio.file.Path p = java.nio.file.Files.createTempFile("room-"+index+"-", ".png");
+            java.nio.file.Files.write(p, bytes);
+            System.out.println("Image sauvegardée: " + p + " ("+bytes.length+" octets)");
+            String autoOpen = System.getProperty("client.image.open", "true");
+            if ("true".equalsIgnoreCase(autoOpen)) {
+                try {
+                    new ProcessBuilder("xdg-open", p.toString()).start();
+                    System.out.println("Ouverture de l'image dans le visualiseur système...");
+                } catch (Exception e) {
+                    System.out.println("Impossible d'ouvrir automatiquement: " + e.getMessage());
+                }
+            } else {
+                System.out.println("Ouverture automatique désactivée (client.image.open=false).");
+            }
+        } catch (Exception e) {
+            System.out.println("Erreur génération image: " + e.getMessage());
+        }
+    }
+
+    private static boolean offerHasImage(OfferDTO o) {
+        try { java.lang.reflect.Field f = o.getClass().getDeclaredField("imageUrl"); f.setAccessible(true); Object v = f.get(o); return v instanceof String && !((String)v).isEmpty(); } catch(Exception e){ return false; }
+    }
+    private static String getOfferImage(OfferDTO o) {
+        try { java.lang.reflect.Field f = o.getClass().getDeclaredField("imageUrl"); f.setAccessible(true); Object v = f.get(o); return v instanceof String ? (String)v : null; } catch(Exception e){ return null; }
+    }
+    private static void interactiveImageViewerSOAP(Scanner in, List<OfferDTO> offers) {
+        System.out.println("\n=== MODE IMAGES (SOAP direct) ===");
+        System.out.println("Tapez le numéro pour afficher l'image, '?' pour revenir, 'q' pour quitter.");
+        while (true) {
+            for (int i=0;i<offers.size();i++) {
+                System.out.println((i+1)+") "+(offers.get(i).getHotelName()!=null?offers.get(i).getHotelName():"(inconnu)")+" room="+roomNum(offers.get(i))+" " + (offerHasImage(offers.get(i))?"(img)":"(pas d'image)"));
+            }
+            System.out.print("Choix image ('?', 'q', numéro) : ");
+            String s = in.nextLine().trim();
+            if (s.equals("?")) { System.out.println("Retour à la sélection des offres."); return; }
+            if (s.equalsIgnoreCase("q")) { System.out.println("Fin du mode images."); return; }
+            try {
+                int ix = Integer.parseInt(s)-1; if (ix<0 || ix>=offers.size()) { System.out.println("Indice invalide."); continue; }
+                String img = getOfferImage(offers.get(ix));
+                if (img==null || img.isEmpty()) { System.out.println("Pas d'image."); continue; }
+                showImage(img, ix+1);
+            } catch(NumberFormatException e){ System.out.println("Entrée non reconnue."); }
+        }
+    }
+    private static int roomNum(OfferDTO o){ try { return (o.getRoom()!=null)? o.getRoom().getNumero() : -1; } catch(Exception e){ return -1; } }
 }

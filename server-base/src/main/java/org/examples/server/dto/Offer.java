@@ -25,6 +25,10 @@ public class Offer {
     public Integer roomNumber;
     public Integer nbLits;
 
+    // Nouveau: URL publique de l'image de la chambre
+    @XmlElement
+    public String imageUrl;
+
     public String getOfferId(){ return offerId; }
     public void setOfferId(String id){ this.offerId = id; }
     public String getHotelName(){ return hotelName; }
@@ -41,4 +45,7 @@ public class Offer {
     public void setPrixTotal(int p){ this.prixTotal = p; }
     public String getAgenceApplied(){ return agenceApplied; }
     public void setAgenceApplied(String a){ this.agenceApplied = a; }
+
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }

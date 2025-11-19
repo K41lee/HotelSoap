@@ -133,6 +133,8 @@ public class AgencyService {
             m.put("agenceApplied", o.agenceApplied);
             m.put("offerId", o.offerId);
             m.put("hotelCode", p.code);
+            // nouveau: URL d'image
+            m.put("imageUrl", o.imageUrl);
             offers.add(m);
           }
         }

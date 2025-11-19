@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -35,6 +36,8 @@ public class HotelServiceImpl implements HotelService {
     public static final String LOG_MARKER = "UNIQUE_MARKER_XYZ";
     private static final Logger logger = LoggerFactory.getLogger(HotelServiceImpl.class);
 
+    @Value("${server.port:8080}")
+    private int serverPort;
     // rendu non-final pour injection via setter
     private DataFactory factory = DataFactory.rivage();
 
@@ -123,6 +126,25 @@ public class HotelServiceImpl implements HotelService {
                 criteria.nbPersonnes,
                 criteria.agence
         );
+        if (matches.isEmpty() && criteria.ville != null && !criteria.ville.trim().isEmpty()) {
+            String normQuery = normalize(criteria.ville);
+            for (Impl.Hotel h : gestionnaire.getHotels()) {
+                if (h.getAdresse()!=null) {
+                    String normHotelCity = normalize(h.getAdresse().getVille());
+                    if (normHotelCity.startsWith(normQuery) || normQuery.startsWith(normHotelCity)) {
+                        logger.info("[FUZZY] ville='{}' aucune offre trouvée, tentative avec ville réelle='{}'", criteria.ville, h.getAdresse().getVille());
+                        matches = gestionnaire.findMatchReservation(
+                                h.getAdresse().getVille(), from, to,
+                                criteria.prixMin, criteria.prixMax,
+                                catEnum, criteria.nbEtoiles != null ? criteria.nbEtoiles : null,
+                                criteria.nbPersonnes,
+                                criteria.agence
+                        );
+                        break;
+                    }
+                }
+            }
+        }
         logger.info("[GEST] returned {} raw offers", matches.size());
         OfferList list = new OfferList();
         List<org.examples.server.dto.Offer> dto = new ArrayList<>();
@@ -152,8 +174,11 @@ public class HotelServiceImpl implements HotelService {
             int base = o.prixTotal() > 0 ? o.prixTotal() : (int) Math.round(c.getPrixParNuit() * nights);
             of.prixTotal = base;
             of.agenceApplied = criteria.agence;
+            // Image: data URL PNG placeholder (aucun serveur statique requis)
+            String hotelKey = normalize(h.getNom());
+            of.imageUrl = generateImageDataUrl(hotelKey, c.getNumero());
             dto.add(of);
-            logger.info("[MAP] offerId={} hotel='{}' room={} lits={} price={} nights={} city='{}'", of.offerId, of.hotelName, of.roomNumber, of.nbLits, of.prixTotal, nights, of.address!=null? of.address.ville: "?");
+            logger.info("[MAP] offerId={} hotel='{}' room={} lits={} price={} nights={} city='{}' imageUrl='{}'", of.offerId, of.hotelName, of.roomNumber, of.nbLits, of.prixTotal, nights, of.address!=null? of.address.ville: "?", (of.imageUrl!=null? (of.imageUrl.length()+" bytes dataUrl") : "null"));
         }
         list.setOffers(dto);
         SearchOffersResponse resp = new SearchOffersResponse(); resp.setOffers(list);
@@ -276,6 +301,13 @@ public class HotelServiceImpl implements HotelService {
         return n;
     }
 
+    private String envPath() {
+        try {
+            String v = System.getProperty("soap.path");
+            return v;
+        } catch (Throwable t) { return null; }
+    }
+
     @Override
     public Catalog getCatalog() {
         Catalog c = new Catalog();
@@ -294,5 +326,37 @@ public class HotelServiceImpl implements HotelService {
             logger.info("[RESP] getCatalog (fallback) name={}", c.getName());
         }
         return c;
+    }
+
+    private static String generateImageDataUrl(String hotelKey, int roomNumber) {
+        try {
+            java.awt.image.BufferedImage img = drawPlaceholder(hotelKey, roomNumber);
+            java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
+            javax.imageio.ImageIO.write(img, "png", baos);
+            String b64 = java.util.Base64.getEncoder().encodeToString(baos.toByteArray());
+            return "data:image/png;base64," + b64;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private static java.awt.image.BufferedImage drawPlaceholder(String hotelKey, int roomNumber) {
+        int w = 480, h = 270;
+        java.awt.image.BufferedImage img = new java.awt.image.BufferedImage(w, h, java.awt.image.BufferedImage.TYPE_INT_ARGB);
+        java.awt.Graphics2D g = img.createGraphics();
+        try {
+            g.setColor(new java.awt.Color(0x33, 0x55, 0x88));
+            g.fillRect(0, 0, w, h);
+            g.setColor(java.awt.Color.WHITE);
+            g.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 28));
+            String line1 = hotelKey;
+            String line2 = "Room #" + roomNumber;
+            java.awt.FontMetrics fm = g.getFontMetrics();
+            int y = h/2 - 10;
+            g.drawString(line1, (w - fm.stringWidth(line1))/2, y);
+            y += 36;
+            g.drawString(line2, (w - fm.stringWidth(line2))/2, y);
+        } finally { g.dispose(); }
+        return img;
     }
 }
