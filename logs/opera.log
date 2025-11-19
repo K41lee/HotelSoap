@@ -1,29 +1,30 @@
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] ----------------< org.examples:hotel-server-soap-opera >----------------
-[INFO] Building hotel-server-soap-opera 1.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:2.7.12:run (default-cli) > test-compile @ hotel-server-soap-opera >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ hotel-server-soap-opera ---
-[INFO] Copying 2 resources from src/main/resources to target/classes
-[INFO] 
-[INFO] --- compiler:3.13.0:compile (default-compile) @ hotel-server-soap-opera ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ hotel-server-soap-opera ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hotel-server-soap-opera ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:2.7.12:run (default-cli) < test-compile @ hotel-server-soap-opera <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:2.7.12:run (default-cli) @ hotel-server-soap-opera ---
-[INFO] Attaching agents: []
+nohup: les entrées sont ignorées
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m----------------< [0;36morg.examples:hotel-server-soap-opera[0;1m >----------------[m
+[[1;34mINFO[m] [1mBuilding hotel-server-soap-opera 1.0.1-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mspring-boot-maven-plugin:2.7.12:run[m [1m(default-cli)[0;1m > [0;1mtest-compile[m @ [36mhotel-server-soap-opera[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mhotel-server-soap-opera[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Copying 2 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:compile[m [1m(default-compile)[m @ [36mhotel-server-soap-opera[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mhotel-server-soap-opera[0;1m ---[m
+[[1;34mINFO[m] Not copying test resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.13.0:testCompile[m [1m(default-testCompile)[m @ [36mhotel-server-soap-opera[0;1m ---[m
+[[1;34mINFO[m] Not compiling test sources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:2.7.12:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mhotel-server-soap-opera[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:2.7.12:run[m [1m(default-cli)[m @ [36mhotel-server-soap-opera[0;1m ---[m
+[[1;34mINFO[m] Attaching agents: []
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -33,60 +34,236 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-19 16:33:50.211  INFO 374439 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 374439 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
-2025-11-19 16:33:50.213  INFO 374439 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-19 16:33:50.435  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 16:33:50.435  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 16:33:50.435  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-2025-11-19 16:33:50.469  INFO 374439 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 0.411 seconds (JVM running for 0.623)
+2025-11-19 19:32:06.883  INFO 421153 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 421153 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
+2025-11-19 19:32:06.884  INFO 421153 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-11-19 19:32:07.167  INFO 421153 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 19:32:07.193  INFO 421153 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 4 JPA repository interfaces.
+2025-11-19 19:32:07.445  INFO 421153 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2025-11-19 19:32:07.450  INFO 421153 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-19 19:32:07.450  INFO 421153 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-11-19 19:32:07.487  INFO 421153 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-19 19:32:07.487  INFO 421153 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 583 ms
+2025-11-19 19:32:07.500  INFO 421153 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-19 19:32:07.626  INFO 421153 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-19 19:32:07.638  INFO 421153 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/hotel-opera-db'
+2025-11-19 19:32:07.756  INFO 421153 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 19:32:07.793  INFO 421153 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-11-19 19:32:07.880  INFO 421153 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-11-19 19:32:07.973  INFO 421153 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2025-11-19 19:32:08.387  INFO 421153 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-11-19 19:32:08.392  INFO 421153 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 19:32:08.755  INFO 421153 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Starting synchronization from domain to database...
+Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2_2_, hotelentit0_.nb_etoiles as nb_etoil3_2_, hotelentit0_.nom as nom4_2_, hotelentit0_.numero as numero5_2_, hotelentit0_.pays as pays6_2_, hotelentit0_.rue as rue7_2_, hotelentit0_.ville as ville8_2_ from hotels hotelentit0_ where hotelentit0_.nom=?
+2025-11-19 19:32:08.799  INFO 421153 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Hotel 'Luxe Opéra' already exists in DB
+2025-11-19 19:32:08.800  INFO 421153 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Synchronization completed
+2025-11-19 19:32:08.804  INFO 421153 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-19 19:32:08.804  INFO 421153 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-19 19:32:08.805  INFO 421153 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
+2025-11-19 19:32:08.822  WARN 421153 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 19:32:08.969  INFO 421153 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2025-11-19 19:32:08.974  INFO 421153 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 2.249 seconds (JVM running for 2.432)
 [BEAN-DUMPER] Listing beans in ApplicationContext...
-[BEAN-DUMPER] Total beans: 46
-[BEAN-DUMPER] bean[0] = applicationAvailability
-[BEAN-DUMPER] bean[1] = applicationTaskExecutor
-[BEAN-DUMPER] bean[2] = beanDumper
-[BEAN-DUMPER] bean[3] = forceAutoProxyCreatorToUseClassProxying
-[BEAN-DUMPER] bean[4] = gestionnaireInit
-[BEAN-DUMPER] bean[5] = hotelAgencyServiceImpl
-[BEAN-DUMPER] bean[6] = hotelServerApplication
-[BEAN-DUMPER] bean[7] = hotelServiceDebugImpl
-[BEAN-DUMPER] bean[8] = hotelServiceImpl
-[BEAN-DUMPER] bean[9] = lifecycleProcessor
-[BEAN-DUMPER] bean[10] = operaConfig
-[BEAN-DUMPER] bean[11] = operaInitConfig
-[BEAN-DUMPER] bean[12] = org.springframework.aop.config.internalAutoProxyCreator
-[BEAN-DUMPER] bean[13] = org.springframework.boot.autoconfigure.AutoConfigurationPackages
-[BEAN-DUMPER] bean[14] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration
-[BEAN-DUMPER] bean[15] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$ClassProxyingConfiguration
-[BEAN-DUMPER] bean[16] = org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
-[BEAN-DUMPER] bean[17] = org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
-[BEAN-DUMPER] bean[18] = org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
-[BEAN-DUMPER] bean[19] = org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
-[BEAN-DUMPER] bean[20] = org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
-[BEAN-DUMPER] bean[21] = org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
-[BEAN-DUMPER] bean[22] = org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration
-[BEAN-DUMPER] bean[23] = org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration
-[BEAN-DUMPER] bean[24] = org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration
-[BEAN-DUMPER] bean[25] = org.springframework.boot.context.internalConfigurationPropertiesBinder
-[BEAN-DUMPER] bean[26] = org.springframework.boot.context.internalConfigurationPropertiesBinderFactory
-[BEAN-DUMPER] bean[27] = org.springframework.boot.context.properties.BoundConfigurationProperties
-[BEAN-DUMPER] bean[28] = org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor
-[BEAN-DUMPER] bean[29] = org.springframework.boot.context.properties.EnableConfigurationPropertiesRegistrar.methodValidationExcludeFilter
-[BEAN-DUMPER] bean[30] = org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor
-[BEAN-DUMPER] bean[31] = org.springframework.context.annotation.internalAutowiredAnnotationProcessor
-[BEAN-DUMPER] bean[32] = org.springframework.context.annotation.internalCommonAnnotationProcessor
-[BEAN-DUMPER] bean[33] = org.springframework.context.annotation.internalConfigurationAnnotationProcessor
-[BEAN-DUMPER] bean[34] = org.springframework.context.event.internalEventListenerFactory
-[BEAN-DUMPER] bean[35] = org.springframework.context.event.internalEventListenerProcessor
-[BEAN-DUMPER] bean[36] = propertySourcesPlaceholderConfigurer
-[BEAN-DUMPER] bean[37] = publisher
-[BEAN-DUMPER] bean[38] = serverOperaApplication
-[BEAN-DUMPER] bean[39] = spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties
-[BEAN-DUMPER] bean[40] = spring.lifecycle-org.springframework.boot.autoconfigure.context.LifecycleProperties
-[BEAN-DUMPER] bean[41] = spring.sql.init-org.springframework.boot.autoconfigure.sql.init.SqlInitializationProperties
-[BEAN-DUMPER] bean[42] = spring.task.execution-org.springframework.boot.autoconfigure.task.TaskExecutionProperties
-[BEAN-DUMPER] bean[43] = spring.task.scheduling-org.springframework.boot.autoconfigure.task.TaskSchedulingProperties
-[BEAN-DUMPER] bean[44] = taskExecutorBuilder
-[BEAN-DUMPER] bean[45] = taskSchedulerBuilder
+[BEAN-DUMPER] Total beans: 214
+[BEAN-DUMPER] bean[0] = agenceRepository
+[BEAN-DUMPER] bean[1] = applicationAvailability
+[BEAN-DUMPER] bean[2] = applicationTaskExecutor
+[BEAN-DUMPER] bean[3] = basicErrorController
+[BEAN-DUMPER] bean[4] = beanDumper
+[BEAN-DUMPER] bean[5] = beanNameHandlerMapping
+[BEAN-DUMPER] bean[6] = beanNameViewResolver
+[BEAN-DUMPER] bean[7] = chambreRepository
+[BEAN-DUMPER] bean[8] = characterEncodingFilter
+[BEAN-DUMPER] bean[9] = conventionErrorViewResolver
+[BEAN-DUMPER] bean[10] = dataSource
+[BEAN-DUMPER] bean[11] = dataSourceScriptDatabaseInitializer
+[BEAN-DUMPER] bean[12] = dataSyncService
+[BEAN-DUMPER] bean[13] = defaultServletHandlerMapping
+[BEAN-DUMPER] bean[14] = defaultViewResolver
+[BEAN-DUMPER] bean[15] = dispatcherServlet
+[BEAN-DUMPER] bean[16] = dispatcherServletRegistration
+[BEAN-DUMPER] bean[17] = emBeanDefinitionRegistrarPostProcessor
+[BEAN-DUMPER] bean[18] = entityManagerFactory
+[BEAN-DUMPER] bean[19] = entityManagerFactoryBuilder
+[BEAN-DUMPER] bean[20] = error
+[BEAN-DUMPER] bean[21] = errorAttributes
+[BEAN-DUMPER] bean[22] = errorPageCustomizer
+[BEAN-DUMPER] bean[23] = errorPageRegistrarBeanPostProcessor
+[BEAN-DUMPER] bean[24] = flashMapManager
+[BEAN-DUMPER] bean[25] = formContentFilter
+[BEAN-DUMPER] bean[26] = gestionnaireInit
+[BEAN-DUMPER] bean[27] = h2Console
+[BEAN-DUMPER] bean[28] = handlerExceptionResolver
+[BEAN-DUMPER] bean[29] = handlerFunctionAdapter
+[BEAN-DUMPER] bean[30] = hikariPoolDataSourceMetadataProvider
+[BEAN-DUMPER] bean[31] = hotelAgencyServiceImpl
+[BEAN-DUMPER] bean[32] = hotelDatabaseService
+[BEAN-DUMPER] bean[33] = hotelRepository
+[BEAN-DUMPER] bean[34] = hotelServerApplication
+[BEAN-DUMPER] bean[35] = hotelServiceDebugImpl
+[BEAN-DUMPER] bean[36] = hotelServiceImpl
+[BEAN-DUMPER] bean[37] = httpRequestHandlerAdapter
+[BEAN-DUMPER] bean[38] = jacksonGeoModule
+[BEAN-DUMPER] bean[39] = jacksonObjectMapper
+[BEAN-DUMPER] bean[40] = jacksonObjectMapperBuilder
+[BEAN-DUMPER] bean[41] = jdbcTemplate
+[BEAN-DUMPER] bean[42] = jpaContext
+[BEAN-DUMPER] bean[43] = jpaMappingContext
+[BEAN-DUMPER] bean[44] = jpaVendorAdapter
+[BEAN-DUMPER] bean[45] = jsonComponentModule
+[BEAN-DUMPER] bean[46] = jsonMixinModule
+[BEAN-DUMPER] bean[47] = lifecycleProcessor
+[BEAN-DUMPER] bean[48] = localeCharsetMappingsCustomizer
+[BEAN-DUMPER] bean[49] = localeResolver
+[BEAN-DUMPER] bean[50] = mappingJackson2HttpMessageConverter
+[BEAN-DUMPER] bean[51] = messageConverters
+[BEAN-DUMPER] bean[52] = multipartConfigElement
+[BEAN-DUMPER] bean[53] = multipartResolver
+[BEAN-DUMPER] bean[54] = mvcContentNegotiationManager
+[BEAN-DUMPER] bean[55] = mvcConversionService
+[BEAN-DUMPER] bean[56] = mvcHandlerMappingIntrospector
+[BEAN-DUMPER] bean[57] = mvcPathMatcher
+[BEAN-DUMPER] bean[58] = mvcPatternParser
+[BEAN-DUMPER] bean[59] = mvcResourceUrlProvider
+[BEAN-DUMPER] bean[60] = mvcUriComponentsContributor
+[BEAN-DUMPER] bean[61] = mvcUrlPathHelper
+[BEAN-DUMPER] bean[62] = mvcValidator
+[BEAN-DUMPER] bean[63] = mvcViewResolver
+[BEAN-DUMPER] bean[64] = namedParameterJdbcTemplate
+[BEAN-DUMPER] bean[65] = openEntityManagerInViewInterceptor
+[BEAN-DUMPER] bean[66] = openEntityManagerInViewInterceptorConfigurer
+[BEAN-DUMPER] bean[67] = operaConfig
+[BEAN-DUMPER] bean[68] = operaInitConfig
+[BEAN-DUMPER] bean[69] = org.springframework.aop.config.internalAutoProxyCreator
+[BEAN-DUMPER] bean[70] = org.springframework.boot.autoconfigure.AutoConfigurationPackages
+[BEAN-DUMPER] bean[71] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration
+[BEAN-DUMPER] bean[72] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$AspectJAutoProxyingConfiguration
+[BEAN-DUMPER] bean[73] = org.springframework.boot.autoconfigure.aop.AopAutoConfiguration$AspectJAutoProxyingConfiguration$CglibAutoProxyConfiguration
+[BEAN-DUMPER] bean[74] = org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
+[BEAN-DUMPER] bean[75] = org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
+[BEAN-DUMPER] bean[76] = org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
+[BEAN-DUMPER] bean[77] = org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
+[BEAN-DUMPER] bean[78] = org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration
+[BEAN-DUMPER] bean[79] = org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+[BEAN-DUMPER] bean[80] = org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration
+[BEAN-DUMPER] bean[81] = org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration
+[BEAN-DUMPER] bean[82] = org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration
+[BEAN-DUMPER] bean[83] = org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration$StringHttpMessageConverterConfiguration
+[BEAN-DUMPER] bean[84] = org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration
+[BEAN-DUMPER] bean[85] = org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration$MappingJackson2HttpMessageConverterConfiguration
+[BEAN-DUMPER] bean[86] = org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
+[BEAN-DUMPER] bean[87] = org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory
+[BEAN-DUMPER] bean[88] = org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration
+[BEAN-DUMPER] bean[89] = org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$Jackson2ObjectMapperBuilderCustomizerConfiguration
+[BEAN-DUMPER] bean[90] = org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperBuilderConfiguration
+[BEAN-DUMPER] bean[91] = org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperConfiguration
+[BEAN-DUMPER] bean[92] = org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$ParameterNamesModuleConfiguration
+[BEAN-DUMPER] bean[93] = org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+[BEAN-DUMPER] bean[94] = org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$PooledDataSourceConfiguration
+[BEAN-DUMPER] bean[95] = org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari
+[BEAN-DUMPER] bean[96] = org.springframework.boot.autoconfigure.jdbc.DataSourceJmxConfiguration
+[BEAN-DUMPER] bean[97] = org.springframework.boot.autoconfigure.jdbc.DataSourceJmxConfiguration$Hikari
+[BEAN-DUMPER] bean[98] = org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+[BEAN-DUMPER] bean[99] = org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration$JdbcTransactionManagerConfiguration
+[BEAN-DUMPER] bean[100] = org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration
+[BEAN-DUMPER] bean[101] = org.springframework.boot.autoconfigure.jdbc.JdbcTemplateConfiguration
+[BEAN-DUMPER] bean[102] = org.springframework.boot.autoconfigure.jdbc.NamedParameterJdbcTemplateConfiguration
+[BEAN-DUMPER] bean[103] = org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration
+[BEAN-DUMPER] bean[104] = org.springframework.boot.autoconfigure.jdbc.metadata.DataSourcePoolMetadataProvidersConfiguration$HikariPoolDataSourceMetadataProviderConfiguration
+[BEAN-DUMPER] bean[105] = org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+[BEAN-DUMPER] bean[106] = org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration
+[BEAN-DUMPER] bean[107] = org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration
+[BEAN-DUMPER] bean[108] = org.springframework.boot.autoconfigure.sql.init.DataSourceInitializationConfiguration
+[BEAN-DUMPER] bean[109] = org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration
+[BEAN-DUMPER] bean[110] = org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration
+[BEAN-DUMPER] bean[111] = org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration
+[BEAN-DUMPER] bean[112] = org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration
+[BEAN-DUMPER] bean[113] = org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$EnableTransactionManagementConfiguration
+[BEAN-DUMPER] bean[114] = org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$EnableTransactionManagementConfiguration$CglibAutoProxyConfiguration
+[BEAN-DUMPER] bean[115] = org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration$TransactionTemplateConfiguration
+[BEAN-DUMPER] bean[116] = org.springframework.boot.autoconfigure.transaction.jta.JtaAutoConfiguration
+[BEAN-DUMPER] bean[117] = org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration
+[BEAN-DUMPER] bean[118] = org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration
+[BEAN-DUMPER] bean[119] = org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration$TomcatWebServerFactoryCustomizerConfiguration
+[BEAN-DUMPER] bean[120] = org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration
+[BEAN-DUMPER] bean[121] = org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration$DispatcherServletConfiguration
+[BEAN-DUMPER] bean[122] = org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration
+[BEAN-DUMPER] bean[123] = org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration
+[BEAN-DUMPER] bean[124] = org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration
+[BEAN-DUMPER] bean[125] = org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration
+[BEAN-DUMPER] bean[126] = org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryConfiguration$EmbeddedTomcat
+[BEAN-DUMPER] bean[127] = org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
+[BEAN-DUMPER] bean[128] = org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration
+[BEAN-DUMPER] bean[129] = org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter
+[BEAN-DUMPER] bean[130] = org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+[BEAN-DUMPER] bean[131] = org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration$DefaultErrorViewResolverConfiguration
+[BEAN-DUMPER] bean[132] = org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration
+[BEAN-DUMPER] bean[133] = org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration
+[BEAN-DUMPER] bean[134] = org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration$TomcatWebSocketConfiguration
+[BEAN-DUMPER] bean[135] = org.springframework.boot.context.internalConfigurationPropertiesBinder
+[BEAN-DUMPER] bean[136] = org.springframework.boot.context.internalConfigurationPropertiesBinderFactory
+[BEAN-DUMPER] bean[137] = org.springframework.boot.context.properties.BoundConfigurationProperties
+[BEAN-DUMPER] bean[138] = org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor
+[BEAN-DUMPER] bean[139] = org.springframework.boot.context.properties.EnableConfigurationPropertiesRegistrar.methodValidationExcludeFilter
+[BEAN-DUMPER] bean[140] = org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor
+[BEAN-DUMPER] bean[141] = org.springframework.context.annotation.internalAutowiredAnnotationProcessor
+[BEAN-DUMPER] bean[142] = org.springframework.context.annotation.internalCommonAnnotationProcessor
+[BEAN-DUMPER] bean[143] = org.springframework.context.annotation.internalConfigurationAnnotationProcessor
+[BEAN-DUMPER] bean[144] = org.springframework.context.annotation.internalPersistenceAnnotationProcessor
+[BEAN-DUMPER] bean[145] = org.springframework.context.event.internalEventListenerFactory
+[BEAN-DUMPER] bean[146] = org.springframework.context.event.internalEventListenerProcessor
+[BEAN-DUMPER] bean[147] = org.springframework.data.jpa.repository.support.JpaEvaluationContextExtension
+[BEAN-DUMPER] bean[148] = org.springframework.data.jpa.util.JpaMetamodelCacheCleanup
+[BEAN-DUMPER] bean[149] = org.springframework.data.web.config.ProjectingArgumentResolverRegistrar
+[BEAN-DUMPER] bean[150] = org.springframework.data.web.config.SpringDataJacksonConfiguration
+[BEAN-DUMPER] bean[151] = org.springframework.data.web.config.SpringDataWebConfiguration
+[BEAN-DUMPER] bean[152] = org.springframework.orm.jpa.SharedEntityManagerCreator#0
+[BEAN-DUMPER] bean[153] = org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration
+[BEAN-DUMPER] bean[154] = org.springframework.transaction.config.internalTransactionAdvisor
+[BEAN-DUMPER] bean[155] = org.springframework.transaction.config.internalTransactionalEventListenerFactory
+[BEAN-DUMPER] bean[156] = pageableCustomizer
+[BEAN-DUMPER] bean[157] = pageableResolver
+[BEAN-DUMPER] bean[158] = parameterNamesModule
+[BEAN-DUMPER] bean[159] = persistenceExceptionTranslationPostProcessor
+[BEAN-DUMPER] bean[160] = platformTransactionManagerCustomizers
+[BEAN-DUMPER] bean[161] = preserveErrorControllerTargetClassPostProcessor
+[BEAN-DUMPER] bean[162] = projectingArgumentResolverBeanPostProcessor
+[BEAN-DUMPER] bean[163] = propertySourcesPlaceholderConfigurer
+[BEAN-DUMPER] bean[164] = publisher
+[BEAN-DUMPER] bean[165] = requestContextFilter
+[BEAN-DUMPER] bean[166] = requestMappingHandlerAdapter
+[BEAN-DUMPER] bean[167] = requestMappingHandlerMapping
+[BEAN-DUMPER] bean[168] = reservationRepository
+[BEAN-DUMPER] bean[169] = resourceHandlerMapping
+[BEAN-DUMPER] bean[170] = restTemplateBuilder
+[BEAN-DUMPER] bean[171] = restTemplateBuilderConfigurer
+[BEAN-DUMPER] bean[172] = routerFunctionMapping
+[BEAN-DUMPER] bean[173] = server-org.springframework.boot.autoconfigure.web.ServerProperties
+[BEAN-DUMPER] bean[174] = serverOperaApplication
+[BEAN-DUMPER] bean[175] = servletWebServerFactoryCustomizer
+[BEAN-DUMPER] bean[176] = simpleControllerHandlerAdapter
+[BEAN-DUMPER] bean[177] = sortCustomizer
+[BEAN-DUMPER] bean[178] = sortResolver
+[BEAN-DUMPER] bean[179] = spring.data.web-org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties
+[BEAN-DUMPER] bean[180] = spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties
+[BEAN-DUMPER] bean[181] = spring.h2.console-org.springframework.boot.autoconfigure.h2.H2ConsoleProperties
+[BEAN-DUMPER] bean[182] = spring.info-org.springframework.boot.autoconfigure.info.ProjectInfoProperties
+[BEAN-DUMPER] bean[183] = spring.jackson-org.springframework.boot.autoconfigure.jackson.JacksonProperties
+[BEAN-DUMPER] bean[184] = spring.jdbc-org.springframework.boot.autoconfigure.jdbc.JdbcProperties
+[BEAN-DUMPER] bean[185] = spring.jpa-org.springframework.boot.autoconfigure.orm.jpa.JpaProperties
+[BEAN-DUMPER] bean[186] = spring.jpa.hibernate-org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties
+[BEAN-DUMPER] bean[187] = spring.lifecycle-org.springframework.boot.autoconfigure.context.LifecycleProperties
+[BEAN-DUMPER] bean[188] = spring.mvc-org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties
+[BEAN-DUMPER] bean[189] = spring.servlet.multipart-org.springframework.boot.autoconfigure.web.servlet.MultipartProperties
+[BEAN-DUMPER] bean[190] = spring.sql.init-org.springframework.boot.autoconfigure.sql.init.SqlInitializationProperties
+[BEAN-DUMPER] bean[191] = spring.task.execution-org.springframework.boot.autoconfigure.task.TaskExecutionProperties
+[BEAN-DUMPER] bean[192] = spring.task.scheduling-org.springframework.boot.autoconfigure.task.TaskSchedulingProperties
+[BEAN-DUMPER] bean[193] = spring.transaction-org.springframework.boot.autoconfigure.transaction.TransactionProperties
+[BEAN-DUMPER] bean[194] = spring.web-org.springframework.boot.autoconfigure.web.WebProperties
+[BEAN-DUMPER] bean[195] = standardJacksonObjectMapperBuilderCustomizer
+[BEAN-DUMPER] bean[196] = stringHttpMessageConverter
+[BEAN-DUMPER] bean[197] = taskExecutorBuilder
+[BEAN-DUMPER] bean[198] = taskSchedulerBuilder
+[BEAN-DUMPER] bean[199] = themeResolver
 [BEAN-DUMPER] HotelAgencyService beans:
 [BEAN-DUMPER]   hotelAgencyServiceImpl -> org.examples.server.impl.HotelAgencyServiceImpl
 [BEAN-DUMPER] HotelService beans:
@@ -94,49 +271,94 @@
 [BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
 [BEAN-DUMPER] End of bean dump.
 [SOAP] Publisher démarré — recherche des beans de service...
-2025-11-19 16:33:51.020  INFO 374439 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
-[SOAP] HotelAgencyService bean 'hotelAgencyServiceImpl' publié sur http://0.0.0.0:8082/hotel-opera/agency?wsdl
+2025-11-19 19:32:09.648  INFO 421153 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+[SOAP] Échec publication HotelAgencyService bean 'hotelAgencyServiceImpl' sur http://0.0.0.0:8082/hotel-opera/agency: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
+	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
+	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
+	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
+	at org.examples.server.soap.Publisher.run(Publisher.java:63)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at org.examples.serveropera.ServerOperaApplication.main(ServerOperaApplication.java:10)
+Caused by: java.net.BindException: Adresse déjà utilisée
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:461)
+	at sun.nio.ch.Net.bind(Net.java:453)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85)
+	at sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:141)
+	at sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at com.sun.net.httpserver.HttpServer.create(HttpServer.java:130)
+	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:85)
+	... 11 more
 [DIAG] HotelService beans détectés: [hotelServiceDebugImpl, hotelServiceImpl]
 [INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceDebugImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 16:33:51.077  INFO 374439 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
-[SOAP] HotelService bean 'hotelServiceDebugImpl' publié sur http://0.0.0.0:8082/hotel-opera/hotel-debug?wsdl
+2025-11-19 19:32:09.740  INFO 421153 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
+[SOAP] Échec publication HotelService bean 'hotelServiceDebugImpl' sur http://0.0.0.0:8082/hotel-opera/hotel-debug: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
+	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
+	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
+	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
+	at org.examples.server.soap.Publisher.run(Publisher.java:115)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at org.examples.serveropera.ServerOperaApplication.main(ServerOperaApplication.java:10)
+Caused by: java.net.BindException: Adresse déjà utilisée
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:461)
+	at sun.nio.ch.Net.bind(Net.java:453)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85)
+	at sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:141)
+	at sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at com.sun.net.httpserver.HttpServer.create(HttpServer.java:130)
+	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:85)
+	... 11 more
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 16:33:51.397  INFO 374439 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-19 16:33:51.407  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 16:33:51.407  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 16:33:51.407  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-[SOAP] HotelService bean 'hotelServiceImpl' publié sur http://0.0.0.0:8082/hotel-opera/hotel?wsdl
-2025-11-19 16:33:53.904  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=0 (from gestionnaire)
-2025-11-19 16:34:06.652  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='operaAgency' ville='Montpellier' arrivee='2025-10-10' depart='2025-10-11' persons=2 prixMin=null prixMax=null cat='null' stars=null
-2025-11-19 16:34:06.656  INFO 374439 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=201 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
-2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Luxe Opéra' room=201 prix=220 agence=<none>
-2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=202 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
-2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Luxe Opéra' room=202 prix=240 agence=<none>
-2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=operaAgency): 2
-2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 2 raw offers
-2025-11-19 16:34:06.704  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|luxeopera|201|2025-10-10|2025-10-11|2 hotel='Luxe Opéra' room=201 lits=2 price=220 nights=1 city='Montpellier' imageUrl='2154 bytes dataUrl'
-2025-11-19 16:34:06.713  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|luxeopera|202|2025-10-10|2025-10-11|2 hotel='Luxe Opéra' room=202 lits=2 price=240 nights=1 city='Montpellier' imageUrl='2174 bytes dataUrl'
-2025-11-19 16:34:06.713  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 2 offers
-2025-11-19 16:35:01.015  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] makeReservation received agence='operaAgency' offerId='OF|luxeopera|201|2025-10-10|2025-10-11|2' hotel='null' room=0 nom='a' prenom='a'
-2025-11-19 16:35:01.016  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=201 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
-2025-11-19 16:35:01.016  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=201 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
-2025-11-19 16:35:01.016  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] réservation ajoutée: hotel='Luxe Opéra' room=201 periode=[2025-10-10..2025-10-11), totalReservations=1
-2025-11-19 16:35:01.016  INFO 374439 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] reservation créée hotel='Luxe Opéra' room=201 periode=[2025-10-10..2025-10-11] client='a a'
-2025-11-19 16:35:01.017  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [TRACK] reservation stored hotel='Luxe Opéra' room=201 from=2025-10-10 to=2025-10-11 totalStored=1
-2025-11-19 16:35:01.018  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] reservation ok ref=LUXE-7a8f345f-81fc-4aae-8b47-72e8d9b34074 hotel='Luxe Opéra' room=201 from=2025-10-10 to=2025-10-11 stored=1 
-2025-11-19 16:35:14.993  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='operaAgency' ville='Montpellier' arrivee='2025-10-10' depart='2025-10-11' persons=2 prixMin=null prixMax=null cat='null' stars=null
-2025-11-19 16:35:14.993  INFO 374439 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] indisponible: room=201 hotel='Luxe Opéra' demande=[2025-10-10..2025-10-11), existing=[2025-10-10..2025-10-11]
-2025-11-19 16:35:14.994  INFO 374439 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=202 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
-2025-11-19 16:35:14.994  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Luxe Opéra' room=202 prix=240 agence=<none>
-2025-11-19 16:35:14.994  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=operaAgency): 1
-2025-11-19 16:35:14.994  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 1 raw offers
-2025-11-19 16:35:15.012  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|luxeopera|202|2025-10-10|2025-10-11|2 hotel='Luxe Opéra' room=202 lits=2 price=240 nights=1 city='Montpellier' imageUrl='2174 bytes dataUrl'
-2025-11-19 16:35:15.012  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 1 offers
-2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] makeReservation received agence='operaAgency' offerId='OF|luxeopera|202|2025-10-10|2025-10-11|2' hotel='null' room=0 nom='a' prenom='a'
-2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=202 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
-2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=202 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
-2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] réservation ajoutée: hotel='Luxe Opéra' room=202 periode=[2025-10-10..2025-10-11), totalReservations=1
-2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] reservation créée hotel='Luxe Opéra' room=202 periode=[2025-10-10..2025-10-11] client='a a'
-2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [TRACK] reservation stored hotel='Luxe Opéra' room=202 from=2025-10-10 to=2025-10-11 totalStored=2
-2025-11-19 16:35:26.257  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] reservation ok ref=LUXE-e3ebfe05-59e0-4555-823a-fdbe28781496 hotel='Luxe Opéra' room=202 from=2025-10-10 to=2025-10-11 stored=2 
+2025-11-19 19:32:09.758  INFO 421153 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
+2025-11-19 19:32:09.764  INFO 421153 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-19 19:32:09.764  INFO 421153 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-19 19:32:09.764  INFO 421153 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
+[SOAP] Échec publication HotelService bean 'hotelServiceImpl' sur http://0.0.0.0:8082/hotel-opera/hotel: com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+com.sun.xml.ws.server.ServerRtException: Erreur d'exécution du serveur : java.net.BindException: Adresse déjà utilisée
+	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:125)
+	at com.sun.xml.ws.transport.http.server.HttpEndpoint.publish(HttpEndpoint.java:49)
+	at com.sun.xml.ws.transport.http.server.EndpointImpl.publish(EndpointImpl.java:218)
+	at com.sun.xml.ws.spi.ProviderImpl.createAndPublishEndpoint(ProviderImpl.java:111)
+	at javax.xml.ws.Endpoint.publish(Endpoint.java:240)
+	at org.examples.server.soap.Publisher.run(Publisher.java:115)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:768)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at org.examples.serveropera.ServerOperaApplication.main(ServerOperaApplication.java:10)
+Caused by: java.net.BindException: Adresse déjà utilisée
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:461)
+	at sun.nio.ch.Net.bind(Net.java:453)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:222)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:85)
+	at sun.net.httpserver.ServerImpl.<init>(ServerImpl.java:141)
+	at sun.net.httpserver.HttpServerImpl.<init>(HttpServerImpl.java:50)
+	at sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:35)
+	at com.sun.net.httpserver.HttpServer.create(HttpServer.java:130)
+	at com.sun.xml.ws.transport.http.server.ServerMgr.createContext(ServerMgr.java:85)
+	... 11 more
+2025-11-19 19:36:39.826  INFO 421153 --- [nio-8082-exec-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-19 19:36:39.827  INFO 421153 --- [nio-8082-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-11-19 19:36:39.827  INFO 421153 --- [nio-8082-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms

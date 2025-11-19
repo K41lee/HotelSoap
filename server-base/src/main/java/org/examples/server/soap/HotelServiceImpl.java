@@ -44,6 +44,9 @@ public class HotelServiceImpl implements HotelService {
     @Autowired(required = false)
     private Gestionnaire gestionnaire; // may be null if not provided by the server module
 
+    @Autowired(required = false)
+    private org.examples.server.service.HotelDatabaseService dbService; // service base de données
+
     public void setDataFactory(DataFactory factory) { this.factory = factory; }
 
     // Permet l'injection programmatique par Publisher si nécessaire
@@ -264,11 +267,50 @@ public class HotelServiceImpl implements HotelService {
         if (!isRoomAvailableLocal(hotel.getNom(), chambre.getNumero(), from, to)) { rc.setSuccess(false); rc.setMessage("Déjà réservé (cache)"); return rc; }
         if (!chambre.isDisponible(from, to)) { rc.setSuccess(false); rc.setMessage("Chambre non disponible"); return rc; }
         Impl.Client client = new Impl.Client(request.nom, request.prenom, request.carte);
+        String ref = null;
+
         try {
             gestionnaire.makeReservation(client, chambre, from, to);
             registerReservation(hotel.getNom(), chambre.getNumero(), from, to);
-        } catch(Exception e){ rc.setSuccess(false); rc.setMessage("Erreur réservation: "+e.getMessage()); return rc; }
-        String ref = hotel.getNom().substring(0, Math.min(4, hotel.getNom().length())).toUpperCase() + "-" + java.util.UUID.randomUUID();
+
+            // Persister la réservation dans la base de données H2
+            if (dbService != null) {
+                try {
+                    final Impl.Chambre finalChambre = chambre;
+                    java.util.Optional<org.examples.server.entity.HotelEntity> hotelEntity =
+                        dbService.findHotelByNom(hotel.getNom());
+
+                    if (hotelEntity.isPresent()) {
+                        java.util.List<org.examples.server.entity.ChambreEntity> chambres =
+                            dbService.findChambresByHotel(hotelEntity.get().getId());
+
+                        org.examples.server.entity.ChambreEntity chambreEntity = chambres.stream()
+                            .filter(c -> c.getNumero() == finalChambre.getNumero())
+                            .findFirst()
+                            .orElse(null);
+
+                        if (chambreEntity != null) {
+                            org.examples.server.entity.ReservationEntity reservation =
+                                dbService.createReservation(chambreEntity, request.nom, request.prenom,
+                                                           request.carte, request.agence, from, to);
+                            ref = reservation.getReference();
+                            logger.info("[DB] Reservation persisted in database with ref={}", ref);
+                        }
+                    }
+                } catch (Exception dbEx) {
+                    logger.warn("[DB] Failed to persist reservation: {}", dbEx.getMessage());
+                }
+            }
+        } catch(Exception e){
+            rc.setSuccess(false);
+            rc.setMessage("Erreur réservation: "+e.getMessage());
+            return rc;
+        }
+
+        if (ref == null) {
+            ref = hotel.getNom().substring(0, Math.min(4, hotel.getNom().length())).toUpperCase() + "-" + java.util.UUID.randomUUID();
+        }
+
         rc.setSuccess(true); rc.setMessage("Réservation confirmée"); rc.setReference(ref);
         logger.info("[RESP] reservation ok ref={} hotel='{}' room={} from={} to={} stored={} ", ref, hotel.getNom(), chambre.getNumero(), from, to, reservationsByHotel.get(normalize(hotel.getNom())).size());
         return rc;

@@ -26,6 +26,13 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
+        <!-- Spring Boot Web (pour la console H2) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
         <!-- JAX-WS (Metro 2.x compatible Java 8) -->
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
@@ -50,6 +57,21 @@
             <groupId>org.examples</groupId>
             <artifactId>domain</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- H2 Database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.214</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Spring Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 

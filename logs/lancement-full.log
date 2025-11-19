@@ -1,0 +1,220 @@
+[INFO] Compilation et packaging (maven)...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] domain                                                             [jar]
+[INFO] hotel-parent                                                       [pom]
+[INFO] hotel-server-soap                                                  [jar]
+[INFO] hotel-server-soap-opera                                            [jar]
+[INFO] hotel-server-soap-rivage                                           [jar]
+[INFO] client-cli                                                         [jar]
+[INFO] agency-server                                                      [jar]
+[INFO] 
+[INFO] ------------------------< org.examples:domain >-------------------------
+[INFO] Building domain 0.0.1-SNAPSHOT                                     [1/7]
+[INFO]   from domain/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ domain ---
+[INFO] Deleting /home/etudiant/Bureau/Soap/Hotel/HotelSoap/domain/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ domain ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ domain ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 13 source files with javac [debug release 8] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ domain ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Bureau/Soap/Hotel/HotelSoap/domain/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ domain ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ domain ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ domain ---
+[INFO] Building jar: /home/etudiant/Bureau/Soap/Hotel/HotelSoap/domain/target/domain-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] ---------------------< org.examples:hotel-parent >----------------------
+[INFO] Building hotel-parent 1.0.1-SNAPSHOT                               [2/7]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hotel-parent ---
+[INFO] 
+[INFO] ----------------------< org.examples:server-base >----------------------
+[INFO] Building hotel-server-soap 1.0.1-SNAPSHOT                          [3/7]
+[INFO]   from server-base/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ server-base ---
+[INFO] Deleting /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-base/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ server-base ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ server-base ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 35 source files with javac [debug release 8] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ server-base ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-base/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ server-base ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ server-base ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ server-base ---
+[INFO] Building jar: /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-base/target/server-base-1.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------------< org.examples:hotel-server-soap-opera >----------------
+[INFO] Building hotel-server-soap-opera 1.0.1-SNAPSHOT                    [4/7]
+[INFO]   from server-opera/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hotel-server-soap-opera ---
+[INFO] Deleting /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hotel-server-soap-opera ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ hotel-server-soap-opera ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug release 8] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hotel-server-soap-opera ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hotel-server-soap-opera ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ hotel-server-soap-opera ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ hotel-server-soap-opera ---
+[INFO] Building jar: /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/hotel-server-soap-opera-1.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] ---------------< org.examples:hotel-server-soap-rivage >----------------
+[INFO] Building hotel-server-soap-rivage 1.0.1-SNAPSHOT                   [5/7]
+[INFO]   from server-rivage/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hotel-server-soap-rivage ---
+[INFO] Deleting /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hotel-server-soap-rivage ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ hotel-server-soap-rivage ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug release 8] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hotel-server-soap-rivage ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hotel-server-soap-rivage ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ hotel-server-soap-rivage ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ hotel-server-soap-rivage ---
+[INFO] Building jar: /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/hotel-server-soap-rivage-1.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------------------< org.examples:client-cli >-----------------------
+[INFO] Building client-cli 1.0.0                                          [6/7]
+[INFO]   from client-cli/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ client-cli ---
+[INFO] Deleting /home/etudiant/Bureau/Soap/Hotel/HotelSoap/client-cli/target
+[INFO] 
+[INFO] --- toolchains:3.0.0:toolchain (default) @ client-cli ---
+[INFO] Required toolchain: jdk [ vendor='any' version='1.8' ]
+[INFO] Found matching toolchain for type jdk: JDK[/usr/lib/jvm/java-8-openjdk-amd64]
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ client-cli ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Bureau/Soap/Hotel/HotelSoap/client-cli/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ client-cli ---
+[INFO] Toolchain in maven-compiler-plugin: JDK[/usr/lib/jvm/java-8-openjdk-amd64]
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 32 source files with javac [forked debug release 8] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ client-cli ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Bureau/Soap/Hotel/HotelSoap/client-cli/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ client-cli ---
+[INFO] Toolchain in maven-compiler-plugin: JDK[/usr/lib/jvm/java-8-openjdk-amd64]
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ client-cli ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ client-cli ---
+[INFO] Set Build-Jdk-Spec based on toolchain in maven-jar-plugin JDK[/usr/lib/jvm/java-8-openjdk-amd64]
+[INFO] Building jar: /home/etudiant/Bureau/Soap/Hotel/HotelSoap/client-cli/target/client-cli-1.0.0.jar
+[INFO] 
+[INFO] ---------------------< org.examples:agency-server >---------------------
+[INFO] Building agency-server 1.0.0                                       [7/7]
+[INFO]   from agency-server/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ agency-server ---
+[INFO] Deleting /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ agency-server ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ agency-server ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug release 8] to target/classes
+[INFO] /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/src/main/java/org/examples/agency/AgencyService.java: /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/src/main/java/org/examples/agency/AgencyService.java uses unchecked or unsafe operations.
+[INFO] /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/src/main/java/org/examples/agency/AgencyService.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ agency-server ---
+[INFO] skip non existing resourceDirectory /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ agency-server ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ agency-server ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ agency-server ---
+[INFO] Building jar: /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/target/agency-server-1.0.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] domain 0.0.1-SNAPSHOT .............................. SUCCESS [  0.861 s]
+[INFO] hotel-parent 1.0.1-SNAPSHOT ........................ SUCCESS [  0.002 s]
+[INFO] hotel-server-soap 1.0.1-SNAPSHOT ................... SUCCESS [  0.412 s]
+[INFO] hotel-server-soap-opera 1.0.1-SNAPSHOT ............. SUCCESS [  0.066 s]
+[INFO] hotel-server-soap-rivage 1.0.1-SNAPSHOT ............ SUCCESS [  0.055 s]
+[INFO] client-cli 1.0.0 ................................... SUCCESS [  0.671 s]
+[INFO] agency-server 1.0.0 ................................ SUCCESS [  0.113 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.304 s
+[INFO] Finished at: 2025-11-19T19:14:16+01:00
+[INFO] ------------------------------------------------------------------------
+[INFO] Libération des ports 8081,8082,7070 si nécessaires...
+[INFO] Démarrage de server-rivage -> /home/etudiant/Bureau/Soap/Hotel/HotelSoap/logs/rivage.log
+[INFO] server-rivage démarré (pid=415483)
+[INFO] Démarrage de server-opera -> /home/etudiant/Bureau/Soap/Hotel/HotelSoap/logs/opera.log
+[INFO] server-opera démarré (pid=415484)
+[INFO] Démarrage de agency-server -> /home/etudiant/Bureau/Soap/Hotel/HotelSoap/logs/agency.log
+[INFO] agency-server démarré (pid=415485)
+[INFO] Attente WSDL http://localhost:8081/hotel-rivage/hotel?wsdl (timeout 90s)...
+[INFO] WSDL disponible: http://localhost:8081/hotel-rivage/hotel?wsdl
+[INFO] Attente WSDL http://localhost:8082/hotel-opera/hotel?wsdl (timeout 90s)...
+[INFO] WSDL disponible: http://localhost:8082/hotel-opera/hotel?wsdl
+[INFO] Les serveurs devraient être démarrés (consultez les logs dans /home/etudiant/Bureau/Soap/Hotel/HotelSoap/logs).
+[INFO] --no-client : les serveurs ont été démarrés et le client n'est pas lancé.
+[INFO] Les serveurs restent en arrière-plan. (PIDs: 415483 415484 415485)
