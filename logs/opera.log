@@ -1,3 +1,29 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.examples:hotel-server-soap-opera >----------------
+[INFO] Building hotel-server-soap-opera 1.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:2.7.12:run (default-cli) > test-compile @ hotel-server-soap-opera >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hotel-server-soap-opera ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ hotel-server-soap-opera ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hotel-server-soap-opera ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hotel-server-soap-opera ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:2.7.12:run (default-cli) < test-compile @ hotel-server-soap-opera <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:2.7.12:run (default-cli) @ hotel-server-soap-opera ---
+[INFO] Attaching agents: []
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -7,13 +33,12 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-17 16:57:22.725  INFO 339022 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 339022 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
-2025-11-17 16:57:22.726  INFO 339022 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-17 16:57:22.985  INFO 339022 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-17 16:57:22.986  INFO 339022 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-17 16:57:22.986  INFO 339022 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-2025-11-17 16:57:22.986  INFO 339022 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='operaAgency' reduction=0.05
-2025-11-17 16:57:23.019  INFO 339022 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 0.54 seconds (JVM running for 0.757)
+2025-11-19 16:33:50.211  INFO 374439 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 374439 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
+2025-11-19 16:33:50.213  INFO 374439 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-11-19 16:33:50.435  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-19 16:33:50.435  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-19 16:33:50.435  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
+2025-11-19 16:33:50.469  INFO 374439 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 0.411 seconds (JVM running for 0.623)
 [BEAN-DUMPER] Listing beans in ApplicationContext...
 [BEAN-DUMPER] Total beans: 46
 [BEAN-DUMPER] bean[0] = applicationAvailability
@@ -69,32 +94,49 @@
 [BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
 [BEAN-DUMPER] End of bean dump.
 [SOAP] Publisher démarré — recherche des beans de service...
-2025-11-17 16:57:23.750  INFO 339022 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+2025-11-19 16:33:51.020  INFO 374439 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
 [SOAP] HotelAgencyService bean 'hotelAgencyServiceImpl' publié sur http://0.0.0.0:8082/hotel-opera/agency?wsdl
 [DIAG] HotelService beans détectés: [hotelServiceDebugImpl, hotelServiceImpl]
 [INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceDebugImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-17 16:57:23.829  INFO 339022 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
+2025-11-19 16:33:51.077  INFO 374439 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
 [SOAP] HotelService bean 'hotelServiceDebugImpl' publié sur http://0.0.0.0:8082/hotel-opera/hotel-debug?wsdl
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-17 16:57:24.147  INFO 339022 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-17 16:57:24.153  INFO 339022 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-17 16:57:24.154  INFO 339022 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-17 16:57:24.154  INFO 339022 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-2025-11-17 16:57:24.154  INFO 339022 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='operaAgency' reduction=0.05
+2025-11-19 16:33:51.397  INFO 374439 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
+2025-11-19 16:33:51.407  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-19 16:33:51.407  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-19 16:33:51.407  INFO 374439 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
 [SOAP] HotelService bean 'hotelServiceImpl' publié sur http://0.0.0.0:8082/hotel-opera/hotel?wsdl
-2025-11-17 16:57:27.311  INFO 339022 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='operaAgency' ville='Sète' arrivee='2025-10-10' depart='2025-10-12' persons=2 prixMin=null prixMax=null cat='null' stars=null
-2025-11-17 16:57:27.314  INFO 339022 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] total offres (agence=operaAgency): 0
-2025-11-17 16:57:27.319  INFO 339022 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 0 raw offers
-2025-11-17 16:57:27.319  INFO 339022 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 0 offers
-2025-11-17 16:57:37.574  INFO 339022 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='operaAgency' ville='Sète' arrivee='2025-10-10' depart='2025-10-12' persons=2 prixMin=null prixMax=null cat='null' stars=null
-2025-11-17 16:57:37.574  INFO 339022 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=operaAgency): 0
-2025-11-17 16:57:37.575  INFO 339022 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 0 raw offers
-2025-11-17 16:57:37.575  INFO 339022 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 0 offers
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.7.12:run (default-cli) on project hotel-server-soap-opera: Application finished with exit code: 137 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+2025-11-19 16:33:53.904  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=0 (from gestionnaire)
+2025-11-19 16:34:06.652  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='operaAgency' ville='Montpellier' arrivee='2025-10-10' depart='2025-10-11' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-19 16:34:06.656  INFO 374439 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=201 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Luxe Opéra' room=201 prix=220 agence=<none>
+2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=202 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Luxe Opéra' room=202 prix=240 agence=<none>
+2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=operaAgency): 2
+2025-11-19 16:34:06.657  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 2 raw offers
+2025-11-19 16:34:06.704  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|luxeopera|201|2025-10-10|2025-10-11|2 hotel='Luxe Opéra' room=201 lits=2 price=220 nights=1 city='Montpellier' imageUrl='2154 bytes dataUrl'
+2025-11-19 16:34:06.713  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|luxeopera|202|2025-10-10|2025-10-11|2 hotel='Luxe Opéra' room=202 lits=2 price=240 nights=1 city='Montpellier' imageUrl='2174 bytes dataUrl'
+2025-11-19 16:34:06.713  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 2 offers
+2025-11-19 16:35:01.015  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] makeReservation received agence='operaAgency' offerId='OF|luxeopera|201|2025-10-10|2025-10-11|2' hotel='null' room=0 nom='a' prenom='a'
+2025-11-19 16:35:01.016  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=201 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 16:35:01.016  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=201 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 16:35:01.016  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] réservation ajoutée: hotel='Luxe Opéra' room=201 periode=[2025-10-10..2025-10-11), totalReservations=1
+2025-11-19 16:35:01.016  INFO 374439 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] reservation créée hotel='Luxe Opéra' room=201 periode=[2025-10-10..2025-10-11] client='a a'
+2025-11-19 16:35:01.017  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [TRACK] reservation stored hotel='Luxe Opéra' room=201 from=2025-10-10 to=2025-10-11 totalStored=1
+2025-11-19 16:35:01.018  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] reservation ok ref=LUXE-7a8f345f-81fc-4aae-8b47-72e8d9b34074 hotel='Luxe Opéra' room=201 from=2025-10-10 to=2025-10-11 stored=1 
+2025-11-19 16:35:14.993  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='operaAgency' ville='Montpellier' arrivee='2025-10-10' depart='2025-10-11' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-19 16:35:14.993  INFO 374439 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] indisponible: room=201 hotel='Luxe Opéra' demande=[2025-10-10..2025-10-11), existing=[2025-10-10..2025-10-11]
+2025-11-19 16:35:14.994  INFO 374439 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=202 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 16:35:14.994  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Luxe Opéra' room=202 prix=240 agence=<none>
+2025-11-19 16:35:14.994  INFO 374439 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=operaAgency): 1
+2025-11-19 16:35:14.994  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 1 raw offers
+2025-11-19 16:35:15.012  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|luxeopera|202|2025-10-10|2025-10-11|2 hotel='Luxe Opéra' room=202 lits=2 price=240 nights=1 city='Montpellier' imageUrl='2174 bytes dataUrl'
+2025-11-19 16:35:15.012  INFO 374439 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 1 offers
+2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] makeReservation received agence='operaAgency' offerId='OF|luxeopera|202|2025-10-10|2025-10-11|2' hotel='null' room=0 nom='a' prenom='a'
+2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=202 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=202 hotel='Luxe Opéra' periode=[2025-10-10..2025-10-11), réservationsActives=0
+2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] réservation ajoutée: hotel='Luxe Opéra' room=202 periode=[2025-10-10..2025-10-11), totalReservations=1
+2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] reservation créée hotel='Luxe Opéra' room=202 periode=[2025-10-10..2025-10-11] client='a a'
+2025-11-19 16:35:26.256  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [TRACK] reservation stored hotel='Luxe Opéra' room=202 from=2025-10-10 to=2025-10-11 totalStored=2
+2025-11-19 16:35:26.257  INFO 374439 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] reservation ok ref=LUXE-e3ebfe05-59e0-4555-823a-fdbe28781496 hotel='Luxe Opéra' room=202 from=2025-10-10 to=2025-10-11 stored=2 

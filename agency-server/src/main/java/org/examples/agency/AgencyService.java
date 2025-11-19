@@ -129,7 +129,18 @@ public class AgencyService {
             }
             m.put("start", o.start!=null? o.start.toXMLFormat(): null);
             m.put("end", o.end!=null? o.end.toXMLFormat(): null);
-            m.put("prixTotal", o.prixTotal);
+
+            // prix original + application d'une remise de 10% avant envoi au client
+            double originalPrice = 0.0;
+            try {
+              Object pObj = o.prixTotal;
+              if (pObj != null) originalPrice = Double.parseDouble(String.valueOf(pObj));
+            } catch (Exception __) { /* ignore and keep 0.0 */ }
+            double discounted = Math.round(originalPrice * 0.9 * 100.0) / 100.0;
+            m.put("prixOriginal", originalPrice);
+            m.put("prixTotal", discounted);
+            log.info("[AGENCY] applied 10% discount for partner {} offerId={} : {} -> {}", p.code, o.offerId, originalPrice, discounted);
+
             m.put("agenceApplied", o.agenceApplied);
             m.put("offerId", o.offerId);
             m.put("hotelCode", p.code);

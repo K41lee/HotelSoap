@@ -34,13 +34,12 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-19 08:08:37.881  INFO 347477 --- [           main] o.e.s.ServerRivageApplication            : Starting ServerRivageApplication using Java 1.8.0_462 on dptinfo-pret with PID 347477 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage)
-2025-11-19 08:08:37.882  INFO 347477 --- [           main] o.e.s.ServerRivageApplication            : No active profile set, falling back to 1 default profile: "default"
-2025-11-19 08:08:38.035  INFO 347477 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 08:08:38.036  INFO 347477 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 08:08:38.036  INFO 347477 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
-2025-11-19 08:08:38.036  INFO 347477 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='rivageAgency' reduction=0.1
-2025-11-19 08:08:38.057  INFO 347477 --- [           main] o.e.s.ServerRivageApplication            : Started ServerRivageApplication in 0.285 seconds (JVM running for 0.397)
+2025-11-19 16:33:50.288  INFO 374474 --- [           main] o.e.s.ServerRivageApplication            : Starting ServerRivageApplication using Java 1.8.0_462 on dptinfo-pret with PID 374474 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage)
+2025-11-19 16:33:50.289  INFO 374474 --- [           main] o.e.s.ServerRivageApplication            : No active profile set, falling back to 1 default profile: "default"
+2025-11-19 16:33:50.503  INFO 374474 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-19 16:33:50.503  INFO 374474 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-19 16:33:50.503  INFO 374474 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
+2025-11-19 16:33:50.537  INFO 374474 --- [           main] o.e.s.ServerRivageApplication            : Started ServerRivageApplication in 0.413 seconds (JVM running for 0.55)
 [BEAN-DUMPER] Listing beans in ApplicationContext...
 [BEAN-DUMPER] Total beans: 45
 [BEAN-DUMPER] bean[0] = applicationAvailability
@@ -95,44 +94,25 @@
 [BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
 [BEAN-DUMPER] End of bean dump.
 [SOAP] Publisher démarré — recherche des beans de service...
-2025-11-19 08:08:38.501  INFO 347477 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+2025-11-19 16:33:51.111  INFO 374474 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
 [SOAP] HotelAgencyService bean 'hotelAgencyServiceImpl' publié sur http://0.0.0.0:8081/hotel-rivage/agency?wsdl
 [DIAG] HotelService beans détectés: [hotelServiceDebugImpl, hotelServiceImpl]
 [INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceDebugImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 08:08:38.550  INFO 347477 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
+2025-11-19 16:33:51.604  INFO 374474 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
 [SOAP] HotelService bean 'hotelServiceDebugImpl' publié sur http://0.0.0.0:8081/hotel-debug?wsdl
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 08:08:38.844  INFO 347477 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-19 08:08:38.849  INFO 347477 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 08:08:38.849  INFO 347477 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 08:08:38.849  INFO 347477 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
-2025-11-19 08:08:38.849  INFO 347477 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT]   Agency='rivageAgency' reduction=0.1
+2025-11-19 16:33:51.621  INFO 374474 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
+2025-11-19 16:33:51.626  INFO 374474 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-19 16:33:51.626  INFO 374474 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-19 16:33:51.626  INFO 374474 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
 [SOAP] HotelService bean 'hotelServiceImpl' publié sur http://0.0.0.0:8081/hotel-rivage/hotel?wsdl
-2025-11-19 08:08:46.028  INFO 347477 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
-2025-11-19 08:08:56.804  INFO 347477 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=1 (from gestionnaire)
-2025-11-19 08:09:10.526  INFO 347477 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='rivageAgency' ville='Sète' arrivee='2025-10-10' depart='2025-10-12' persons=2 prixMin=null prixMax=null cat='null' stars=null
-2025-11-19 08:09:10.529  INFO 347477 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-12), réservationsActives=0
-2025-11-19 08:09:10.530  INFO 347477 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=101 prix=216 agence=rivageAgency
-2025-11-19 08:09:10.530  INFO 347477 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=102 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-12), réservationsActives=0
-2025-11-19 08:09:10.530  INFO 347477 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=102 prix=270 agence=rivageAgency
-2025-11-19 08:09:10.530  INFO 347477 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] total offres (agence=rivageAgency): 2
-2025-11-19 08:09:10.530  INFO 347477 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 2 raw offers
-2025-11-19 08:09:10.570  INFO 347477 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|101|2025-10-10|2025-10-12|2 hotel='Hôtel Rivage' room=101 lits=2 price=216 nights=2 city='Sète' imageUrl='2194 bytes dataUrl'
-2025-11-19 08:09:10.576  INFO 347477 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-10-10|2025-10-12|2 hotel='Hôtel Rivage' room=102 lits=3 price=270 nights=2 city='Sète' imageUrl='2218 bytes dataUrl'
-2025-11-19 08:09:10.577  INFO 347477 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 2 offers
-2025-11-19 08:10:24.932  INFO 347477 --- [pool-1-thread-3] o.examples.server.soap.HotelServiceImpl  : [REQ] makeReservation received agence='rivageAgency' offerId='OF|hotelrivage|101|2025-10-10|2025-10-12|2' hotel='null' room=0 nom='a' prenom='a'
-2025-11-19 08:10:24.934  INFO 347477 --- [pool-1-thread-3] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-12), réservationsActives=0
-2025-11-19 08:10:24.934  INFO 347477 --- [pool-1-thread-3] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-12), réservationsActives=0
-2025-11-19 08:10:24.934  INFO 347477 --- [pool-1-thread-3] Impl.Chambre                             : [ROOM] réservation ajoutée: hotel='Hôtel Rivage' room=101 periode=[2025-10-10..2025-10-12), totalReservations=1
-2025-11-19 08:10:24.934  INFO 347477 --- [pool-1-thread-3] Impl.Gestionnaire                        : [GEST] reservation créée hotel='Hôtel Rivage' room=101 periode=[2025-10-10..2025-10-12] client='a a'
-2025-11-19 08:10:24.935  INFO 347477 --- [pool-1-thread-3] o.examples.server.soap.HotelServiceImpl  : [TRACK] reservation stored hotel='Hôtel Rivage' room=101 from=2025-10-10 to=2025-10-12 totalStored=1
-2025-11-19 08:10:24.936  INFO 347477 --- [pool-1-thread-3] o.examples.server.soap.HotelServiceImpl  : [RESP] reservation ok ref=HÔTE-fc7f19fc-a7a8-4917-ae06-95adbfcfa2c6 hotel='Hôtel Rivage' room=101 from=2025-10-10 to=2025-10-12 stored=1 
-2025-11-19 08:10:37.585  INFO 347477 --- [pool-1-thread-4] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='rivageAgency' ville='Sète' arrivee='2025-10-10' depart='2025-10-12' persons=2 prixMin=null prixMax=null cat='null' stars=null
-2025-11-19 08:10:37.586  INFO 347477 --- [pool-1-thread-4] Impl.Chambre                             : [ROOM] indisponible: room=101 hotel='Hôtel Rivage' demande=[2025-10-10..2025-10-12), existing=[2025-10-10..2025-10-12]
-2025-11-19 08:10:37.586  INFO 347477 --- [pool-1-thread-4] Impl.Chambre                             : [ROOM] disponible: room=102 hotel='Hôtel Rivage' periode=[2025-10-10..2025-10-12), réservationsActives=0
-2025-11-19 08:10:37.587  INFO 347477 --- [pool-1-thread-4] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=102 prix=270 agence=rivageAgency
-2025-11-19 08:10:37.587  INFO 347477 --- [pool-1-thread-4] Impl.Gestionnaire                        : [GEST] total offres (agence=rivageAgency): 1
-2025-11-19 08:10:37.587  INFO 347477 --- [pool-1-thread-4] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 1 raw offers
-2025-11-19 08:10:37.599  INFO 347477 --- [pool-1-thread-4] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-10-10|2025-10-12|2 hotel='Hôtel Rivage' room=102 lits=3 price=270 nights=2 city='Sète' imageUrl='2218 bytes dataUrl'
-2025-11-19 08:10:37.599  INFO 347477 --- [pool-1-thread-4] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 1 offers
+2025-11-19 16:33:53.882  INFO 374474 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=0 (from gestionnaire)
+2025-11-19 16:34:06.571  INFO 374474 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='rivageAgency' ville='Montpellier' arrivee='2025-10-10' depart='2025-10-11' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-19 16:34:06.574  INFO 374474 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] total offres (agence=rivageAgency): 0
+2025-11-19 16:34:06.578  INFO 374474 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 0 raw offers
+2025-11-19 16:34:06.578  INFO 374474 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 0 offers
+2025-11-19 16:35:14.925  INFO 374474 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='rivageAgency' ville='Montpellier' arrivee='2025-10-10' depart='2025-10-11' persons=2 prixMin=null prixMax=null cat='null' stars=null
+2025-11-19 16:35:14.926  INFO 374474 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=rivageAgency): 0
+2025-11-19 16:35:14.926  INFO 374474 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 0 raw offers
+2025-11-19 16:35:14.926  INFO 374474 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 0 offers

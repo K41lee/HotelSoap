@@ -113,3 +113,53 @@ echo '{"op":"catalog.get"}' | nc -w 2 localhost 7070
 - L’agence ne répond pas: `tail -n 200 logs/agency.log` (recherche des traces `[AGENCY-REQ]`, `[AGENCY->HOTEL]`, `[HOTEL->AGENCY]`).
 - Client via Agence: si vous voyez "Relais brisé (pipe)", relancez l’agence (arrêt + redémarrage) puis relancez le client.
 - Si les offres ne diminuent pas après réservation: relancez une recherche avec les mêmes dates; côté serveur hôtel, vérifiez `[REQ] makeReservation` puis `[RESP] reservation ok` et ensuite `[RESP] searchOffers returning N offers`.
+
+---
+
+## Script de lancement automatique (`lancement.sh`)
+
+Un script pratique `lancement.sh` est fourni à la racine du projet pour automatiser les étapes du README : build, libération des ports, démarrage des serveurs en arrière-plan, attente des WSDL et lancement du client.
+
+Emplacement : `./lancement.sh`
+
+Permissions :
+```bash
+chmod +x lancement.sh
+```
+
+Usage basique (démarre tout et lance le client) :
+```bash
+./lancement.sh
+```
+
+Options disponibles :
+- `--no-client` : démarre uniquement les serveurs (les serveurs restent en arrière-plan). Utile pour lancer les serveurs depuis un terminal et lancer le client plus tard.
+- `--arret-propre` : lorsqu'elle est utilisée, le script installera un trap et arrêtera proprement les serveurs (kill des PID) à la fin du script ou quand vous faites Ctrl-C. Utile pour tests automatisés ou sessions temporaires.
+
+Exemples :
+- Démarrer serveurs puis lancer le client (comportement par défaut) :
+```bash
+./lancement.sh
+```
+
+- Démarrer seulement les serveurs (client non lancé) :
+```bash
+./lancement.sh --no-client
+```
+
+- Démarrer serveurs, lancer le client, puis arrêter proprement les serveurs quand le client se termine :
+```bash
+./lancement.sh --arret-propre
+```
+
+- Démarrer serveurs sans client puis arrêter proprement via Ctrl-C :
+```bash
+./lancement.sh --no-client --arret-propre
+# Appuyez sur Ctrl-C quand vous voulez arrêter proprement les serveurs
+```
+
+Comportement interne important :
+- Les PIDs des serveurs sont écrits dans `/tmp/rivage.pid`, `/tmp/opera.pid` et `/tmp/agency.pid`.
+- Les logs des serveurs sont écrits dans le répertoire `./logs` (fichiers : `rivage.log`, `opera.log`, `agency.log`).
+- Le script attend la disponibilité des WSDL des hôtels (timeout 90s) avant de lancer le client.
+- Si vous préférez contrôler manuellement le démarrage/arrêt des serveurs, utilisez `--no-client` et ensuite arrêtez avec `kill $(cat /tmp/*.pid)` ou `fuser -k`.
