@@ -14,12 +14,28 @@ err(){ echo "[ERR] $*" >&2; }
 
 # Parse options
 NO_CLIENT=false
+NO_GUI=false
 ARRET_PROPRE=false
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --no-client) NO_CLIENT=true; shift ;;
+    --no-gui) NO_GUI=true; shift ;;
     --arret-propre) ARRET_PROPRE=true; shift ;;
-    -h|--help) echo "Usage: $0 [--no-client] [--arret-propre]"; exit 0 ;;
+    -h|--help)
+      echo "Usage: $0 [--no-client] [--no-gui] [--arret-propre]"
+      echo ""
+      echo "Options:"
+      echo "  (défaut)       Lance les serveurs + interface graphique (GUI)"
+      echo "  --no-gui       Lance les serveurs + client en ligne de commande (CLI)"
+      echo "  --no-client    Lance uniquement les serveurs (pas de client)"
+      echo "  --arret-propre Arrête proprement les serveurs à la fin"
+      echo ""
+      echo "Exemples:"
+      echo "  $0                    # GUI par défaut"
+      echo "  $0 --no-gui           # Client CLI"
+      echo "  $0 --no-client        # Serveurs uniquement"
+      exit 0
+      ;;
     *) echo "Unknown arg: $1"; exit 1 ;;
   esac
 done
@@ -109,7 +125,7 @@ info "Les serveurs devraient être démarrés (consultez les logs dans $LOG_DIR)
 
 # 5) Lancer le client (au premier plan) sauf si --no-client
 if [ "$NO_CLIENT" = true ]; then
-  info "--no-client : les serveurs ont été démarrés et le client n'est pas lancé."
+  info "--no-client : les serveurs ont été démarrés et aucun client n'est lancé."
   if [ "$ARRET_PROPRE" = true ]; then
     info "Appuyez sur Ctrl-C pour arrêter les serveurs proprement."
     # garder le script en vie pour permettre Ctrl-C
@@ -118,11 +134,17 @@ if [ "$NO_CLIENT" = true ]; then
     info "Les serveurs restent en arrière-plan. (PIDs: $(cat /tmp/rivage.pid 2>/dev/null || echo "-") $(cat /tmp/opera.pid 2>/dev/null || echo "-") $(cat /tmp/agency.pid 2>/dev/null || echo "-"))"
     exit 0
   fi
-else
-  info "Lancement du client CLI (au premier plan), pour quitter: Ctrl-C"
+elif [ "$NO_GUI" = true ]; then
+  info "Lancement du client CLI (ligne de commande) au premier plan, pour quitter: Ctrl-C"
   ./mvnw -pl client-cli -DskipTests=true exec:java \
     -Dexec.mainClass=org.examples.client.ClientMain \
     -Dagency.tcp.enabled=true
+else
+  info "Lancement de l'interface graphique (GUI) au premier plan..."
+  info "Si l'interface ne s'affiche pas, attendez quelques secondes pour la connexion à l'agence."
+  ./mvnw -pl client-cli exec:java@run-gui \
+    -Dagency.tcp.host=localhost \
+    -Dagency.tcp.port=7070
 fi
 
 # Si on atteint ici, le client s'est terminé

@@ -61,6 +61,14 @@
                             <mainClass>org.examples.client.CatalogLister</mainClass>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>run-gui</id>
+                        <goals><goal>java</goal></goals>
+                        <phase>none</phase>
+                        <configuration>
+                            <mainClass>org.examples.client.gui.HotelClientGUI</mainClass>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 
@@ -97,6 +105,13 @@
             <groupId>javax.xml.ws</groupId>
             <artifactId>jaxws-api</artifactId>
             <version>2.3.1</version>
+        </dependency>
+
+        <!-- JCalendar pour le sélecteur de dates dans l'interface graphique -->
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
         </dependency>
     </dependencies>
 

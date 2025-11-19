@@ -33,56 +33,59 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-19 21:00:57.422  INFO 442116 --- [           main] org.examples.agency.AgencyApplication    : Starting AgencyApplication using Java 1.8.0_462 on dptinfo-pret with PID 442116 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server)
-2025-11-19 21:00:57.424  INFO 442116 --- [           main] org.examples.agency.AgencyApplication    : No active profile set, falling back to 1 default profile: "default"
-2025-11-19 21:00:57.730  INFO 442116 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-19 21:00:57.736  INFO 442116 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
-2025-11-19 21:00:58.048  INFO 442116 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2025-11-19 21:00:58.054  INFO 442116 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-19 21:00:58.054  INFO 442116 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
-2025-11-19 21:00:58.089  INFO 442116 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-19 21:00:58.089  INFO 442116 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 641 ms
-2025-11-19 21:00:58.157  INFO 442116 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-19 21:00:58.223  INFO 442116 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-19 21:00:58.250  INFO 442116 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-19 21:00:58.270  INFO 442116 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2025-11-19 21:00:58.342  INFO 442116 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2025-11-19 21:00:58.392  INFO 442116 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2025-11-19 21:00:58.519  INFO 442116 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2025-11-19 21:00:58.524  INFO 442116 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-19 21:00:58.532  INFO 442116 --- [           main] org.examples.agency.TcpServer            : [AGENCY-INIT] TCP server listening on port 7070
-2025-11-19 21:00:58.547  WARN 442116 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-19 21:00:58.680  INFO 442116 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2025-11-19 21:00:58.686  INFO 442116 --- [           main] org.examples.agency.AgencyApplication    : Started AgencyApplication in 1.477 seconds (JVM running for 1.741)
-2025-11-19 21:01:01.845  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"catalog.get"}
-2025-11-19 21:01:01.845  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=catalog.get
-2025-11-19 21:01:01.845  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] getCatalog
-2025-11-19 21:01:02.053  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] catalog cities=1 agencies=0
-2025-11-19 21:01:02.053  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] getCatalog
-2025-11-19 21:01:02.115  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] catalog cities=1 agencies=0
-2025-11-19 21:01:19.007  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"offers.search","payload":{"ville":"Sète","arrivee":"2025-10-10","depart":"2025-10-11","nbPersonnes":2,"agencyId":""}}
-2025-11-19 21:01:19.007  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=offers.search payload={ville=Sète, arrivee=2025-10-10, depart=2025-10-11, nbPersonnes=2, agencyId=}
-2025-11-19 21:01:19.007  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] searchOffers ville='Sète' arrivee='2025-10-10' depart='2025-10-11' nbPersonnes=2 agencyId=''
-2025-11-19 21:01:19.043  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] searchOffers agence='rivageAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
-2025-11-19 21:01:19.209  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] offers count=2
-2025-11-19 21:01:19.210  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|101|2025-10-10|2025-10-11|2 : 120.0 -> 108.0
-2025-11-19 21:01:19.210  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|102|2025-10-10|2025-10-11|2 : 150.0 -> 135.0
-2025-11-19 21:01:19.210  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers rivage -> 2 items
-2025-11-19 21:01:19.227  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] searchOffers agence='operaAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
-2025-11-19 21:01:19.277  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] offers count=0
-2025-11-19 21:01:19.278  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers opera -> 2 items
-2025-11-19 21:01:52.281  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"reservation.make","payload":{"hotelCode":"rivage","offerId":"OF|hotelrivage|101|2025-10-10|2025-10-11|2","agencyId":"","nom":"a","prenom":"a","carte":"1234567812345678"}}
-2025-11-19 21:01:52.282  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=reservation.make payload={{hotelCode=rivage, offerId=OF|hotelrivage|101|2025-10-10|2025-10-11|2, agencyId=, nom=a, prenom=a, carte=**** **** **** 5678}}
-2025-11-19 21:01:52.282  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] makeReservation hotelCode='rivage' offerId='OF|hotelrivage|101|2025-10-10|2025-10-11|2' agencyId='' nom='a' prenom='a' carte='**** **** **** 5678'
-2025-11-19 21:01:52.336  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] reserve offerId='OF|hotelrivage|101|2025-10-10|2025-10-11|2' agencyId='rivageAgency' nom='a' prenom='a'
-2025-11-19 21:01:52.520  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] reserve success=true ref=66564A58 message=Réservation confirmée 
-2025-11-19 21:02:07.953  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"offers.search","payload":{"ville":"Sète","arrivee":"2025-10-10","depart":"2025-10-11","nbPersonnes":2,"agencyId":""}}
-2025-11-19 21:02:07.953  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=offers.search payload={ville=Sète, arrivee=2025-10-10, depart=2025-10-11, nbPersonnes=2, agencyId=}
-2025-11-19 21:02:07.953  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] searchOffers ville='Sète' arrivee='2025-10-10' depart='2025-10-11' nbPersonnes=2 agencyId=''
-2025-11-19 21:02:07.984  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] searchOffers agence='rivageAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
-2025-11-19 21:02:08.042  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] offers count=1
-2025-11-19 21:02:08.042  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|102|2025-10-10|2025-10-11|2 : 150.0 -> 135.0
-2025-11-19 21:02:08.043  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers rivage -> 1 items
-2025-11-19 21:02:08.077  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] searchOffers agence='operaAgency' ville='Sète' from='2025-10-10' to='2025-10-11' nb=2
-2025-11-19 21:02:08.122  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] offers count=0
-2025-11-19 21:02:08.123  INFO 442116 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers opera -> 1 items
+2025-11-19 22:58:17.933  INFO 471417 --- [           main] org.examples.agency.AgencyApplication    : Starting AgencyApplication using Java 1.8.0_462 on dptinfo-pret with PID 471417 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/agency-server)
+2025-11-19 22:58:17.934  INFO 471417 --- [           main] org.examples.agency.AgencyApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-11-19 22:58:18.232  INFO 471417 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 22:58:18.239  INFO 471417 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2025-11-19 22:58:18.499  INFO 471417 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2025-11-19 22:58:18.504  INFO 471417 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-19 22:58:18.504  INFO 471417 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-11-19 22:58:18.536  INFO 471417 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-19 22:58:18.536  INFO 471417 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 571 ms
+2025-11-19 22:58:18.598  INFO 471417 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-19 22:58:18.651  INFO 471417 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-19 22:58:18.673  INFO 471417 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 22:58:18.692  INFO 471417 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-11-19 22:58:18.750  INFO 471417 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-11-19 22:58:18.805  INFO 471417 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2025-11-19 22:58:18.893  INFO 471417 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-11-19 22:58:18.898  INFO 471417 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 22:58:18.907  INFO 471417 --- [           main] org.examples.agency.TcpServer            : [AGENCY-INIT] TCP server listening on port 7070
+2025-11-19 22:58:18.923  WARN 471417 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 22:58:19.072  INFO 471417 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2025-11-19 22:58:19.077  INFO 471417 --- [           main] org.examples.agency.AgencyApplication    : Started AgencyApplication in 1.395 seconds (JVM running for 1.615)
+2025-11-19 22:58:22.620  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"catalog.get"}
+2025-11-19 22:58:22.620  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=catalog.get
+2025-11-19 22:58:22.621  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] getCatalog
+2025-11-19 22:58:22.833  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] catalog cities=1 agencies=0
+2025-11-19 22:58:22.833  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] getCatalog
+2025-11-19 22:58:22.895  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] catalog cities=1 agencies=0
+2025-11-19 22:58:32.491  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"offers.search","payload":{"ville":"Sète","arrivee":"2025-11-28","depart":"2025-11-29","nbPersonnes":1,"agencyId":""}}
+2025-11-19 22:58:32.492  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=offers.search payload={ville=Sète, arrivee=2025-11-28, depart=2025-11-29, nbPersonnes=1, agencyId=}
+2025-11-19 22:58:32.492  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] searchOffers ville='Sète' arrivee='2025-11-28' depart='2025-11-29' nbPersonnes=1 agencyId=''
+2025-11-19 22:58:32.522  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] searchOffers agence='rivageAgency' ville='Sète' from='2025-11-28' to='2025-11-29' nb=1
+2025-11-19 22:58:32.634  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] offers count=2
+2025-11-19 22:58:32.635  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|101|2025-11-28|2025-11-29|1 : 120.0 -> 108.0
+2025-11-19 22:58:32.635  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] applied 10% discount for partner rivage offerId=OF|hotelrivage|102|2025-11-28|2025-11-29|1 : 150.0 -> 135.0
+2025-11-19 22:58:32.635  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers rivage -> 2 items
+2025-11-19 22:58:32.654  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:opera] searchOffers agence='operaAgency' ville='Sète' from='2025-11-28' to='2025-11-29' nb=1
+2025-11-19 22:58:32.708  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:opera->AGENCY] offers count=0
+2025-11-19 22:58:32.709  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-CALL] offers opera -> 2 items
+2025-11-19 22:58:50.198  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY-REQ] raw={"op":"reservation.make","payload":{"hotelCode":"rivage","offerId":"OF|hotelrivage|101|2025-11-28|2025-11-29|1","agencyId":"","nom":"Hommais","prenom":"Anthony","carte":"1234567812345678"}}
+2025-11-19 22:58:50.198  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] op=reservation.make payload={{hotelCode=rivage, offerId=OF|hotelrivage|101|2025-11-28|2025-11-29|1, agencyId=, nom=Hommais, prenom=Anthony, carte=**** **** **** 5678}}
+2025-11-19 22:58:50.198  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY] makeReservation hotelCode='rivage' offerId='OF|hotelrivage|101|2025-11-28|2025-11-29|1' agencyId='' nom='Hommais' prenom='Anthony' carte='**** **** **** 5678'
+2025-11-19 22:58:50.225  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [AGENCY->HOTEL:rivage] reserve offerId='OF|hotelrivage|101|2025-11-28|2025-11-29|1' agencyId='rivageAgency' nom='Hommais' prenom='Anthony'
+2025-11-19 22:58:50.300  INFO 471417 --- [pool-1-thread-1] org.examples.agency.AgencyService        : [HOTEL:rivage->AGENCY] reserve success=true ref=A747057B message=Réservation confirmée 
+------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  13:30 min
+[INFO] Finished at: 2025-11-19T22:58:15+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:2.7.12:run (default-cli) on project agency-server: Application finished with exit code: 137 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
