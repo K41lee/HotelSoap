@@ -34,34 +34,34 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-19 22:58:18.228  INFO 471451 --- [           main] o.e.s.ServerRivageApplication            : Starting ServerRivageApplication using Java 1.8.0_462 on dptinfo-pret with PID 471451 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage)
-2025-11-19 22:58:18.229  INFO 471451 --- [           main] o.e.s.ServerRivageApplication            : No active profile set, falling back to 1 default profile: "default"
-2025-11-19 22:58:18.515  INFO 471451 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-19 22:58:18.543  INFO 471451 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 4 JPA repository interfaces.
-2025-11-19 22:58:18.792  INFO 471451 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
-2025-11-19 22:58:18.796  INFO 471451 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-19 22:58:18.797  INFO 471451 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
-2025-11-19 22:58:18.831  INFO 471451 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-19 22:58:18.831  INFO 471451 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 582 ms
-2025-11-19 22:58:18.846  INFO 471451 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-19 22:58:18.917  INFO 471451 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-19 22:58:18.924  INFO 471451 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/hotel-rivage-db'
-2025-11-19 22:58:18.999  INFO 471451 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-19 22:58:19.017  INFO 471451 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2025-11-19 22:58:19.092  INFO 471451 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2025-11-19 22:58:19.163  INFO 471451 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2025-11-19 22:58:19.421  INFO 471451 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2025-11-19 22:58:19.425  INFO 471451 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-19 22:58:19.657  INFO 471451 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Starting synchronization from domain to database...
+2025-11-20 14:57:07.550  INFO 514172 --- [           main] o.e.s.ServerRivageApplication            : Starting ServerRivageApplication using Java 1.8.0_462 on dptinfo-pret with PID 514172 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-rivage)
+2025-11-20 14:57:07.552  INFO 514172 --- [           main] o.e.s.ServerRivageApplication            : No active profile set, falling back to 1 default profile: "default"
+2025-11-20 14:57:07.846  INFO 514172 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-20 14:57:07.873  INFO 514172 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 4 JPA repository interfaces.
+2025-11-20 14:57:08.088  INFO 514172 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2025-11-20 14:57:08.092  INFO 514172 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-20 14:57:08.092  INFO 514172 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-11-20 14:57:08.122  INFO 514172 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-20 14:57:08.122  INFO 514172 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 532 ms
+2025-11-20 14:57:08.136  INFO 514172 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-20 14:57:08.204  INFO 514172 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-20 14:57:08.210  INFO 514172 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/hotel-rivage-db'
+2025-11-20 14:57:08.276  INFO 514172 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-20 14:57:08.296  INFO 514172 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-11-20 14:57:08.361  INFO 514172 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-11-20 14:57:08.434  INFO 514172 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2025-11-20 14:57:08.695  INFO 514172 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-11-20 14:57:08.699  INFO 514172 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-20 14:57:08.933  INFO 514172 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Starting synchronization from domain to database...
 Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2_2_, hotelentit0_.nb_etoiles as nb_etoil3_2_, hotelentit0_.nom as nom4_2_, hotelentit0_.numero as numero5_2_, hotelentit0_.pays as pays6_2_, hotelentit0_.rue as rue7_2_, hotelentit0_.ville as ville8_2_ from hotels hotelentit0_ where hotelentit0_.nom=?
-2025-11-19 22:58:19.696  INFO 471451 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Hotel 'Hôtel Rivage' already exists in DB
-2025-11-19 22:58:19.697  INFO 471451 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Synchronization completed
-2025-11-19 22:58:19.701  INFO 471451 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 22:58:19.701  INFO 471451 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 22:58:19.701  INFO 471451 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
-2025-11-19 22:58:19.715  WARN 471451 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-19 22:58:19.848  INFO 471451 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
-2025-11-19 22:58:19.853  INFO 471451 --- [           main] o.e.s.ServerRivageApplication            : Started ServerRivageApplication in 1.775 seconds (JVM running for 1.987)
+2025-11-20 14:57:08.973  INFO 514172 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Hotel 'Hôtel Rivage' already exists in DB
+2025-11-20 14:57:08.973  INFO 514172 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Synchronization completed
+2025-11-20 14:57:08.977  INFO 514172 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-20 14:57:08.978  INFO 514172 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-20 14:57:08.978  INFO 514172 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
+2025-11-20 14:57:08.992  WARN 514172 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-20 14:57:09.118  INFO 514172 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2025-11-20 14:57:09.122  INFO 514172 --- [           main] o.e.s.ServerRivageApplication            : Started ServerRivageApplication in 1.788 seconds (JVM running for 1.956)
 [BEAN-DUMPER] Listing beans in ApplicationContext...
 [BEAN-DUMPER] Total beans: 213
 [BEAN-DUMPER] bean[0] = agenceRepository
@@ -271,40 +271,27 @@ Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2
 [BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
 [BEAN-DUMPER] End of bean dump.
 [SOAP] Publisher démarré — recherche des beans de service...
-2025-11-19 22:58:20.527  INFO 471451 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+2025-11-20 14:57:09.796  INFO 514172 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
 [SOAP] HotelAgencyService bean 'hotelAgencyServiceImpl' publié sur http://0.0.0.0:8081/hotel-rivage/agency?wsdl
 [DIAG] HotelService beans détectés: [hotelServiceDebugImpl, hotelServiceImpl]
 [INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceDebugImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 22:58:20.611  INFO 471451 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
+2025-11-20 14:57:09.866  INFO 514172 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
 [SOAP] HotelService bean 'hotelServiceDebugImpl' publié sur http://0.0.0.0:8081/hotel-debug?wsdl
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 22:58:20.629  INFO 471451 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-19 22:58:20.634  INFO 471451 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 22:58:20.634  INFO 471451 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 22:58:20.634  INFO 471451 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
+2025-11-20 14:57:09.888  INFO 514172 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
+2025-11-20 14:57:09.894  INFO 514172 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-20 14:57:09.894  INFO 514172 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-20 14:57:09.894  INFO 514172 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Hôtel Rivage' city='Sète' category='HAUT_DE_GAMME' rooms=2
 [SOAP] HotelService bean 'hotelServiceImpl' publié sur http://0.0.0.0:8081/hotel-rivage/hotel?wsdl
-2025-11-19 22:58:22.827  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=0 (from gestionnaire)
-2025-11-19 22:58:32.528  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='rivageAgency' ville='Sète' arrivee='2025-11-28' depart='2025-11-29' persons=1 prixMin=null prixMax=null cat='null' stars=null
-2025-11-19 22:58:32.529  INFO 471451 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-11-28..2025-11-29), réservationsActives=0
-2025-11-19 22:58:32.529  INFO 471451 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=101 prix=120 agence=<none>
-2025-11-19 22:58:32.530  INFO 471451 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=102 hotel='Hôtel Rivage' periode=[2025-11-28..2025-11-29), réservationsActives=0
-2025-11-19 22:58:32.530  INFO 471451 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=102 prix=150 agence=<none>
-2025-11-19 22:58:32.530  INFO 471451 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] total offres (agence=rivageAgency): 2
-2025-11-19 22:58:32.530  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 2 raw offers
-2025-11-19 22:58:32.580  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|101|2025-11-28|2025-11-29|1 hotel='Hôtel Rivage' room=101 lits=2 price=120 nights=1 city='Sète' imageUrl='2194 bytes dataUrl'
-2025-11-19 22:58:32.588  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-11-28|2025-11-29|1 hotel='Hôtel Rivage' room=102 lits=3 price=150 nights=1 city='Sète' imageUrl='2218 bytes dataUrl'
-2025-11-19 22:58:32.588  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 2 offers
-2025-11-19 22:58:50.227  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] makeReservation received agence='rivageAgency' offerId='OF|hotelrivage|101|2025-11-28|2025-11-29|1' hotel='null' room=0 nom='Hommais' prenom='Anthony'
-2025-11-19 22:58:50.228  INFO 471451 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-11-28..2025-11-29), réservationsActives=0
-2025-11-19 22:58:50.228  INFO 471451 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-11-28..2025-11-29), réservationsActives=0
-2025-11-19 22:58:50.228  INFO 471451 --- [pool-1-thread-1] Impl.Chambre                             : [ROOM] réservation ajoutée: hotel='Hôtel Rivage' room=101 periode=[2025-11-28..2025-11-29), totalReservations=1
-2025-11-19 22:58:50.228  INFO 471451 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] reservation créée hotel='Hôtel Rivage' room=101 periode=[2025-11-28..2025-11-29] client='Hommais Anthony'
-2025-11-19 22:58:50.229  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [TRACK] reservation stored hotel='Hôtel Rivage' room=101 from=2025-11-28 to=2025-11-29 totalStored=1
-Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2_2_, hotelentit0_.nb_etoiles as nb_etoil3_2_, hotelentit0_.nom as nom4_2_, hotelentit0_.numero as numero5_2_, hotelentit0_.pays as pays6_2_, hotelentit0_.rue as rue7_2_, hotelentit0_.ville as ville8_2_ from hotels hotelentit0_ where hotelentit0_.nom=?
-Hibernate: select chambreent0_.id as id1_1_, chambreent0_.hotel_id as hotel_id5_1_, chambreent0_.nb_lits as nb_lits2_1_, chambreent0_.numero as numero3_1_, chambreent0_.prix_par_nuit as prix_par4_1_ from chambres chambreent0_ left outer join hotels hotelentit1_ on chambreent0_.hotel_id=hotelentit1_.id where hotelentit1_.id=?
-Hibernate: select reservatio0_.id as id1_3_, reservatio0_.agence as agence2_3_, reservatio0_.chambre_id as chambre_9_3_, reservatio0_.client_carte as client_c3_3_, reservatio0_.client_nom as client_n4_3_, reservatio0_.client_prenom as client_p5_3_, reservatio0_.debut as debut6_3_, reservatio0_.fin as fin7_3_, reservatio0_.reference as referenc8_3_ from reservations reservatio0_ where reservatio0_.chambre_id=? and reservatio0_.debut<? and reservatio0_.fin>?
-2025-11-19 22:58:50.246  INFO 471451 --- [pool-1-thread-1] o.e.server.service.HotelDatabaseService  : [DB] Creating reservation ref: A747057B for chambre: 101 from 2025-11-28 to 2025-11-29
-Hibernate: insert into reservations (id, agence, chambre_id, client_carte, client_nom, client_prenom, debut, fin, reference) values (default, ?, ?, ?, ?, ?, ?, ?, ?)
-2025-11-19 22:58:50.257  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [DB] Reservation persisted in database with ref=A747057B
-2025-11-19 22:58:50.257  INFO 471451 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] reservation ok ref=A747057B hotel='Hôtel Rivage' room=101 from=2025-11-28 to=2025-11-29 stored=1 
+2025-11-20 14:57:12.312  INFO 514172 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=0 (from gestionnaire)
+2025-11-20 14:57:23.227  INFO 514172 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='rivageAgency' ville='Sète' arrivee='2025-11-28' depart='2025-11-29' persons=1 prixMin=null prixMax=null cat='null' stars=null
+2025-11-20 14:57:23.229  INFO 514172 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=101 hotel='Hôtel Rivage' periode=[2025-11-28..2025-11-29), réservationsActives=0
+2025-11-20 14:57:23.229  INFO 514172 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=101 prix=120 agence=<none>
+2025-11-20 14:57:23.229  INFO 514172 --- [pool-1-thread-2] Impl.Chambre                             : [ROOM] disponible: room=102 hotel='Hôtel Rivage' periode=[2025-11-28..2025-11-29), réservationsActives=0
+2025-11-20 14:57:23.230  INFO 514172 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] match hotel='Hôtel Rivage' room=102 prix=150 agence=<none>
+2025-11-20 14:57:23.230  INFO 514172 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=rivageAgency): 2
+2025-11-20 14:57:23.230  INFO 514172 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 2 raw offers
+2025-11-20 14:57:23.282  INFO 514172 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|101|2025-11-28|2025-11-29|1 hotel='Hôtel Rivage' room=101 lits=2 price=120 nights=1 city='Sète' imageUrl='2194 bytes dataUrl'
+2025-11-20 14:57:23.290  INFO 514172 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [MAP] offerId=OF|hotelrivage|102|2025-11-28|2025-11-29|1 hotel='Hôtel Rivage' room=102 lits=3 price=150 nights=1 city='Sète' imageUrl='2218 bytes dataUrl'
+2025-11-20 14:57:23.290  INFO 514172 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 2 offers

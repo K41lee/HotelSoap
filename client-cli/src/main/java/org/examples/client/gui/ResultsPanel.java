@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class ResultsPanel extends JPanel {
     private Date searchEnd;
     private int searchBeds;
     private String currentOffersJson;
+    private List<String> imageUrls = new ArrayList<>();
 
     public ResultsPanel(HotelClientGUI mainFrame) {
         this.mainFrame = mainFrame;
@@ -59,7 +61,7 @@ public class ResultsPanel extends JPanel {
         add(topPanel, BorderLayout.NORTH);
 
         // Table des résultats
-        String[] columns = {"Hôtel", "Ville", "Catégorie", "Chambre", "Lits", "Prix/Nuit", "Référence"};
+        String[] columns = {"Hôtel", "Ville", "Catégorie", "Chambre", "Lits", "Prix/Nuit", "Référence", "Image"};
         tableModel = new DefaultTableModel(columns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -107,6 +109,44 @@ public class ResultsPanel extends JPanel {
                 }
 
                 return c;
+            }
+        });
+
+        // Gestionnaire de clic pour la colonne Image
+        resultsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                int row = resultsTable.rowAtPoint(e.getPoint());
+                int col = resultsTable.columnAtPoint(e.getPoint());
+
+                // Colonne 7 = colonne Image
+                if (row >= 0 && col == 7 && row < imageUrls.size()) {
+                    String imageUrl = imageUrls.get(row);
+                    if (imageUrl != null && !imageUrl.isEmpty()) {
+                        showImageDialog(imageUrl, row);
+                    } else {
+                        JOptionPane.showMessageDialog(ResultsPanel.this,
+                            "Aucune image disponible pour cette chambre.",
+                            "Image non disponible",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        });
+
+        // Changer le curseur au survol de la colonne Image
+        resultsTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            @Override
+            public void mouseMoved(java.awt.event.MouseEvent e) {
+                int row = resultsTable.rowAtPoint(e.getPoint());
+                int col = resultsTable.columnAtPoint(e.getPoint());
+
+                if (col == 7 && row >= 0 && row < imageUrls.size() &&
+                    imageUrls.get(row) != null && !imageUrls.get(row).isEmpty()) {
+                    resultsTable.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                } else {
+                    resultsTable.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
             }
         });
 
@@ -160,8 +200,9 @@ public class ResultsPanel extends JPanel {
         infoLabel.setText(String.format("📍 %s | 📅 %s → %s | 🛏️ %d lit(s)",
             city, sdf.format(start), sdf.format(end), beds));
 
-        // Vider la table
+        // Vider la table et la liste d'images
         tableModel.setRowCount(0);
+        imageUrls.clear();
 
         try {
             List<String> offers = MiniJson.getStringArray(offersJson, "offers");
@@ -187,6 +228,10 @@ public class ResultsPanel extends JPanel {
                 Integer priceInt = MiniJson.getInt(offer, "prixTotal");
                 String priceStr = priceInt != null ? String.valueOf(priceInt) : null;
                 String reference = MiniJson.getString(offer, "offerId");
+                String imageUrl = MiniJson.getString(offer, "imageUrl");
+
+                // Stocker l'URL de l'image
+                imageUrls.add(imageUrl != null ? imageUrl : "");
 
                 tableModel.addRow(new Object[]{
                     hotelName != null ? hotelName : "?",
@@ -195,7 +240,8 @@ public class ResultsPanel extends JPanel {
                     roomNum != null ? "N°" + roomNum : "?",
                     bedsStr != null ? bedsStr : "?",
                     priceStr != null ? priceStr + " €" : "?",
-                    reference != null ? reference : "?"
+                    reference != null ? reference : "?",
+                    imageUrl != null && !imageUrl.isEmpty() ? "🖼️ Voir" : "-"
                 });
             }
 
@@ -230,6 +276,63 @@ public class ResultsPanel extends JPanel {
                 "Erreur lors de la sélection:\n" + e.getMessage(),
                 "Erreur",
                 JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * Affiche l'image de la chambre dans une nouvelle fenêtre
+     */
+    private void showImageDialog(String imageUrl, int row) {
+        JDialog imageDialog = new JDialog((JFrame) SwingUtilities.getWindowAncestor(this), "🖼️ Image de la Chambre", true);
+        imageDialog.setLayout(new BorderLayout());
+        imageDialog.setSize(600, 500);
+        imageDialog.setLocationRelativeTo(this);
+
+        try {
+            // Décoder l'image depuis le data URL
+            if (imageUrl.startsWith("data:image")) {
+                // Extraire le Base64
+                String base64Data = imageUrl.substring(imageUrl.indexOf(",") + 1);
+                byte[] imageBytes = java.util.Base64.getDecoder().decode(base64Data);
+
+                // Créer l'image
+                ImageIcon imageIcon = new ImageIcon(imageBytes);
+
+                // Redimensionner si nécessaire
+                Image image = imageIcon.getImage();
+                Image scaledImage = image.getScaledInstance(550, 400, Image.SCALE_SMOOTH);
+                ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+                JLabel imageLabel = new JLabel(scaledIcon);
+                imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+                JScrollPane scrollPane = new JScrollPane(imageLabel);
+                imageDialog.add(scrollPane, BorderLayout.CENTER);
+            } else {
+                // Si ce n'est pas un data URL, afficher un message
+                JLabel messageLabel = new JLabel("Format d'image non supporté", SwingConstants.CENTER);
+                messageLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+                imageDialog.add(messageLabel, BorderLayout.CENTER);
+            }
+
+            // Bouton de fermeture
+            JPanel buttonPanel = new JPanel();
+            JButton closeButton = new JButton("Fermer");
+            closeButton.setPreferredSize(new Dimension(100, 35));
+            closeButton.setBackground(Color.LIGHT_GRAY);
+            closeButton.setForeground(Color.BLACK);
+            closeButton.addActionListener(e -> imageDialog.dispose());
+            buttonPanel.add(closeButton);
+            imageDialog.add(buttonPanel, BorderLayout.SOUTH);
+
+            imageDialog.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                "Erreur lors du chargement de l'image:\n" + e.getMessage(),
+                "Erreur",
+                JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
     }
 }

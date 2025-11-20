@@ -33,34 +33,34 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.12)
 
-2025-11-19 22:58:17.952  INFO 471383 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 471383 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
-2025-11-19 22:58:17.954  INFO 471383 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
-2025-11-19 22:58:18.309  INFO 471383 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-19 22:58:18.356  INFO 471383 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 4 JPA repository interfaces.
-2025-11-19 22:58:18.593  INFO 471383 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8084 (http)
-2025-11-19 22:58:18.598  INFO 471383 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-11-19 22:58:18.598  INFO 471383 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
-2025-11-19 22:58:18.640  INFO 471383 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-11-19 22:58:18.640  INFO 471383 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 648 ms
-2025-11-19 22:58:18.658  INFO 471383 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-19 22:58:18.733  INFO 471383 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-19 22:58:18.738  INFO 471383 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/hotel-opera-db'
-2025-11-19 22:58:18.821  INFO 471383 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-19 22:58:18.842  INFO 471383 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2025-11-19 22:58:18.894  INFO 471383 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2025-11-19 22:58:18.969  INFO 471383 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2025-11-19 22:58:19.248  INFO 471383 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2025-11-19 22:58:19.252  INFO 471383 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-19 22:58:19.483  INFO 471383 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Starting synchronization from domain to database...
+2025-11-20 14:57:07.334  INFO 514120 --- [           main] o.e.serveropera.ServerOperaApplication   : Starting ServerOperaApplication using Java 1.8.0_462 on dptinfo-pret with PID 514120 (/home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera/target/classes started by etudiant in /home/etudiant/Bureau/Soap/Hotel/HotelSoap/server-opera)
+2025-11-20 14:57:07.336  INFO 514120 --- [           main] o.e.serveropera.ServerOperaApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-11-20 14:57:07.626  INFO 514120 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-20 14:57:07.656  INFO 514120 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 4 JPA repository interfaces.
+2025-11-20 14:57:07.952  INFO 514120 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8084 (http)
+2025-11-20 14:57:07.957  INFO 514120 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-20 14:57:07.957  INFO 514120 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-11-20 14:57:07.996  INFO 514120 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-20 14:57:07.996  INFO 514120 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 640 ms
+2025-11-20 14:57:08.010  INFO 514120 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-20 14:57:08.103  INFO 514120 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-20 14:57:08.109  INFO 514120 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/hotel-opera-db'
+2025-11-20 14:57:08.165  INFO 514120 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-20 14:57:08.181  INFO 514120 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2025-11-20 14:57:08.235  INFO 514120 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-11-20 14:57:08.313  INFO 514120 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2025-11-20 14:57:08.632  INFO 514120 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-11-20 14:57:08.637  INFO 514120 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-20 14:57:08.884  INFO 514120 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Starting synchronization from domain to database...
 Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2_2_, hotelentit0_.nb_etoiles as nb_etoil3_2_, hotelentit0_.nom as nom4_2_, hotelentit0_.numero as numero5_2_, hotelentit0_.pays as pays6_2_, hotelentit0_.rue as rue7_2_, hotelentit0_.ville as ville8_2_ from hotels hotelentit0_ where hotelentit0_.nom=?
-2025-11-19 22:58:19.519  INFO 471383 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Hotel 'Luxe Opéra' already exists in DB
-2025-11-19 22:58:19.519  INFO 471383 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Synchronization completed
-2025-11-19 22:58:19.524  INFO 471383 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 22:58:19.524  INFO 471383 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 22:58:19.524  INFO 471383 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
-2025-11-19 22:58:19.538  WARN 471383 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-19 22:58:19.653  INFO 471383 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8084 (http) with context path ''
-2025-11-19 22:58:19.658  INFO 471383 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 1.985 seconds (JVM running for 2.248)
+2025-11-20 14:57:08.922  INFO 514120 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Hotel 'Luxe Opéra' already exists in DB
+2025-11-20 14:57:08.922  INFO 514120 --- [           main] o.e.server.service.DataSyncService       : [SYNC] Synchronization completed
+2025-11-20 14:57:08.927  INFO 514120 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-20 14:57:08.927  INFO 514120 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-20 14:57:08.927  INFO 514120 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
+2025-11-20 14:57:08.940  WARN 514120 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-20 14:57:09.060  INFO 514120 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8084 (http) with context path ''
+2025-11-20 14:57:09.065  INFO 514120 --- [           main] o.e.serveropera.ServerOperaApplication   : Started ServerOperaApplication in 1.995 seconds (JVM running for 2.277)
 [BEAN-DUMPER] Listing beans in ApplicationContext...
 [BEAN-DUMPER] Total beans: 214
 [BEAN-DUMPER] bean[0] = agenceRepository
@@ -270,21 +270,21 @@ Hibernate: select hotelentit0_.id as id1_2_, hotelentit0_.categorie as categori2
 [BEAN-DUMPER]   hotelServiceImpl -> org.examples.server.soap.HotelServiceImpl
 [BEAN-DUMPER] End of bean dump.
 [SOAP] Publisher démarré — recherche des beans de service...
-2025-11-19 22:58:20.352  INFO 471383 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
+2025-11-20 14:57:09.755  INFO 514120 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelAgencyService-HotelAgencyServiceImplPort
 [SOAP] HotelAgencyService bean 'hotelAgencyServiceImpl' publié sur http://0.0.0.0:8083/hotel-opera/agency?wsdl
 [DIAG] HotelService beans détectés: [hotelServiceDebugImpl, hotelServiceImpl]
 [INIT] Found 1 Gestionnaire bean(s) — will attempt to inject into HotelService instances
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceDebugImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 22:58:20.411  INFO 471383 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
+2025-11-20 14:57:09.820  INFO 514120 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelServiceDebug-HotelServiceDebugImplPort
 [SOAP] HotelService bean 'hotelServiceDebugImpl' publié sur http://0.0.0.0:8083/hotel-opera/hotel-debug?wsdl
 [INIT] Injected Gestionnaire bean into HotelService bean 'hotelServiceImpl' via setGestionnaire(Impl.Gestionnaire)
-2025-11-19 22:58:20.429  INFO 471383 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
-2025-11-19 22:58:20.435  INFO 471383 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
-2025-11-19 22:58:20.435  INFO 471383 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
-2025-11-19 22:58:20.435  INFO 471383 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
+2025-11-20 14:57:09.839  INFO 514120 --- [           main] com.sun.xml.ws.monitoring                : Metro monitoring rootname successfully set to: com.sun.metro:pp=/,type=WSEndpoint,name=HotelService-HotelServiceImplPort
+2025-11-20 14:57:09.845  INFO 514120 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] HotelServiceImpl starting. DataFactory hotelName='Rivage'
+2025-11-20 14:57:09.845  INFO 514120 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Gestionnaire injected with 1 hotels
+2025-11-20 14:57:09.845  INFO 514120 --- [           main] o.examples.server.soap.HotelServiceImpl  : [INIT] Hotel='Luxe Opéra' city='Montpellier' category='HAUT_DE_GAMME' rooms=2
 [SOAP] HotelService bean 'hotelServiceImpl' publié sur http://0.0.0.0:8083/hotel-opera/hotel?wsdl
-2025-11-19 22:58:22.852  INFO 471383 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=0 (from gestionnaire)
-2025-11-19 22:58:32.659  INFO 471383 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='operaAgency' ville='Sète' arrivee='2025-11-28' depart='2025-11-29' persons=1 prixMin=null prixMax=null cat='null' stars=null
-2025-11-19 22:58:32.661  INFO 471383 --- [pool-1-thread-1] Impl.Gestionnaire                        : [GEST] total offres (agence=operaAgency): 0
-2025-11-19 22:58:32.666  INFO 471383 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 0 raw offers
-2025-11-19 22:58:32.666  INFO 471383 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 0 offers
+2025-11-20 14:57:12.347  INFO 514120 --- [pool-1-thread-1] o.examples.server.soap.HotelServiceImpl  : [RESP] getCatalog cities=1 agencies=0 (from gestionnaire)
+2025-11-20 14:57:23.366  INFO 514120 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [REQ] searchOffers received agence='operaAgency' ville='Sète' arrivee='2025-11-28' depart='2025-11-29' persons=1 prixMin=null prixMax=null cat='null' stars=null
+2025-11-20 14:57:23.369  INFO 514120 --- [pool-1-thread-2] Impl.Gestionnaire                        : [GEST] total offres (agence=operaAgency): 0
+2025-11-20 14:57:23.375  INFO 514120 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [GEST] returned 0 raw offers
+2025-11-20 14:57:23.375  INFO 514120 --- [pool-1-thread-2] o.examples.server.soap.HotelServiceImpl  : [RESP] searchOffers returning 0 offers

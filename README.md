@@ -77,7 +77,15 @@ Système distribué de réservation d'hôtels avec architecture SOAP et persista
 ./lancement-gui.sh
 ```
 
-**Workflow** : Bienvenue → Recherche → Résultats → Réservation → Confirmation
+**Fonctionnalités** :
+- 🏠 Écran de bienvenue
+- 🔍 Recherche avec calendrier
+- 📊 Tableau de résultats
+- 🖼️ **Visualisation des images de chambres** (clic sur colonne "Image")
+- ✅ Formulaire de réservation
+- 💰 Calcul automatique du prix
+
+**Workflow** : Bienvenue → Recherche → Résultats → [Voir Image] → Réservation → Confirmation
 
 ---
 
@@ -168,6 +176,6 @@ echo '{"op":"catalog.get"}' | nc -w 2 localhost 7070
 
 ---
 
-**Projet HotelSoap v2.1.7**  
-*Dernière mise à jour : 19 novembre 2025*
+**Projet HotelSoap v2.2.0**  
+*Dernière mise à jour : 20 novembre 2025*
 
