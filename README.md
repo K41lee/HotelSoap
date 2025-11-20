@@ -156,14 +156,6 @@ echo '{"op":"catalog.get"}' | nc -w 2 localhost 7070
 
 ---
 
-## 📚 Documentation Complémentaire
-
-- `GUI_README.txt` - Guide détaillé de l'interface graphique
-- `DEMARRAGE_RAPIDE.txt` - Guide visuel pas-à-pas
-- `ARCHITECTURE.txt` - Diagrammes et architecture technique
-- `SYNTHESE_CORRECTIONS_GUI_FINALE.txt` - Historique des corrections
-
----
 
 ## 🎯 Workflow Complet
 
